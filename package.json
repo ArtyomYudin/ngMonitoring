@@ -1,5 +1,5 @@
 {
-  "name": "ngMonitoring",
+  "name": "ng-monitoring",
   "version": "0.9.3",
   "scripts": {
     "ng": "ng",
@@ -17,6 +17,7 @@
     "@angular/compiler": "~9.1.12",
     "@angular/core": "^9.1.12",
     "@angular/forms": "^9.1.12",
+    "@angular/localize": "^9.1.12",
     "@angular/material": "^9.2.4",
     "@angular/platform-browser": "~9.1.12",
     "@angular/platform-browser-dynamic": "~9.1.12",
@@ -27,6 +28,7 @@
     "@clr/icons": "^3.1.4",
     "@clr/ui": "^3.1.4",
     "@types/chart.js": "^2.8.4",
+    "@webcomponents/custom-elements": "^1.4.1",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "chart.js": "^2.8.0",
     "core-js": "^3.2.1",
