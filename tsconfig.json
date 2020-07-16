@@ -1,0 +1,47 @@
+{
+  "compileOnSave": false,
+  // "angularCompilerOptions": {
+  //   "enableIvy": "ngtsc"
+  // } ,
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "plugins": [
+      {
+        // "name": "typescript-tslint-plugin",
+        // "alwaysShowRuleFailuresAsWarnings": false,
+        // "ignoreDefinitionFiles": true,
+        // "configFile": "../tslint.json",
+        // "suppressWhileTypeErrorsPresent": false,
+        // "mockTypeScriptVersion": false
+      }
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "core-js/es7/reflect": ["node_modules/core-js/proposals/reflect-metadata"],
+      "@app/*": ["src/app/*"],
+      "@assets/*": ["src/assets/*"],
+      "@models/*": ["src/app/models/*"],
+      "@modules/*": ["src/app/modules/*"],
+      "@pipe/*": ["src/app/pipe/*"],
+      "@services/*": ["src/app/services/*"],
+    },
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2015",
+    "module": "esnext",
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  }
+}
