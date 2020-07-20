@@ -1,21 +1,23 @@
 {
   "compileOnSave": false,
-  // "angularCompilerOptions": {
-  //   "enableIvy": "ngtsc"
-  // } ,
+  "angularCompilerOptions": {
+    "enableIvy": true
+  } ,
   "compilerOptions": {
-    "downlevelIteration": true,
-    "plugins": [
-      {
-        // "name": "typescript-tslint-plugin",
-        // "alwaysShowRuleFailuresAsWarnings": false,
-        // "ignoreDefinitionFiles": true,
-        // "configFile": "../tslint.json",
-        // "suppressWhileTypeErrorsPresent": false,
-        // "mockTypeScriptVersion": false
-      }
-    ],
-    "baseUrl": "./",
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["esnext", "dom", "esnext.asynciterable"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
     "paths": {
       "core-js/es7/reflect": ["node_modules/core-js/proposals/reflect-metadata"],
       "@app/*": ["src/app/*"],
@@ -24,24 +26,7 @@
       "@modules/*": ["src/app/modules/*"],
       "@pipe/*": ["src/app/pipe/*"],
       "@services/*": ["src/app/services/*"],
-    },
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "target": "es2015",
-    "module": "esnext",
-    "noImplicitAny": true,
-    "noEmitOnError": true,
-    "removeComments": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ]
-  }
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
 }
