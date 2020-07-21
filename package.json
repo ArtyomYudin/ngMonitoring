@@ -9,7 +9,10 @@
     "lint": "eslint . --ext .ts",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArtyomYudin/ngMonitoring.git"
+  },
   "dependencies": {
     "@angular/animations": "^9.1.12",
     "@angular/cdk": "^9.2.4",
