@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
-const pipe = new DatePipe('en-US');
+const pipe = new DatePipe('ru-RU');
 
 @Pipe({
   name: 'dateTimeFormat',

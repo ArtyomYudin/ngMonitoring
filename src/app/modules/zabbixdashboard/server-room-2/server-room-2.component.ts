@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { DynamicScriptLoaderService } from '@services/dynamicscriptloader.service';
 
-declare let streamCam: any;
+declare let streamCamRoom2: any;
 
 @Component({
-  selector: 'app-camera',
-  templateUrl: './camera.component.html',
-  styleUrls: ['./camera.component.scss'],
+  selector: 'app-server-room-2',
+  templateUrl: './server-room-2.component.html',
+  styleUrls: ['./server-room-2.component.scss'],
 })
-export class CameraComponent implements OnInit {
+export class ServerRoom2Component implements OnInit {
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService) { }
 
   public ngOnInit() :void {
@@ -16,10 +16,9 @@ export class CameraComponent implements OnInit {
   }
 
   private loadScripts() {
-    // You can load multiple scripts by just providing the key as argument into load method of the service
-    this.dynamicScriptLoader.load('jsmpeg', 'videocanvas').then((data) => {
+    this.dynamicScriptLoader.load('jsmpeg', 'videocanvas').then(() => {
       // Script Loaded Successfully
-      streamCam();
+      streamCamRoom2();
     }).catch((error) => console.log(error));
   }
 }

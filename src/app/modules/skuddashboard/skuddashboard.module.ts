@@ -25,7 +25,7 @@ import { WebsocketService } from '@app/services/websocket.service';
 
 const routing = RouterModule.forChild([
   { path: '', component: SkudDashboardComponent },
-  ]);
+]);
 
 @NgModule({
   declarations: [
