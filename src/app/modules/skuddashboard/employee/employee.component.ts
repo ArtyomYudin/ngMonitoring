@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable } from 'rxjs';
 import { WebsocketService } from '@services/websocket.service';
 
 import { Event } from '@services/websocket.service.event';

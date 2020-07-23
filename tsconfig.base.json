@@ -5,6 +5,8 @@
   } ,
   "compilerOptions": {
     "rootDir": ".",
+    "baseUrl": ".",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -14,10 +16,9 @@
     "target": "es2015",
     "module": "es2020",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["esnext", "dom", "esnext.asynciterable"],
+    "lib": ["es2018", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "baseUrl": ".",
     "paths": {
       "core-js/es7/reflect": ["node_modules/core-js/proposals/reflect-metadata"],
       "@app/*": ["src/app/*"],

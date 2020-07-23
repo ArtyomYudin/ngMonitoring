@@ -1,10 +1,8 @@
 
 import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { interval } from 'rxjs/internal/observable/interval';
-import { map } from 'rxjs/internal/operators/map';
-import { Subject } from 'rxjs/internal/Subject';
-import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+import { map, takeUntil } from 'rxjs/operators';
+import { Subject, interval } from 'rxjs';
 
 import { AuthenticationService } from '@services/auth.service';
 // import { SessionCheckService } from './../../../auth/sessioncheck.service';

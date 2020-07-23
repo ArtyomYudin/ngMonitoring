@@ -2,9 +2,10 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs/internal/operators/map';
-import { tap } from 'rxjs/internal/operators/tap';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+// import { map } from 'rxjs/internal/operators/map';
+// import { tap } from 'rxjs/internal/operators/tap';
 
 import { Employee, IEmployeeResponse } from '@models/employee.model';
 

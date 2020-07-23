@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subject } from 'rxjs/internal/Subject';
-import { first } from 'rxjs/internal/operators/first';
-import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+import { Subject } from 'rxjs';
+import { first, takeUntil } from 'rxjs/operators';
 
 import { AuthenticationService } from '@services/auth.service';
 

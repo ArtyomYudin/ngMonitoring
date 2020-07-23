@@ -1,0 +1,46 @@
+.right-th-icon {
+  text-align: right;
+}
+.table th {
+  // font-size: .5rem;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.table th.left {
+  padding-left: 0.5rem;
+  width: 40%;
+}
+
+.table td.camera {
+  padding: 0px 0px 0px 0px;
+}
+.table-camera {
+  margin: 5px 5px 5px 5px;
+}
+clr-icon {
+  height: 22px;
+  width: 22px;
+}
+
+#video-canvas1 {
+  width: 100%;
+  min-height: 100%;
+  // border-bottom-right-radius: .125rem;
+  border-bottom-left-radius: .125rem;
+  //width: 320px;
+  //height: 280px 
+}
+.server-room-title {
+  // display: -webkit-box;
+  // display: -ms-flexbox;
+  display: flex;
+  // -webkit-box-orient: vertical;
+  // -webkit-box-direction: normal;
+  // -ms-flex-direction: column;
+  //flex-direction: column;
+  // margin: 0 0 0 0.6rem;
+  font-family: "Metropolis","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.2rem;
+}

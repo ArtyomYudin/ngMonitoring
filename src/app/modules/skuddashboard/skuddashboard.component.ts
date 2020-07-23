@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { takeUntil } from 'rxjs/internal/operators/takeUntil';
-import { Subject } from 'rxjs/internal/Subject';
-import { share } from 'rxjs/internal/operators/share';
-import { distinctUntilChanged } from 'rxjs/internal/operators/distinctUntilChanged';
+import { takeUntil, share, distinctUntilChanged } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 import { WebsocketService } from '@app/services/websocket.service';
 
 @Component({

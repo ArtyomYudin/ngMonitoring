@@ -1,12 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subject } from 'rxjs/internal/Subject';
-import { debounceTime } from 'rxjs/internal/operators/debounceTime';
-import { distinctUntilChanged } from 'rxjs/internal/operators/distinctUntilChanged';
-import { takeUntil } from 'rxjs/internal/operators/takeUntil';
-import { switchMap } from 'rxjs/internal/operators/switchMap';
-import { finalize } from 'rxjs/internal/operators/finalize';
-import { first } from 'rxjs/internal/operators/first';
+import { Subject } from 'rxjs';
+import { takeUntil, first, switchMap, finalize, distinctUntilChanged, debounceTime} from 'rxjs/operators';
+
 
 import { EmployeeService } from '@services/employee.service';
 import { Employee } from '@models/employee.model';
