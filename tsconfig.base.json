@@ -1,7 +1,9 @@
 {
   "compileOnSave": false,
   "angularCompilerOptions": {
-    "enableIvy": true
+    "enableIvy": true,
+    "fullTemplateTypeCheck": false,
+    "preserveWhitespaces": true,
   } ,
   "compilerOptions": {
     "rootDir": ".",

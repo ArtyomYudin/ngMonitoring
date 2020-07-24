@@ -7,12 +7,33 @@
   vertical-align: middle;
 }
 
+.table td {
+  vertical-align: middle;
+}
+
 .table th.left {
   padding-left: 0.5rem;
 }
 
+.table th.left-th-camera {
+  padding-left: 0.5rem;
+  width: 40%;
+  text-align: left;
+}
+
 .table td.camera {
   padding: 0px 0px 0px 0px;
+}
+
+.table-camera {
+  margin: 5px 5px 5px 5px;
+}
+
+.server-room-title {
+  display: flex;
+  font-family: 'Metropolis', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.2rem;
 }
 
 clr-icon {
@@ -24,7 +45,17 @@ clr-icon {
   width: 100%;
   min-height: 100%;
   // border-bottom-right-radius: .125rem;
-  border-bottom-left-radius: .125rem;
-  width: 320px;
-  height: 280px 
+  border-bottom-left-radius: 0.125rem;
+  // width: 320px;
+  // height: 280px
+}
+
+.photo {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
+  text-align: center;
+  background-color: white;
 }

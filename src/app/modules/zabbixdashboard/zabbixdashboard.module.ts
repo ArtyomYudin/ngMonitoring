@@ -17,10 +17,6 @@ const routing = RouterModule.forChild([
 
 @NgModule({
   declarations: [ZabbixDashboardComponent, ServerRoom1Component, ServerRoom2Component, ProviderInfoComponent],
-  imports: [
-    CommonModule,
-    ClarityModule,
-    routing,
-  ],
+  imports: [CommonModule, ClarityModule, routing],
 })
-export class ZabbixDashboardModule { }
+export class ZabbixDashboardModule {}

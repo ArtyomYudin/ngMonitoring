@@ -17,14 +17,12 @@ import { CustomReuseStrategy } from '@app/custom-reuse-strategy';
 
 export function jwtTokenGetter() {
   if (localStorage.getItem('ngMonitoring')) {
-    return JSON.parse(localStorage.getItem('ngMonitoring')).token ;
+    return JSON.parse(localStorage.getItem('ngMonitoring')).token;
   }
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -33,14 +31,14 @@ export function jwtTokenGetter() {
       config: {
         tokenGetter: jwtTokenGetter,
         // whitelistedDomains: ['localhost:3001', 'localhost:4200'],
-       //  blacklistedRoutes: ['http://localhost:3000/api/auth'],
+        //  blacklistedRoutes: ['http://localhost:3000/api/auth'],
       },
     }),
     AppRoutingModule,
     JwtModule,
     UiModule,
   ],
-  providers: [WebsocketService, {provide: RouteReuseStrategy, useClass: CustomReuseStrategy}],
+  providers: [WebsocketService, { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

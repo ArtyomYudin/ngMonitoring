@@ -9,15 +9,37 @@
 
 .table th.left {
   padding-left: 0.5rem;
+}
+
+.table th.left-th-camera {
+  padding-left: 0.5rem;
   width: 40%;
+  text-align: left;
 }
 
 .table td.camera {
   padding: 0px 0px 0px 0px;
 }
+
 .table-camera {
   margin: 5px 5px 5px 5px;
 }
+
+.table-server-room-alert {
+  margin: 5px 0px 0px 0px;
+}
+
+.table-server-room-alert td {
+  border-top-style: solid;
+  border-top-width: 0.05rem;
+  border-top-color: #495865;
+  vertical-align: middle;
+}
+
+.table-server-room-alert th {
+  border-bottom: 0 none;
+}
+
 clr-icon {
   height: 22px;
   width: 22px;
@@ -27,20 +49,21 @@ clr-icon {
   width: 100%;
   min-height: 100%;
   // border-bottom-right-radius: .125rem;
-  border-bottom-left-radius: .125rem;
-  //width: 320px;
-  //height: 280px 
+  border-bottom-left-radius: 0.125rem;
 }
 .server-room-title {
-  // display: -webkit-box;
-  // display: -ms-flexbox;
   display: flex;
-  // -webkit-box-orient: vertical;
-  // -webkit-box-direction: normal;
-  // -ms-flex-direction: column;
-  //flex-direction: column;
-  // margin: 0 0 0 0.6rem;
-  font-family: "Metropolis","Avenir Next","Helvetica Neue",Arial,sans-serif;
-  font-size: 14px;
+  font-family: 'Metropolis', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 13px;
   line-height: 1.2rem;
+}
+
+.photo {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 50%;
+  text-align: center;
+  background-color: white;
 }

@@ -81,23 +81,20 @@ export class WebsocketService implements IWebsocketService, OnDestroy {
     };
 
     // connection status
-    this.status = new Observable<boolean>((observer) => {
+    this.status = new Observable<boolean>(observer => {
       this.connection$ = observer;
     }).pipe(share(), distinctUntilChanged());
 
     // run reconnect if not connection
-    this.statusSub = this.status
-      .subscribe((isConnected) => {
-        this.isConnected = isConnected;
+    this.statusSub = this.status.subscribe(isConnected => {
+      this.isConnected = isConnected;
 
-        if (!this.reconnection$ && typeof (isConnected) === 'boolean' && !isConnected) {
-          this.reconnect();
-        }
-      });
+      if (!this.reconnection$ && typeof isConnected === 'boolean' && !isConnected) {
+        this.reconnect();
+      }
+    });
 
-    this.websocketSub = this.wsMessages$.subscribe(
-      null, (error: ErrorEvent) => console.log('WebSocket error!', error),
-    );
+    this.websocketSub = this.wsMessages$.subscribe(null, (error: ErrorEvent) => console.log('WebSocket error!', error));
 
     this.connect();
   }
@@ -108,8 +105,8 @@ export class WebsocketService implements IWebsocketService, OnDestroy {
   }
 
   /*
-  * on message event
-  * */
+   * on message event
+   * */
   public on<T>(event: string): Observable<T> {
     if (event) {
       return this.wsMessages$.pipe(
@@ -120,8 +117,8 @@ export class WebsocketService implements IWebsocketService, OnDestroy {
   }
 
   /*
-  * on message to server
-  * */
+   * on message to server
+   * */
   public send(event: string, data: any = {}): void {
     if (event && this.isConnected) {
       this.websocket$.next(JSON.stringify({ event, data }) as any);
@@ -131,26 +128,27 @@ export class WebsocketService implements IWebsocketService, OnDestroy {
   }
 
   /*
-  * connect to WebSocked
-  * */
+   * connect to WebSocked
+   * */
   private connect(): void {
     this.websocket$ = new WebSocketSubject(this.config);
 
-    this.websocket$.subscribe((message) => this.wsMessages$.next(message),
+    this.websocket$.subscribe(
+      message => this.wsMessages$.next(message),
       (error: Event) => {
         if (!this.websocket$) {
           // run reconnect if errors
           this.reconnect();
         }
-      });
+      },
+    );
   }
 
   /*
-* reconnect if not connecting or errors
-* */
+   * reconnect if not connecting or errors
+   * */
   private reconnect(): void {
-    this.reconnection$ = interval(this.reconnectInterval)
-      .pipe(takeWhile((v, index) => index < this.reconnectAttempts && !this.websocket$));
+    this.reconnection$ = interval(this.reconnectInterval).pipe(takeWhile((v, index) => index < this.reconnectAttempts && !this.websocket$));
 
     this.reconnection$.subscribe(
       () => this.connect(),

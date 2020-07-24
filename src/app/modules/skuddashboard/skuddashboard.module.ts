@@ -23,24 +23,23 @@ import { VisitorsComponent } from '@modules/skuddashboard/visitors/visitors.comp
 import { VisitorsChartComponent } from '@modules/skuddashboard/visitorschart/visitorschart.component';
 import { WebsocketService } from '@app/services/websocket.service';
 
-const routing = RouterModule.forChild([
-  { path: '', component: SkudDashboardComponent },
-]);
+const routing = RouterModule.forChild([{ path: '', component: SkudDashboardComponent }]);
 
 @NgModule({
   declarations: [
-    SplitlastPipe, Blobtobase64Pipe, BuildingnamePipe, DatetimeformatPipe,
-    SkudDashboardComponent, CameraComponent, EmployeeComponent,
-    EmployeeSearchComponent, LasttenComponent, VisitorsComponent,
-    VisitorsChartComponent],
-  imports: [
-    CommonModule,
-    ClarityModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatExpansionModule,
-    routing,
+    SplitlastPipe,
+    Blobtobase64Pipe,
+    BuildingnamePipe,
+    DatetimeformatPipe,
+    SkudDashboardComponent,
+    CameraComponent,
+    EmployeeComponent,
+    EmployeeSearchComponent,
+    LasttenComponent,
+    VisitorsComponent,
+    VisitorsChartComponent,
   ],
+  imports: [CommonModule, ClarityModule, ReactiveFormsModule, MatAutocompleteModule, MatExpansionModule, routing],
   providers: [WebsocketService],
 })
-export class SkudDashboardModule { }
+export class SkudDashboardModule {}

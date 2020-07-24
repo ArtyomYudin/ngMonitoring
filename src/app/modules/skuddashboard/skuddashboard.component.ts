@@ -10,20 +10,15 @@ import { WebsocketService } from '@app/services/websocket.service';
 })
 export class SkudDashboardComponent implements OnInit, OnDestroy {
   public initDashboard = false;
+
   public isConnected: boolean;
+
   private ngUnsubscribe$: Subject<any> = new Subject();
 
   constructor(private wsService: WebsocketService) {
-    this.wsService.status
-      .pipe(
-        share(),
-        distinctUntilChanged(),
-        takeUntil(this.ngUnsubscribe$),
-        )
-      .subscribe(
-      isConnected => {
-         this.isConnected = isConnected;
-      });
+    this.wsService.status.pipe(share(), distinctUntilChanged(), takeUntil(this.ngUnsubscribe$)).subscribe(isConnected => {
+      this.isConnected = isConnected;
+    });
   }
 
   public ngOnInit() {

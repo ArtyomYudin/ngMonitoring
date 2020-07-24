@@ -1,54 +1,67 @@
-
-<div class="card">
-    <div class="card-block">
-        <!--
-        <div class="alert alert-warning alert-sm">
-            <div class="alert-item static">
-                <span class="alert-text">
-                    Use small alerts in a card.
-                </span>
-            </div>
-        </div>
-        -->
-        <div class="card-media-block">
-            <canvas class="card-image" id="video-canvas2"></canvas>
-            <div class="card-text">
-                <span class="card-media-description card-media-title">Серверное помещение №2</span>
-                <span class="card-media-description card-media-text">Расположение: Здание АЩ первый этаж</span>
-                <span class="card-media-description card-media-text">Ответственный: Орлов Николай Андреевич</span>
-                <table class="table table-compact card-text">
-                    <thead>
-                      <tr>
-                        <th class="left" >Последние 10 выходов</th>
-                        <th></th>
-                        <th class="right-th-icon"><clr-icon shape="upload"></clr-icon></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>температура</td>
-                            <td>температура</td>
-                        </tr>
-                        <tr>
-                            <td>температура</td>
-                            <td>температура</td>
-                        </tr>
-                        <tr>
-                            <td>температура</td>
-                            <td>температура</td>
-                        </tr>
-                        <tr>
-                            <td>температура</td>
-                            <td>температура</td>
-                        </tr>
-                        <tr>
-                            <td>ФИО сотрудника</td>
-                            <td>Юдин А.А.</td>
-                            <td>photo</td>
-                        </tr>
-                    </tbody>
-                  </table>
-            </div>
-        </div>
-    </div>
+<div>
+    <table class="table table-compact">
+        <thead>
+            <tr>
+                <th class="left-th-camera">Серверное помещение №1</th>
+                <th></th>
+                <th></th>
+                <th class="right-th-icon"><clr-icon shape="video-camera"></clr-icon></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="camera" rowspan="8">
+                    <div class="clr-row">
+                        <div class="clr-col-xl-12 clr-col-lg-12 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
+                            <canvas id="video-canvas2"></canvas>
+                        </div>
+                    </div>
+                </td>
+                <!--
+                <td colspan="3">
+                    <span class="server-room-title">Серверное помещение №1</span>
+                    <span class="server-room-title">Расположение: Здание АС второй этаж</span>
+                    <span class="server-room-title">Шкафов: 6</span>
+                    <span class="server-room-title">Ответственный: Орлов Николай Андреевич</span>
+                </td>
+                -->
+                <td>Расположение:</td>
+                <td colspan="2">Здание АС второй этаж</td>
+            </tr>
+            <tr>
+                <td>Шкафов:</td>
+                <td>6</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Ответственный</td>
+                <td colspan="2">Орлов Николай Андреевич</td>
+            </tr>
+            <td>Температура</td>
+            <td>20</td>
+            <td></td>
+            <tr>
+                <td>Влажность</td>
+                <td>50%</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Безопасность</td>
+                <td>протечка</td>
+                <td>пожар</td>
+            </tr>
+            <tr>
+                <td>Последний вход</td>
+                <td>10.10.2020</td>
+                <td>11:00:00</td>
+            </tr>
+            <tr>
+                <td>ФИО сотрудника</td>
+                <td>Юдин А.А.</td>
+                <td>
+                    <div class="photo"><img class="personPhoto" src="assets/images/avatar-male.jpg" /></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

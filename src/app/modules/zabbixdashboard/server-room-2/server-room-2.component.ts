@@ -9,16 +9,19 @@ declare let streamCamRoom2: any;
   styleUrls: ['./server-room-2.component.scss'],
 })
 export class ServerRoom2Component implements OnInit {
-  constructor(private dynamicScriptLoader: DynamicScriptLoaderService) { }
+  constructor(private dynamicScriptLoader: DynamicScriptLoaderService) {}
 
-  public ngOnInit() :void {
+  public ngOnInit(): void {
     this.loadScripts();
   }
 
   private loadScripts() {
-    this.dynamicScriptLoader.load('jsmpeg', 'videocanvas').then(() => {
-      // Script Loaded Successfully
-      streamCamRoom2();
-    }).catch((error) => console.log(error));
+    this.dynamicScriptLoader
+      .load('jsmpeg', 'videocanvas')
+      .then(() => {
+        // Script Loaded Successfully
+        streamCamRoom2();
+      })
+      .catch(error => console.log(error));
   }
 }
