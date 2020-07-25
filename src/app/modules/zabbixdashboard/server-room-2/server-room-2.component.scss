@@ -9,6 +9,7 @@
 
 .table td {
   vertical-align: middle;
+  text-align: left;
 }
 
 .table th.left {
@@ -17,12 +18,15 @@
 
 .table th.left-th-camera {
   padding-left: 0.5rem;
-  width: 40%;
+  width: 35%;
   text-align: left;
 }
 
 .table td.camera {
   padding: 0px 0px 0px 0px;
+  border-right-style: solid;
+  border-right-width: 0.05rem;
+  border-right-color: #495865;
 }
 
 .table-camera {
@@ -58,4 +62,33 @@ clr-icon {
   border-radius: 50%;
   text-align: center;
   background-color: white;
+}
+
+.table td.server-room-temper-title {
+  text-align: left;
+  color: #e9ecef;
+}
+.table td.server-room-temper-value {
+  color: #aadb1e;
+}
+.table td.server-room-humidity-title {
+  text-align: left;
+  color: #e9ecef;
+}
+.table td.server-room-humidity-value {
+  color: #aadb1e;
+}
+.table td.server-room-security-title {
+  text-align: left;
+  color: #e9ecef;
+}
+.table td.server-room-security-value {
+  color: hsl(9, 100%, 43%);
+}
+.table td.server-room-entry-title {
+  text-align: left;
+  color: #e9ecef;
+}
+.table td.server-room-entry-value {
+  color: #ff9c00;
 }
