@@ -1,0 +1,28 @@
+.progress-block {
+  font-family: 'Metropolis', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.65rem;
+  line-height: 1.2rem;
+}
+.progress-block :first-child {
+  padding-right: 0.5rem;
+}
+.progress-static.labeled .progress-meter {
+  right: 5em;
+  height: 0.2em;
+  margin-top: 0.5em;
+}
+
+.provider-info-title {
+  color: #e9ecef;
+}
+
+.progress-block clr-icon {
+  height: 22px;
+  width: 22px;
+  padding-right: 0;
+  margin-right: 0.5rem;
+}
+
+.progress-static.labeled span {
+  margin-top: -0.55em;
+}

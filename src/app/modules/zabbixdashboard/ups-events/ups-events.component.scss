@@ -1,0 +1,33 @@
+.right-th-icon {
+  text-align: right;
+}
+
+.table th {
+  // font-size: .5rem;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.table tr.critical-events {
+  color: hsl(9, 100%, 43%);
+}
+
+.table tr.warning-events {
+  color: hsl(48, 95%, 48%);
+}
+
+clr-icon {
+  height: 22px;
+  width: 22px;
+}
+
+.header-ups-name {
+  padding-left: 0.5rem;
+  width: 10%;
+  text-align: left;
+}
+.header-ups-date {
+  padding-left: 0.5rem;
+  width: 20%;
+  text-align: left;
+}
