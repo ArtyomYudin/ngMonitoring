@@ -26,3 +26,16 @@
 .progress-static.labeled span {
   margin-top: -0.55em;
 }
+div.provider-bgp-status {
+  font-family: 'Metropolis', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.65rem;
+  display: inline-block;
+}
+.table td {
+  vertical-align: middle;
+}
+td.provider-bgp {
+  padding-top: 0.4rem;
+  text-align: left;
+  width: 15%;
+}

@@ -18,7 +18,7 @@
                 </td>
                 <td colspan="1">
                     <span class="server-room-title">Серверное помещение: №2</span>
-                    <span class="server-room-title">Шкафов: 3</span>
+                    <span class="server-room-title">Шкафов: 5</span>
                 </td>
                 <td colspan="2">
                     <span class="server-room-title">Здание: АЩ</span>
@@ -27,12 +27,12 @@
             </tr>
             <tr>
                 <td class="server-room-temper-title">Температура</td>
-                <td class="server-room-temper-value" colspan="3">+20 &deg;</td>
+                <td class="server-room-temper-value" colspan="3">+{{ (sensorValueArray$ | async)?.temper2 }} &deg;</td>
             </tr>
 
             <tr>
                 <td class="server-room-humidity-title">Влажность</td>
-                <td class="server-room-humidity-value" colspan="3">50%</td>
+                <td class="server-room-humidity-value" colspan="3">{{ (sensorValueArray$ | async)?.himidity2 }} %</td>
             </tr>
             <tr>
                 <td class="server-room-security-title">Безопасность</td>

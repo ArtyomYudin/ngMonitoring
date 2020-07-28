@@ -27,12 +27,12 @@
             </tr>
             <tr>
                 <td class="server-room-temper-title">Температура</td>
-                <td class="server-room-temper-value" colspan="3">+20 &deg;</td>
+                <td class="server-room-temper-value" colspan="3">+{{ (sensorValueArray$ | async)?.temper1 }} &deg;</td>
             </tr>
 
             <tr>
                 <td class="server-room-humidity-title">Влажность</td>
-                <td class="server-room-humidity-value" colspan="3">50%</td>
+                <td class="server-room-humidity-value" colspan="3">{{ (sensorValueArray$ | async)?.himidity1 }} %</td>
             </tr>
             <tr>
                 <td class="server-room-security-title">Безопасность</td>

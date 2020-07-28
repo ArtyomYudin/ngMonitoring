@@ -21,53 +21,92 @@
             <tr>
                 <td>
                     <div class="progress-block">
-                        <span class="provider-info-title">Провайдер 1</span>
+                        <span class="provider-info-title">Orange</span>
                         <clr-icon shape="network-globe" class="has-alert"></clr-icon>
                         <div class="progress-group">
                             <div class="progress-static labeled">
-                                <div class="progress-meter" data-value="65" data-displayval="65%"></div>
-                                <span>65 Mb/s</span>
+                                <div
+                                    class="progress-meter"
+                                    [attr.data-value]="(providerValueArray$ | async)?.inSpeedOrange | number: '1.0-0'"
+                                    [attr.data-displayval]="(providerValueArray$ | async)?.inSpeedOrange + '%'"
+                                ></div>
+                                <span>{{ (providerValueArray$ | async)?.inSpeedOrange }} Mb/s</span>
                             </div>
                             <div class="progress-static labeled success">
-                                <div class="progress-meter" data-value="21" data-displayval="21%"></div>
-                                <span>21 Mb/s</span>
+                                <div
+                                    class="progress-meter"
+                                    [attr.data-value]="(providerValueArray$ | async)?.outSpeedOrange | number: '1.0-0'"
+                                    [attr.data-displayval]="(providerValueArray$ | async)?.outSpeedOrange + '%'"
+                                ></div>
+                                <span>{{ (providerValueArray$ | async)?.outSpeedOrange }} Mb/s</span>
                             </div>
                         </div>
                     </div>
                 </td>
                 <td>
                     <div class="progress-block">
-                        <span class="provider-info-title">Провайдер 1</span>
+                        <span class="provider-info-title">Телрос</span>
                         <clr-icon shape="network-globe" class="has-alert"></clr-icon>
                         <div class="progress-group">
                             <div class="progress-static labeled">
-                                <div class="progress-meter" data-value="65" data-displayval="65%"></div>
-                                <span>65 Mb/s</span>
+                                <div
+                                    class="progress-meter"
+                                    [attr.data-value]="(providerValueArray$ | async)?.inSpeedTelros | number: '1.0-0'"
+                                    [attr.data-displayval]="(providerValueArray$ | async)?.inSpeedTelros + '%'"
+                                ></div>
+                                <span>{{ (providerValueArray$ | async)?.inSpeedTelros }} Mb/s</span>
                             </div>
                             <div class="progress-static labeled success">
-                                <div class="progress-meter" data-value="21" data-displayval="21%"></div>
-                                <span>21 Mb/s</span>
+                                <div
+                                    class="progress-meter"
+                                    [attr.data-value]="(providerValueArray$ | async)?.outSpeedTelros | number: '1.0-0'"
+                                    [attr.data-displayval]="(providerValueArray$ | async)?.outSpeedTelros + '%'"
+                                ></div>
+                                <span>{{ (providerValueArray$ | async)?.outSpeedTelros }} Mb/s</span>
                             </div>
                         </div>
                     </div>
                 </td>
                 <td>
                     <div class="progress-block">
-                        <span class="provider-info-title">Провайдер 1</span>
+                        <span class="provider-info-title">Филанко</span>
                         <clr-icon shape="network-globe" class="has-alert"></clr-icon>
                         <div class="progress-group">
                             <div class="progress-static labeled">
-                                <div class="progress-meter" data-value="65" data-displayval="65%"></div>
-                                <span>65 Mb/s</span>
+                                <div
+                                    class="progress-meter"
+                                    [attr.data-value]="(providerValueArray$ | async)?.inSpeedFilanco | number: '1.0-0'"
+                                    [attr.data-displayval]="(providerValueArray$ | async)?.inSpeedFilanco + '%'"
+                                ></div>
+                                <span>{{ (providerValueArray$ | async)?.inSpeedFilanco }} Mb/s</span>
                             </div>
                             <div class="progress-static labeled success">
-                                <div class="progress-meter" data-value="21" data-displayval="21%"></div>
-                                <span>21 Mb/s</span>
+                                <div
+                                    class="progress-meter"
+                                    [attr.data-value]="(providerValueArray$ | async)?.outSpeedFilanco | number: '1.0-0'"
+                                    [attr.data-displayval]="(providerValueArray$ | async)?.outSpeedFilanco + '%'"
+                                ></div>
+                                <span>{{ (providerValueArray$ | async)?.outSpeedFilanco }} Mb/s</span>
                             </div>
                         </div>
                     </div>
                 </td>
-                <td>BGP статус</td>
+                <td class="provider-bgp">
+                    <div
+                        class="provider-bgp-status"
+                        [style.color]="(providerValueArray$ | async)?.bgp176 == 2 ? 'hsl(93, 76%, 49%)' : 'hsl(9, 100%, 43%)'"
+                    >
+                        BGP peer 176.221.9.165
+                    </div>
+
+                    <div
+                        class="provider-bgp-status"
+                        class="provider-bgp-status"
+                        [style.color]="(providerValueArray$ | async)?.bgp62 == 2 ? 'hsl(93, 100%, 26%)' : 'hsl(9, 100%, 43%)'"
+                    >
+                        BGP peer 62.152.42.13
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>

@@ -18,7 +18,6 @@ export interface IEvent {
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.scss'],
 })
-
 export class EmployeeComponent implements OnDestroy, OnInit {
   // public employeeArray: any = [];
 
@@ -26,7 +25,7 @@ export class EmployeeComponent implements OnDestroy, OnInit {
   // private ngUnsubscribe: Subject<any> = new Subject();
 
   constructor(private wsService: WebsocketService) {
-  /*
+    /*
     function apuf(marr, data: string) {
       if (marr.length === 10) {
         marr.shift();
@@ -35,7 +34,7 @@ export class EmployeeComponent implements OnDestroy, OnInit {
       return marr;
     }
     */
-/*
+    /*
     function reCreateArray(sArray: Array<{ lname: string; }>, data: { lname: string; }) {
       if (sArray.length) {
         for (let i = sArray.length - 1; i >= 0; i -= 1) {
@@ -61,5 +60,4 @@ export class EmployeeComponent implements OnDestroy, OnInit {
     // this.ngUnsubscribe.next();
     // this.ngUnsubscribe.complete();
   }
-
 }
