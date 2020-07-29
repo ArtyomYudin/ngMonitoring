@@ -92,19 +92,20 @@
                     </div>
                 </td>
                 <td class="provider-bgp">
-                    <div
-                        class="provider-bgp-status"
-                        [style.color]="(providerValueArray$ | async)?.bgp176 == 2 ? 'hsl(93, 76%, 49%)' : 'hsl(9, 100%, 43%)'"
-                    >
-                        BGP peer 176.221.9.165
-                    </div>
-
-                    <div
-                        class="provider-bgp-status"
-                        class="provider-bgp-status"
-                        [style.color]="(providerValueArray$ | async)?.bgp62 == 2 ? 'hsl(93, 100%, 26%)' : 'hsl(9, 100%, 43%)'"
-                    >
-                        BGP peer 62.152.42.13
+                    <div class="provider-bgp-group">
+                        <div
+                            class="provider-bgp-status"
+                            [style.color]="(providerValueArray$ | async)?.bgp176 == 2 ? 'hsl(93, 76%, 49%)' : 'hsl(9, 100%, 43%)'"
+                        >
+                            BGP peer 176.221.9.165
+                        </div>
+                        <div
+                            class="provider-bgp-status"
+                            class="provider-bgp-status"
+                            [style.color]="(providerValueArray$ | async)?.bgp62 == 2 ? 'hsl(93, 76%, 49%)' : 'hsl(9, 100%, 43%)'"
+                        >
+                            BGP peer 62.152.42.13
+                        </div>
                     </div>
                 </td>
             </tr>

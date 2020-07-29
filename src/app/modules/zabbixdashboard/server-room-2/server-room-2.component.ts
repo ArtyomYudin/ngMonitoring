@@ -14,6 +14,16 @@ export interface IEvent {
   himidity2: string;
 }
 
+export interface IServerRoomEmployeeEvent {
+  lname: string;
+  fname: string;
+  mname: string;
+  photo: ArrayBuffer;
+  apoint: string;
+  tstamp: string;
+  apointaddr: string;
+}
+
 @Component({
   selector: 'app-server-room-2',
   templateUrl: './server-room-2.component.html',
@@ -22,11 +32,14 @@ export interface IEvent {
 export class ServerRoom2Component implements OnInit {
   public sensorValueArray$: Observable<IEvent>;
 
+  public serverRoomEmployeeArray$: Observable<IServerRoomEmployeeEvent>;
+
   constructor(private dynamicScriptLoader: DynamicScriptLoaderService, private wsService: WebsocketService) {}
 
   public ngOnInit(): void {
     this.loadScripts();
     this.sensorValueArray$ = this.wsService.on<IEvent>(Event.EV_SERVER_ROOM_SENSOR);
+    this.serverRoomEmployeeArray$ = this.wsService.on<IServerRoomEmployeeEvent>(Event.EV_SERVER_ROOM_2_EMPLOYEE);
   }
 
   private loadScripts() {

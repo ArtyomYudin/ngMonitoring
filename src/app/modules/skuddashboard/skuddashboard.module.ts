@@ -9,10 +9,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 import { RouterModule } from '@angular/router';
 
+import { GlobalPipeModule } from '@pipe/globalpipe.module';
+
 import { SplitlastPipe } from '@pipe/splitlast.pipe';
-import { Blobtobase64Pipe } from '@pipe/blobtobase64.pipe';
+// import { Blobtobase64Pipe } from '@pipe/blobtobase64.pipe';
 import { BuildingnamePipe } from '@pipe/buildingname.pipe';
-import { DatetimeformatPipe } from '@pipe/datetimeformat.pipe';
+// import { DatetimeformatPipe } from '@pipe/datetimeformat.pipe';
 
 import { SkudDashboardComponent } from '@modules/skuddashboard/skuddashboard.component';
 import { CameraComponent } from '@modules/skuddashboard/camera/camera.component';
@@ -28,9 +30,9 @@ const routing = RouterModule.forChild([{ path: '', component: SkudDashboardCompo
 @NgModule({
   declarations: [
     SplitlastPipe,
-    Blobtobase64Pipe,
+    // Blobtobase64Pipe,
     BuildingnamePipe,
-    DatetimeformatPipe,
+    // DatetimeformatPipe,
     SkudDashboardComponent,
     CameraComponent,
     EmployeeComponent,
@@ -39,7 +41,7 @@ const routing = RouterModule.forChild([{ path: '', component: SkudDashboardCompo
     VisitorsComponent,
     VisitorsChartComponent,
   ],
-  imports: [CommonModule, ClarityModule, ReactiveFormsModule, MatAutocompleteModule, MatExpansionModule, routing],
+  imports: [CommonModule, ClarityModule, ReactiveFormsModule, MatAutocompleteModule, MatExpansionModule, GlobalPipeModule, routing],
   providers: [WebsocketService],
 })
 export class SkudDashboardModule {}
