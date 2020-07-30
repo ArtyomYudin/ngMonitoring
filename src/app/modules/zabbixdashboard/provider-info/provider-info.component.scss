@@ -35,7 +35,11 @@ div.provider-bgp-status {
   vertical-align: middle;
 }
 td.provider-bgp {
-  padding-top: 0.4rem;
+  //padding-top: 0.3rem;
   text-align: left;
   width: 15%;
+}
+div.provider-bgp-group {
+  width: 80%;
+  margin: 0 0 0 auto;
 }

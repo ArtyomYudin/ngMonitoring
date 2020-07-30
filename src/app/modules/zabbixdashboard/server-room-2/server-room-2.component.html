@@ -40,10 +40,21 @@
             </tr>
             <tr>
                 <td class="server-room-entry-title">Последний вход</td>
-                <td class="server-room-entry-value">Юдин А.А.</td>
-                <td class="server-room-entry-value">25 июля 11:06:11</td>
                 <td class="server-room-entry-value">
-                    <div class="photo"><img class="personPhoto" src="assets/images/avatar-male.jpg" /></div>
+                    {{
+                        (serverRoomEmployeeArray$ | async)?.lname +
+                            '&nbsp;' +
+                            (serverRoomEmployeeArray$ | async)?.fname.charAt(0) +
+                            '.&nbsp;' +
+                            (serverRoomEmployeeArray$ | async)?.mname.charAt(0) +
+                            '.'
+                    }}
+                </td>
+                <td class="server-room-entry-value">
+                    {{ (serverRoomEmployeeArray$ | async)?.tstamp | dateTimeFormat: 'dd MMMM yyyy HH:mm:ss' }}
+                </td>
+                <td class="server-room-entry-value">
+                    <div class="photo"><img class="personPhoto" [src]="(serverRoomEmployeeArray$ | async)?.photo | blobToBase64" /></div>
                 </td>
             </tr>
         </tbody>

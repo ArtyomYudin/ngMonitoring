@@ -13,6 +13,8 @@ export enum Event {
   EV_REAL_CAR_ON_TERRITORY = 'event_real_car_on_territory',
   EV_SERVER_ROOM_SENSOR = 'event_server_room_sensor',
   EV_PROVIDER_VALUE = 'event_provider_value',
-  EV_SERVER_ROOM_1_ENTRY = 'event_server-room-1-entry',
-  EV_SERVER_ROOM_2_ENTRY = 'event_server-room-2-entry',
+  EV_SERVER_ROOM_1_EMPLOYEE = 'event_server_room_1_employee',
+  EV_SERVER_ROOM_2_EMPLOYEE = 'event_server_room_2_employee',
+  EV_UPS_VALUE = 'event_ups_value',
+  EV_SWITCH_VALUE = 'event_switch_value',
 }

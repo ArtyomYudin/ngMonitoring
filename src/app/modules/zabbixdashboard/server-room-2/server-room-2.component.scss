@@ -47,7 +47,7 @@ clr-icon {
 
 #video-canvas2 {
   width: 100%;
-  min-height: 100%;
+  // min-height: 100%; // Google Chrome bag !!!
   // border-bottom-right-radius: .125rem;
   border-bottom-left-radius: 0.125rem;
   // width: 320px;
@@ -75,14 +75,14 @@ clr-icon {
   color: #e9ecef;
 }
 .table td.server-room-temper-value {
-  color: #aadb1e;
+  color: hsl(93, 76%, 49%);
 }
 .table td.server-room-humidity-title {
   text-align: left;
   color: #e9ecef;
 }
 .table td.server-room-humidity-value {
-  color: #aadb1e;
+  color: hsl(93, 76%, 49%);
 }
 .table td.server-room-security-title {
   text-align: left;

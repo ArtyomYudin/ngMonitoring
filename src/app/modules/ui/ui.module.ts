@@ -10,19 +10,8 @@ import { MainComponent } from '@modules/ui/layout/main/main.component';
 import { AboutModule } from '@modules/about/about.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule,
-    ClarityModule,
-    AboutModule,
-  ],
-  declarations: [
-    LayoutComponent,
-    HeaderComponent,
-    MainComponent,
-  ],
-  exports: [
-    LayoutComponent,
-  ],
+  imports: [CommonModule, RouterModule, ClarityModule, AboutModule],
+  declarations: [LayoutComponent, HeaderComponent, MainComponent],
+  exports: [LayoutComponent],
 })
-export class UiModule { }
+export class UiModule {}
