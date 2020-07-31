@@ -4,12 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Event } from '@services/websocket.service.event';
 
-export interface IEvent {
-  upsName: string;
-  upsDescription: string;
-  upsTimeStamp: string;
-  upsEventName: string;
-}
+import { EventModel } from '@models/event.model';
 
 @Component({
   selector: 'app-ups-events',
@@ -17,11 +12,11 @@ export interface IEvent {
   styleUrls: ['./ups-events.component.scss'],
 })
 export class UpsEventsComponent implements OnInit {
-  public upsValueArray$: Observable<IEvent>;
+  public eventUPSArray$: Observable<EventModel>;
 
   constructor(private wsService: WebsocketService) {}
 
   ngOnInit(): void {
-    this.upsValueArray$ = this.wsService.on<IEvent>(Event.EV_UPS_VALUE);
+    this.eventUPSArray$ = this.wsService.on<EventModel>(Event.EV_UPS_VALUE);
   }
 }

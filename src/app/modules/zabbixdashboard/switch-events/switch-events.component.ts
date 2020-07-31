@@ -4,24 +4,18 @@ import { Observable } from 'rxjs';
 
 import { Event } from '@services/websocket.service.event';
 
-export interface IEvent {
-  switchName: string;
-  switchDescription: string;
-  switchTimeStamp: string;
-  switchEventName: string;
-}
-
+import { EventModel } from '@models/event.model';
 @Component({
   selector: 'app-switch-events',
   templateUrl: './switch-events.component.html',
   styleUrls: ['./switch-events.component.scss'],
 })
 export class SwitchEventsComponent implements OnInit {
-  public switchValueArray$: Observable<IEvent>;
+  public eventSwitchArray$: Observable<EventModel>;
 
   constructor(private wsService: WebsocketService) {}
 
   ngOnInit(): void {
-    this.switchValueArray$ = this.wsService.on<IEvent>(Event.EV_SWITCH_VALUE);
+    this.eventSwitchArray$ = this.wsService.on<EventModel>(Event.EV_SWITCH_VALUE);
   }
 }
