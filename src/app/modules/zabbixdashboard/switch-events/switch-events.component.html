@@ -2,10 +2,12 @@
     <table class="table table-compact">
         <thead>
             <tr>
-                <th class="header-switch-name">Коммутаторы</th>
-                <th class="header-switch-date"></th>
-                <th class="header-switch-description"></th>
-                <th class="right-th-icon"><clr-icon shape="network-switch" class="has-badge"></clr-icon></th>
+                <th class="header-hardware-name">Коммутаторы</th>
+                <th class="header-event-date"></th>
+                <th class="header-hardware-description"></th>
+                <th class="right-th-icon">
+                    <clr-icon shape="network-switch" [ngClass]="{ 'has-badge': (eventSwitchArray$ | async)?.length }"></clr-icon>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -19,11 +21,24 @@
                 <td class="server-room-entry-value">Replace battery</td>
             </tr>
             -->
-            <tr class="warning-events" *ngFor="let item of switchValueArray$ | async">
-                <td>{{ item.switchName }}</td>
-                <td>{{ item.switchTimeStamp * 1000 | date: 'dd MMMM yyyy HH:mm:ss' }}</td>
-                <td>{{ item.switchDescription }}</td>
-                <td>{{ item.switchEventName }}</td>
+            <ng-container *ngIf="!(eventSwitchArray$ | async)?.length">
+                <tr>
+                    <td colspan="4">Событий нет</td>
+                </tr>
+            </ng-container>
+            <tr
+                *ngFor="let item of eventSwitchArray$ | async"
+                [ngClass]="{
+                    'warning-events': item.eventSeverity == 2,
+                    'middle-warning-events': item.eventSeverity == 3,
+                    'high-warning-events': item.eventSeverity == 4,
+                    'critical-events': item.eventSeverity == 5
+                }"
+            >
+                <td>{{ item.hardwareName }}</td>
+                <td>{{ item.eventTimeStamp * 1000 | date: 'dd MMMM yyyy HH:mm:ss' }}</td>
+                <td>{{ item.hardwareDescription }}</td>
+                <td>{{ item.eventName }}</td>
             </tr>
         </tbody>
     </table>

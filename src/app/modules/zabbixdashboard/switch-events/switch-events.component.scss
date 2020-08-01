@@ -8,17 +8,26 @@
   vertical-align: middle;
 }
 
-.table th.header-switch-name {
+.table th.header-hardware-name {
   text-align: left;
 }
 
-.table tr.critical-events {
-  color: hsl(9, 100%, 43%);
+.table tr.critical-events td {
+  color: hsl(9, 88%, 61%);
   text-align: left;
 }
 
-.table tr.warning-events td {
+.table tr.high-warning-events td {
+  color: hsl(43, 100%, 42%);
+  text-align: left;
+}
+
+.table tr.middle-warning-events td {
   color: hsl(48, 95%, 48%);
+  text-align: left;
+}
+.table tr.warning-events td {
+  color: hsl(48, 98%, 72%);
   text-align: left;
 }
 
@@ -27,12 +36,12 @@ clr-icon {
   width: 22px;
 }
 
-.header-switch-name {
-  width: 10%;
+.header-hardware-name {
+  width: 15%;
 }
-.header-switch-date {
+.header-event-date {
   width: 20%;
 }
-.header-switch-description {
+.header-hardware-description {
   width: 40%;
 }

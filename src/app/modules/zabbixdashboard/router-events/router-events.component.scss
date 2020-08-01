@@ -8,7 +8,39 @@
   vertical-align: middle;
 }
 
+.table th.header-hardware-name {
+  text-align: left;
+}
+
+.table tr.critical-events td {
+  color: hsl(9, 88%, 61%);
+  text-align: left;
+}
+
+.table tr.high-warning-events td {
+  color: hsl(43, 100%, 42%);
+  text-align: left;
+}
+
+.table tr.middle-warning-events td {
+  color: hsl(48, 95%, 48%);
+  text-align: left;
+}
+.table tr.warning-events td {
+  color: hsl(48, 98%, 72%);
+  text-align: left;
+}
 clr-icon {
   height: 22px;
   width: 22px;
+}
+
+.header-hardware-name {
+  width: 15%;
+}
+.header-event-date {
+  width: 20%;
+}
+.header-hardware-description {
+  width: 40%;
 }

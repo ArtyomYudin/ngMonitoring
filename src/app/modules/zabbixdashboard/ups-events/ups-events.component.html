@@ -2,10 +2,12 @@
     <table class="table table-compact">
         <thead>
             <tr>
-                <th class="header-ups-name">ИБП</th>
-                <th class="header-ups-date"></th>
-                <th class="header-ups-description"></th>
-                <th class="right-th-icon"><clr-icon shape="battery" class="has-badge"></clr-icon></th>
+                <th class="header-hardware-name">ИБП</th>
+                <th class="header-event-date"></th>
+                <th class="header-hardware-description"></th>
+                <th class="right-th-icon">
+                    <clr-icon shape="battery" [ngClass]="{ 'has-badge': (eventUPSArray$ | async)?.length }"></clr-icon>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -18,12 +20,27 @@
                 <td class="server-room-entry-value">Серверная 1 Стойка 3</td>
                 <td class="server-room-entry-value">Replace battery</td>
             </tr>
+            [style.color]="(providerValueArray$ | async)?.bgp176 == 2 ? 'hsl(93, 76%, 49%)' : 'hsl(9, 100%, 43%)'"
+            class="warning-events"
             -->
-            <tr class="warning-events" *ngFor="let item of upsValueArray$ | async">
-                <td>{{ item.upsName }}</td>
-                <td>{{ item.upsTimeStamp * 1000 | date: 'dd MMMM yyyy HH:mm:ss' }}</td>
-                <td>{{ item.upsDescription }}</td>
-                <td>{{ item.upsEventName }}</td>
+            <ng-container *ngIf="!(eventUPSArray$ | async)?.length">
+                <tr>
+                    <td colspan="4">Событий нет</td>
+                </tr>
+            </ng-container>
+            <tr
+                *ngFor="let item of eventUPSArray$ | async"
+                [ngClass]="{
+                    'warning-events': item.eventSeverity == 2,
+                    'middle-warning-events': item.eventSeverity == 3,
+                    'high-warning-events': item.eventSeverity == 4,
+                    'critical-events': item.eventSeverity == 5
+                }"
+            >
+                <td>{{ item.hardwareName }}</td>
+                <td>{{ item.eventTimeStamp * 1000 | date: 'dd MMMM yyyy HH:mm:ss' }}</td>
+                <td>{{ item.hardwareDescription }}</td>
+                <td>{{ item.eventName }}</td>
             </tr>
         </tbody>
     </table>

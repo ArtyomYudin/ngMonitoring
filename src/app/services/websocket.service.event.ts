@@ -17,4 +17,6 @@ export enum Event {
   EV_SERVER_ROOM_2_EMPLOYEE = 'event_server_room_2_employee',
   EV_UPS_VALUE = 'event_ups_value',
   EV_SWITCH_VALUE = 'event_switch_value',
+  EV_ROUTER_VALUE = 'event_router_value',
+  EV_VMWARE_VALUE = 'event_vmware_value',
 }
