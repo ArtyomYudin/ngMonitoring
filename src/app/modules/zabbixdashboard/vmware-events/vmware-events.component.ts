@@ -8,7 +8,7 @@ import { EventModel } from '@models/event.model';
 @Component({
   selector: 'app-vmware-events',
   templateUrl: './vmware-events.component.html',
-  styleUrls: ['./vmware-events.component.scss'],
+  styleUrls: ['./../zabbixdashboard.component.scss', './vmware-events.component.scss'],
 })
 export class VmwareEventsComponent implements OnInit {
   public eventVMWareArray$: Observable<EventModel>;

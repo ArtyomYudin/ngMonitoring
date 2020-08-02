@@ -9,7 +9,7 @@ import { EventModel } from '@models/event.model';
 @Component({
   selector: 'app-ups-events',
   templateUrl: './ups-events.component.html',
-  styleUrls: ['./ups-events.component.scss'],
+  styleUrls: ['./../zabbixdashboard.component.scss', './ups-events.component.scss'],
 })
 export class UpsEventsComponent implements OnInit {
   public eventUPSArray$: Observable<EventModel>;

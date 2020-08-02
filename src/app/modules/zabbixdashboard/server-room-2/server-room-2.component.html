@@ -51,7 +51,7 @@
                     }}
                 </td>
                 <td class="server-room-entry-value">
-                    {{ (serverRoomEmployeeArray$ | async)?.tstamp | dateTimeFormat: 'dd MMMM yyyy HH:mm:ss' }}
+                    {{ (serverRoomEmployeeArray$ | async)?.tstamp | date: 'dd MMMM yyyy HH:mm:ss' }}
                 </td>
                 <td class="server-room-entry-value">
                     <div class="photo"><img class="personPhoto" [src]="(serverRoomEmployeeArray$ | async)?.photo | blobToBase64" /></div>

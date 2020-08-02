@@ -8,7 +8,7 @@ import { EventModel } from '@models/event.model';
 @Component({
   selector: 'app-switch-events',
   templateUrl: './switch-events.component.html',
-  styleUrls: ['./switch-events.component.scss'],
+  styleUrls: ['./../zabbixdashboard.component.scss', './switch-events.component.scss'],
 })
 export class SwitchEventsComponent implements OnInit {
   public eventSwitchArray$: Observable<EventModel>;

@@ -1,0 +1,63 @@
+.event-panel .table thead {
+  display: none;
+}
+
+.event-panel .table {
+  border: 0;
+  margin: 0;
+}
+.event-panel {
+  border: 1px solid #485764;
+  border-radius: 0.125rem;
+  background-color: #22343c;
+  color: #adbbc4;
+  margin: 0;
+  margin-top: 1rem;
+  max-width: 100%;
+  // width: 100%;
+}
+
+.header-event-panel {
+  border-bottom: 1px solid #485764;
+  background-color: #1b2a32 !important;
+  font-family: 'Metropolis', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding-left: 12px;
+}
+
+.event-panel .mat-expansion-panel-header {
+  padding-right: 0 !important;
+}
+
+.event-panel .mat-expansion-panel-header-title {
+  color: #e9ecef;
+}
+
+.event-panel .event-panel .mat-expansion-panel-header-title {
+  color: #e9ecef;
+}
+.event-panel .mat-expansion-panel-header-description {
+  color: #e9ecef;
+  display: table !important;
+  text-align: right !important;
+  margin-right: 2px;
+  flex-grow: 0;
+}
+
+::ng-deep .event-panel .mat-expansion-indicator {
+  color: #e9ecef !important;
+  position: relative !important;
+  right: 36px !important;
+}
+
+::ng-deep .event-panel .mat-expansion-indicator::after {
+  color: #e9ecef !important;
+}
+
+::ng-deep .event-panel .mat-expansion-panel-body {
+  font-family: 'Metropolis', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 13px !important;
+  padding: 0px !important;
+}

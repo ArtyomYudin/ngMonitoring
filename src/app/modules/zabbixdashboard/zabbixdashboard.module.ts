@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ClarityModule } from '@clr/angular';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { GlobalPipeModule } from '@pipe/globalpipe.module';
 
@@ -32,6 +33,6 @@ const routing = RouterModule.forChild([
     RouterEventsComponent,
     VmwareEventsComponent,
   ],
-  imports: [CommonModule, ClarityModule, GlobalPipeModule, routing],
+  imports: [CommonModule, ClarityModule, MatExpansionModule, GlobalPipeModule, routing],
 })
 export class ZabbixDashboardModule {}

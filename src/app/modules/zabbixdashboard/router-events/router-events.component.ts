@@ -9,7 +9,7 @@ import { EventModel } from '@models/event.model';
 @Component({
   selector: 'app-router-events',
   templateUrl: './router-events.component.html',
-  styleUrls: ['./router-events.component.scss'],
+  styleUrls: ['./../zabbixdashboard.component.scss', './router-events.component.scss'],
 })
 export class RouterEventsComponent implements OnInit {
   public eventRouterArray$: Observable<EventModel>;
