@@ -31,3 +31,50 @@
     </div>
     -->
 </div>
+
+<ng-template #ups>
+    <app-ups-events></app-ups-events>
+</ng-template>
+
+<ng-template #vmware>
+    <app-vmware-events></app-vmware-events>
+</ng-template>
+
+<ng-template #switch>
+    <app-switch-events></app-switch-events>
+</ng-template>
+
+<ng-template #router>
+    <app-router-events></app-router-events>
+</ng-template>
+
+<div class="clr-row">
+    <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
+        <div
+            class="panel-list"
+            cdkDropList
+            #leftPanellist="cdkDropList"
+            [cdkDropListData]="leftPanel"
+            [cdkDropListConnectedTo]="[rightPanellist]"
+            (cdkDropListDropped)="onDrop($event)"
+        >
+            <div class="example-box" *ngFor="let item of leftPanel" cdkDrag>
+                <ng-container [ngTemplateOutlet]="this[item]"></ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
+        <div
+            class="panel-list"
+            cdkDropList
+            #rightPanellist="cdkDropList"
+            [cdkDropListData]="rightPanel"
+            [cdkDropListConnectedTo]="[leftPanellist]"
+            (cdkDropListDropped)="onDrop($event)"
+        >
+            <div class="example-box" *ngFor="let item of rightPanel" cdkDrag>
+                <ng-container [ngTemplateOutlet]="this[item]"></ng-container>
+            </div>
+        </div>
+    </div>
+</div>

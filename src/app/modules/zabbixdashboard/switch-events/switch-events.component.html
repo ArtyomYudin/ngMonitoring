@@ -1,5 +1,11 @@
 <div>
-    <mat-expansion-panel class="event-panel" #switchEventPanel>
+    <mat-expansion-panel
+        class="event-panel"
+        #switchEventPanel
+        [expanded]="storage.shouldBeExpanded('switchEventPanel')"
+        (opened)="storage.openPanel('switchEventPanel')"
+        (closed)="storage.closePanel('switchEventPanel')"
+    >
         <mat-expansion-panel-header
             class="header-event-panel"
             [collapsedHeight]="'32px'"

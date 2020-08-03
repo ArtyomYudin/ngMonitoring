@@ -3,6 +3,7 @@ import { WebsocketService } from '@services/websocket.service';
 import { Observable } from 'rxjs';
 
 import { Event } from '@services/websocket.service.event';
+import { LocalStorageService } from '@services/localstorage.service.';
 
 import { EventModel } from '@models/event.model';
 
@@ -14,7 +15,7 @@ import { EventModel } from '@models/event.model';
 export class RouterEventsComponent implements OnInit {
   public eventRouterArray$: Observable<EventModel>;
 
-  constructor(private wsService: WebsocketService) {}
+  constructor(private wsService: WebsocketService, public storage: LocalStorageService) {}
 
   ngOnInit(): void {
     this.eventRouterArray$ = this.wsService.on<EventModel>(Event.EV_ROUTER_VALUE);

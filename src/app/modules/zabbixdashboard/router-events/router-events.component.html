@@ -1,5 +1,11 @@
 <div>
-    <mat-expansion-panel class="event-panel" #routerEventPanel>
+    <mat-expansion-panel
+        class="event-panel"
+        #routerEventPanel
+        [expanded]="storage.shouldBeExpanded('routerEventPanel')"
+        (opened)="storage.openPanel('routerEventPanel')"
+        (closed)="storage.closePanel('routerEventPanel')"
+    >
         <mat-expansion-panel-header
             class="header-event-panel"
             [collapsedHeight]="'32px'"

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ClarityModule } from '@clr/angular';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { GlobalPipeModule } from '@pipe/globalpipe.module';
 
@@ -14,6 +15,9 @@ import { UpsEventsComponent } from '@modules/zabbixdashboard/ups-events/ups-even
 import { SwitchEventsComponent } from '@modules/zabbixdashboard/switch-events/switch-events.component';
 import { RouterEventsComponent } from '@modules/zabbixdashboard/router-events/router-events.component';
 import { VmwareEventsComponent } from '@modules/zabbixdashboard/vmware-events/vmware-events.component';
+
+import { WebsocketService } from '@services/websocket.service';
+import { LocalStorageService } from '@services/localstorage.service.';
 
 const routing = RouterModule.forChild([
   {
@@ -33,6 +37,7 @@ const routing = RouterModule.forChild([
     RouterEventsComponent,
     VmwareEventsComponent,
   ],
-  imports: [CommonModule, ClarityModule, MatExpansionModule, GlobalPipeModule, routing],
+  imports: [CommonModule, ClarityModule, MatExpansionModule, DragDropModule, GlobalPipeModule, routing],
+  providers: [WebsocketService, LocalStorageService],
 })
 export class ZabbixDashboardModule {}

@@ -1,5 +1,11 @@
 <div>
-    <mat-expansion-panel class="event-panel" #vmwareEventPanel>
+    <mat-expansion-panel
+        class="event-panel"
+        #vmwareEventPanel
+        [expanded]="storage.shouldBeExpanded('vmwareEventPanel')"
+        (opened)="storage.openPanel('vmwareEventPanel')"
+        (closed)="storage.closePanel('vmwareEventPanel')"
+    >
         <mat-expansion-panel-header
             class="header-event-panel"
             [collapsedHeight]="'32px'"
