@@ -14,6 +14,7 @@
     <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
         <app-server-room-2></app-server-room-2>
     </div>
+    <!--
     <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
         <app-ups-events></app-ups-events>
         <app-vmware-events></app-vmware-events>
@@ -22,40 +23,21 @@
         <app-switch-events></app-switch-events>
         <app-router-events></app-router-events>
     </div>
-    <!--
+    
     <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
         <app-vmware-events></app-vmware-events>
     </div>
     <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
         <app-router-events></app-router-events>
     </div>
-    -->
-</div>
-
-<ng-template #ups>
-    <app-ups-events></app-ups-events>
-</ng-template>
-
-<ng-template #vmware>
-    <app-vmware-events></app-vmware-events>
-</ng-template>
-
-<ng-template #switch>
-    <app-switch-events></app-switch-events>
-</ng-template>
-
-<ng-template #router>
-    <app-router-events></app-router-events>
-</ng-template>
-
-<div class="clr-row">
+-->
     <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
         <div
             class="panel-list"
             cdkDropList
             #leftPanellist="cdkDropList"
             [cdkDropListData]="leftPanel"
-            [cdkDropListConnectedTo]="[rightPanellist]"
+            [cdkDropListConnectedTo]="rightPanellist"
             (cdkDropListDropped)="onDrop($event)"
         >
             <div class="example-box" *ngFor="let item of leftPanel" cdkDrag>
@@ -69,7 +51,7 @@
             cdkDropList
             #rightPanellist="cdkDropList"
             [cdkDropListData]="rightPanel"
-            [cdkDropListConnectedTo]="[leftPanellist]"
+            [cdkDropListConnectedTo]="leftPanellist"
             (cdkDropListDropped)="onDrop($event)"
         >
             <div class="example-box" *ngFor="let item of rightPanel" cdkDrag>
@@ -78,3 +60,19 @@
         </div>
     </div>
 </div>
+
+<ng-template #ups>
+    <app-ups-events [eventUPSArray$]="eventUPSArray$"></app-ups-events>
+</ng-template>
+
+<ng-template #vmware>
+    <app-vmware-events [eventVMWareArray$]="eventVMWareArray$"></app-vmware-events>
+</ng-template>
+
+<ng-template #switch>
+    <app-switch-events [eventSwitchArray$]="eventSwitchArray$"></app-switch-events>
+</ng-template>
+
+<ng-template #router>
+    <app-router-events [eventRouterArray$]="eventRouterArray$"></app-router-events>
+</ng-template>

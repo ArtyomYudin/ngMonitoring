@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { WebsocketService } from '@services/websocket.service';
-import { Observable } from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { Event } from '@services/websocket.service.event';
 import { LocalStorageService } from '@services/localstorage.service.';
 
 import { EventModel } from '@models/event.model';
@@ -13,11 +10,9 @@ import { EventModel } from '@models/event.model';
   styleUrls: ['./../zabbixdashboard.component.scss', './router-events.component.scss'],
 })
 export class RouterEventsComponent implements OnInit {
-  public eventRouterArray$: Observable<EventModel>;
+  @Input() eventRouterArray$: EventModel;
 
-  constructor(private wsService: WebsocketService, public storage: LocalStorageService) {}
+  constructor(public storage: LocalStorageService) {}
 
-  ngOnInit(): void {
-    this.eventRouterArray$ = this.wsService.on<EventModel>(Event.EV_ROUTER_VALUE);
-  }
+  ngOnInit(): void {}
 }

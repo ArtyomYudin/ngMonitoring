@@ -16,7 +16,7 @@
                 VMWare
             </mat-panel-title>
             <mat-panel-description>
-                <clr-icon shape="vm" [ngClass]="{ 'has-badge': (eventVMWareArray$ | async)?.length }"></clr-icon>
+                <clr-icon shape="vm" [ngClass]="{ 'has-badge': eventVMWareArray$ }"></clr-icon>
             </mat-panel-description>
         </mat-expansion-panel-header>
 
@@ -28,7 +28,7 @@
                         <th class="header-event-date"></th>
                         <th class="header-hardware-description"></th>
                         <th class="right-th-icon">
-                            <clr-icon shape="vm" [ngClass]="{ 'has-badge': (eventVMWareArray$ | async)?.length }"></clr-icon>
+                            <clr-icon shape="vm" [ngClass]="{ 'has-badge': eventVMWareArray$ }"></clr-icon>
                         </th>
                     </tr>
                 </thead>
@@ -45,13 +45,13 @@
                 [style.color]="(providerValueArray$ | async)?.bgp176 == 2 ? 'hsl(93, 76%, 49%)' : 'hsl(9, 100%, 43%)'"
                 class="warning-events"
                 -->
-                    <ng-container *ngIf="!(eventVMWareArray$ | async)?.length">
+                    <ng-container *ngIf="!eventVMWareArray$">
                         <tr>
                             <td colspan="4">Событий нет</td>
                         </tr>
                     </ng-container>
                     <tr
-                        *ngFor="let item of eventVMWareArray$ | async"
+                        *ngFor="let item of eventVMWareArray$"
                         [ngClass]="{
                             'warning-events': item.eventSeverity == 2,
                             'middle-warning-events': item.eventSeverity == 3,

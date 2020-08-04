@@ -121,7 +121,8 @@ export class WebsocketService implements IWebsocketService, OnDestroy {
    * */
   public send(event: string, data: any = {}): void {
     if (event && this.isConnected) {
-      this.websocket$.next(JSON.stringify({ event, data }) as any);
+      // this.websocket$.next(JSON.stringify({ event, data }) as any);
+      this.websocket$.next({ event, data } as any);
     } else {
       console.log('Send error!');
     }
