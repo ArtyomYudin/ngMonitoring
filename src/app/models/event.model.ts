@@ -8,4 +8,6 @@ export class EventModel {
   public eventName: string;
 
   public eventSeverity: number;
+
+  public length: number;
 }

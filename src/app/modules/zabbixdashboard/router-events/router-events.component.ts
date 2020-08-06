@@ -14,5 +14,9 @@ export class RouterEventsComponent implements OnInit {
 
   constructor(public storage: LocalStorageService) {}
 
+  isEmpty(): boolean {
+    return !!(typeof this.eventRouterArray$ === 'undefined' || this.eventRouterArray$.length === 0);
+  }
+
   ngOnInit(): void {}
 }

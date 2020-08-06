@@ -12,5 +12,9 @@ export class VmwareEventsComponent implements OnInit {
 
   constructor(public storage: LocalStorageService) {}
 
+  isEmpty(): boolean {
+    return !!(typeof this.eventVMWareArray$ === 'undefined' || this.eventVMWareArray$.length === 0);
+  }
+
   ngOnInit(): void {}
 }

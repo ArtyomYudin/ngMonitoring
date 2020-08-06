@@ -16,7 +16,7 @@
                 Коммутаторы
             </mat-panel-title>
             <mat-panel-description>
-                <clr-icon shape="network-switch" [ngClass]="{ 'has-badge': eventSwitchArray$ }"></clr-icon>
+                <clr-icon shape="network-switch" [ngClass]="{ 'has-badge': !isEmpty() }"></clr-icon>
             </mat-panel-description>
         </mat-expansion-panel-header>
 
@@ -28,7 +28,7 @@
                         <th class="header-event-date"></th>
                         <th class="header-hardware-description"></th>
                         <th class="right-th-icon">
-                            <clr-icon shape="network-switch" [ngClass]="{ 'has-badge': eventSwitchArray$ }"></clr-icon>
+                            <clr-icon shape="network-switch" [ngClass]="{ 'has-badge': !isEmpty() }"></clr-icon>
                         </th>
                     </tr>
                 </thead>
@@ -45,7 +45,7 @@
                 [style.color]="(providerValueArray$ | async)?.bgp176 == 2 ? 'hsl(93, 76%, 49%)' : 'hsl(9, 100%, 43%)'"
                 class="warning-events"
                 -->
-                    <ng-container *ngIf="!eventSwitchArray$">
+                    <ng-container *ngIf="isEmpty()">
                         <tr>
                             <td colspan="4">Событий нет</td>
                         </tr>

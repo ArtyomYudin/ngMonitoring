@@ -64,6 +64,10 @@ export class ZabbixDashboardComponent implements OnInit, OnDestroy {
 
   @ViewChild('router') router: TemplateRef<any>;
 
+  @ViewChild('serverroom1') serverroom1: TemplateRef<any>;
+
+  @ViewChild('serverroom2') serverroom2: TemplateRef<any>;
+
   private saveDragDropState() {
     this.storage.setItem('monitoringLeftPanel', JSON.stringify(this.leftPanel));
     this.storage.setItem('monitoringRightPanel', JSON.stringify(this.rightPanel));
@@ -82,15 +86,15 @@ export class ZabbixDashboardComponent implements OnInit, OnDestroy {
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      if (this.storage.getItem('monitoringRightPanel') !== null) {
-        this.rightPanel = JSON.parse(this.storage.getItem('monitoringRightPanel'));
-      } else {
-        this.rightPanel = ['switch', 'router'];
-      }
       if (this.storage.getItem('monitoringLeftPanel') !== null) {
         this.leftPanel = JSON.parse(this.storage.getItem('monitoringLeftPanel'));
       } else {
-        this.leftPanel = ['ups', 'vmware'];
+        this.leftPanel = ['serverroom1', 'ups', 'vmware'];
+      }
+      if (this.storage.getItem('monitoringRightPanel') !== null) {
+        this.rightPanel = JSON.parse(this.storage.getItem('monitoringRightPanel'));
+      } else {
+        this.rightPanel = ['serverroom2', 'switch', 'router'];
       }
     });
   }

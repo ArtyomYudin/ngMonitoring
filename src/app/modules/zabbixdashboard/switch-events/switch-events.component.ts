@@ -12,5 +12,9 @@ export class SwitchEventsComponent implements OnInit {
 
   constructor(public storage: LocalStorageService) {}
 
+  isEmpty(): boolean {
+    return !!(typeof this.eventSwitchArray$ === 'undefined' || this.eventSwitchArray$.length === 0);
+  }
+
   ngOnInit(): void {}
 }

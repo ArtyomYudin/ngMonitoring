@@ -12,5 +12,9 @@ export class UpsEventsComponent implements OnInit {
 
   constructor(public storage: LocalStorageService) {}
 
+  isEmpty(): boolean {
+    return !!(typeof this.eventUPSArray$ === 'undefined' || this.eventUPSArray$.length === 0);
+  }
+
   ngOnInit(): void {}
 }

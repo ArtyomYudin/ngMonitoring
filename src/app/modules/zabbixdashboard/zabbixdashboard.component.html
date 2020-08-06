@@ -8,13 +8,14 @@
     <div class="clr-col-xl-12 clr-col-lg-12 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
         <app-provider-info></app-provider-info>
     </div>
+    <!--
     <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
         <app-server-room-1></app-server-room-1>
     </div>
     <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
         <app-server-room-2></app-server-room-2>
     </div>
-    <!--
+    
     <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-6 clr-col-sm-12 clr-col-xs-12">
         <app-ups-events></app-ups-events>
         <app-vmware-events></app-vmware-events>
@@ -40,7 +41,7 @@
             [cdkDropListConnectedTo]="rightPanellist"
             (cdkDropListDropped)="onDrop($event)"
         >
-            <div class="example-box" *ngFor="let item of leftPanel" cdkDrag>
+            <div class="event-box" *ngFor="let item of leftPanel" cdkDrag>
                 <ng-container [ngTemplateOutlet]="this[item]"></ng-container>
             </div>
         </div>
@@ -54,12 +55,20 @@
             [cdkDropListConnectedTo]="leftPanellist"
             (cdkDropListDropped)="onDrop($event)"
         >
-            <div class="example-box" *ngFor="let item of rightPanel" cdkDrag>
+            <div class="event-box" *ngFor="let item of rightPanel" cdkDrag>
                 <ng-container [ngTemplateOutlet]="this[item]"></ng-container>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #serverroom1>
+    <app-server-room-1></app-server-room-1>
+</ng-template>
+
+<ng-template #serverroom2>
+    <app-server-room-2></app-server-room-2>
+</ng-template>
 
 <ng-template #ups>
     <app-ups-events [eventUPSArray$]="eventUPSArray$"></app-ups-events>
