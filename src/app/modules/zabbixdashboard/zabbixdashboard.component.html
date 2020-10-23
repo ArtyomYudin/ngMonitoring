@@ -63,11 +63,11 @@
 </div>
 
 <ng-template #serverroom1>
-    <app-server-room-1></app-server-room-1>
+    <app-server-room-1 [sensorValueArray$]="sensorValueArray$" [serverRoomEmployeeArray1$]="serverRoomEmployeeArray1$"></app-server-room-1>
 </ng-template>
 
 <ng-template #serverroom2>
-    <app-server-room-2></app-server-room-2>
+    <app-server-room-2 [sensorValueArray$]="sensorValueArray$" [serverRoomEmployeeArray2$]="serverRoomEmployeeArray2$"></app-server-room-2>
 </ng-template>
 
 <ng-template #ups>
@@ -84,4 +84,8 @@
 
 <ng-template #router>
     <app-router-events [eventRouterArray$]="eventRouterArray$"></app-router-events>
+</ng-template>
+
+<ng-template #server>
+    <app-server-events [eventServerArray$]="eventServerArray$"></app-server-events>
 </ng-template>

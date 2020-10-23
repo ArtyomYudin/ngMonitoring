@@ -27,12 +27,12 @@
             </tr>
             <tr>
                 <td class="server-room-temper-title">Температура</td>
-                <td class="server-room-temper-value" colspan="3">+{{ (sensorValueArray$ | async)?.temper2 }} &deg;</td>
+                <td class="server-room-temper-value" colspan="3">+{{ sensorValueArray$?.temper2 }} &deg;</td>
             </tr>
 
             <tr>
                 <td class="server-room-humidity-title">Влажность</td>
-                <td class="server-room-humidity-value" colspan="3">{{ (sensorValueArray$ | async)?.himidity2 }} %</td>
+                <td class="server-room-humidity-value" colspan="3">{{ sensorValueArray$?.himidity2 }} %</td>
             </tr>
             <tr>
                 <td class="server-room-security-title">Безопасность</td>
@@ -42,19 +42,19 @@
                 <td class="server-room-entry-title">Последний вход</td>
                 <td class="server-room-entry-value">
                     {{
-                        (serverRoomEmployeeArray$ | async)?.lname +
+                        serverRoomEmployeeArray2$?.lname +
                             '&nbsp;' +
-                            (serverRoomEmployeeArray$ | async)?.fname.charAt(0) +
+                            serverRoomEmployeeArray2$?.fname.charAt(0) +
                             '.&nbsp;' +
-                            (serverRoomEmployeeArray$ | async)?.mname.charAt(0) +
+                            serverRoomEmployeeArray2$?.mname.charAt(0) +
                             '.'
                     }}
                 </td>
                 <td class="server-room-entry-value">
-                    {{ (serverRoomEmployeeArray$ | async)?.tstamp | date: 'dd MMMM yyyy HH:mm:ss' }}
+                    {{ serverRoomEmployeeArray2$?.tstamp | date: 'dd MMMM yyyy HH:mm:ss' }}
                 </td>
                 <td class="server-room-entry-value">
-                    <div class="photo"><img class="personPhoto" [src]="(serverRoomEmployeeArray$ | async)?.photo | blobToBase64" /></div>
+                    <div class="photo"><img class="personPhoto" [src]="serverRoomEmployeeArray2$?.photo | blobToBase64" /></div>
                 </td>
             </tr>
         </tbody>

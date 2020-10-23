@@ -7,6 +7,8 @@ import { WebsocketService } from '@app/services/websocket.service';
 import { LocalStorageService } from '@services/localstorage.service.';
 
 import { EventModel } from '@models/event.model';
+import { SensorModel } from '@models/sensor.model';
+import { ServerRoomAccessModel } from '@models/server-room-access.model';
 import { Event } from '@services/websocket.service.event';
 
 @Component({
@@ -28,6 +30,14 @@ export class ZabbixDashboardComponent implements OnInit, OnDestroy {
   eventSwitchArray$: EventModel;
 
   eventRouterArray$: EventModel;
+
+  eventServerArray$: EventModel;
+
+  sensorValueArray$: SensorModel;
+
+  serverRoomEmployeeArray1$: ServerRoomAccessModel;
+
+  serverRoomEmployeeArray2$: ServerRoomAccessModel;
 
   constructor(public storage: LocalStorageService, private wsService: WebsocketService) {
     this.wsService
@@ -54,6 +64,30 @@ export class ZabbixDashboardComponent implements OnInit, OnDestroy {
       .subscribe(data => {
         this.eventRouterArray$ = data;
       });
+    this.wsService
+      .on<EventModel>(Event.EV_SERVER_VALUE)
+      .pipe(share(), distinctUntilChanged(), takeUntil(this.ngUnsubscribe$))
+      .subscribe(data => {
+        this.eventServerArray$ = data;
+      });
+    this.wsService
+      .on<SensorModel>(Event.EV_SERVER_ROOM_SENSOR)
+      .pipe(share(), distinctUntilChanged(), takeUntil(this.ngUnsubscribe$))
+      .subscribe(data => {
+        this.sensorValueArray$ = data;
+      });
+    this.wsService
+      .on<ServerRoomAccessModel>(Event.EV_SERVER_ROOM_1_EMPLOYEE)
+      .pipe(share(), distinctUntilChanged(), takeUntil(this.ngUnsubscribe$))
+      .subscribe(data => {
+        this.serverRoomEmployeeArray1$ = data;
+      });
+    this.wsService
+      .on<ServerRoomAccessModel>(Event.EV_SERVER_ROOM_2_EMPLOYEE)
+      .pipe(share(), distinctUntilChanged(), takeUntil(this.ngUnsubscribe$))
+      .subscribe(data => {
+        this.serverRoomEmployeeArray2$ = data;
+      });
   }
 
   @ViewChild('ups') ups: TemplateRef<any>;
@@ -63,6 +97,8 @@ export class ZabbixDashboardComponent implements OnInit, OnDestroy {
   @ViewChild('switch') switch: TemplateRef<any>;
 
   @ViewChild('router') router: TemplateRef<any>;
+
+  @ViewChild('server') server: TemplateRef<any>;
 
   @ViewChild('serverroom1') serverroom1: TemplateRef<any>;
 
@@ -89,7 +125,7 @@ export class ZabbixDashboardComponent implements OnInit, OnDestroy {
       if (this.storage.getItem('monitoringLeftPanel') !== null) {
         this.leftPanel = JSON.parse(this.storage.getItem('monitoringLeftPanel'));
       } else {
-        this.leftPanel = ['serverroom1', 'ups', 'vmware'];
+        this.leftPanel = ['serverroom1', 'ups', 'vmware', 'server'];
       }
       if (this.storage.getItem('monitoringRightPanel') !== null) {
         this.rightPanel = JSON.parse(this.storage.getItem('monitoringRightPanel'));

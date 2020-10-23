@@ -18,6 +18,7 @@ import { VmwareEventsComponent } from '@modules/zabbixdashboard/vmware-events/vm
 
 import { WebsocketService } from '@services/websocket.service';
 import { LocalStorageService } from '@services/localstorage.service.';
+import { ServerEventsComponent } from './server-events/server-events.component';
 
 const routing = RouterModule.forChild([
   {
@@ -36,6 +37,7 @@ const routing = RouterModule.forChild([
     SwitchEventsComponent,
     RouterEventsComponent,
     VmwareEventsComponent,
+    ServerEventsComponent,
   ],
   imports: [CommonModule, ClarityModule, MatExpansionModule, DragDropModule, GlobalPipeModule, routing],
   providers: [WebsocketService, LocalStorageService],
