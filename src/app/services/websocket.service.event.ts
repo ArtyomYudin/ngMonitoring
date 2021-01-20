@@ -20,4 +20,5 @@ export enum Event {
   EV_ROUTER_VALUE = 'event_router_value',
   EV_VMWARE_VALUE = 'event_vmware_value',
   EV_SERVER_VALUE = 'event_server_value',
+  EV_VPN_ONLINE = 'event_vpn_online',
 }
