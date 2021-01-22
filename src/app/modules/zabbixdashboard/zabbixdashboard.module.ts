@@ -15,10 +15,10 @@ import { UpsEventsComponent } from '@modules/zabbixdashboard/ups-events/ups-even
 import { SwitchEventsComponent } from '@modules/zabbixdashboard/switch-events/switch-events.component';
 import { RouterEventsComponent } from '@modules/zabbixdashboard/router-events/router-events.component';
 import { VmwareEventsComponent } from '@modules/zabbixdashboard/vmware-events/vmware-events.component';
+import { ServerEventsComponent } from '@modules/zabbixdashboard/server-events/server-events.component';
 
 import { WebsocketService } from '@services/websocket.service';
 import { LocalStorageService } from '@services/localstorage.service.';
-import { ServerEventsComponent } from './server-events/server-events.component';
 
 const routing = RouterModule.forChild([
   {

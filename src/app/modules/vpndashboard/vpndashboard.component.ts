@@ -1,44 +1,40 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { takeUntil, share, distinctUntilChanged } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+// import { takeUntil, share, distinctUntilChanged } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+import { ClrDatagridSortOrder } from '@clr/angular';
 
 import { WebsocketService } from '@app/services/websocket.service';
 
 import { VPNModel } from '@models/vpn.model';
 import { Event } from '@services/websocket.service.event';
 
+import { AccountFilter } from '@modules/vpndashboard/vpndashboard.filter.class';
+
 @Component({
   selector: 'app-vpndashboard',
   templateUrl: './vpndashboard.component.html',
   styleUrls: ['./vpndashboard.component.scss'],
 })
-export class VPNDashboardComponent implements OnInit, OnDestroy {
-  private ngUnsubscribe$: Subject<any> = new Subject();
+export class VPNDashboardComponent implements OnInit {
+  public descSort = ClrDatagridSortOrder.DESC;
 
-  eventVPNOnlineArray$: VPNModel;
+  public eventVPNOnlineArray$: Observable<VPNModel>;
 
-  eventVPNSessionArray$: VPNModel;
+  public eventVPNSessionArray$: Observable<VPNModel>;
 
-  constructor(private wsService: WebsocketService) {
-    this.wsService
-      .on<VPNModel>(Event.EV_VPN_ONLINE)
-      .pipe(share(), distinctUntilChanged(), takeUntil(this.ngUnsubscribe$))
-      .subscribe(data => {
-        this.eventVPNOnlineArray$ = data;
-      });
+  public accountFilter = new AccountFilter();
 
-    this.wsService
-      .on<VPNModel>(Event.EV_VPN_SESSION_PER_DAY)
-      .pipe(share(), distinctUntilChanged(), takeUntil(this.ngUnsubscribe$))
-      .subscribe(data => {
-        this.eventVPNSessionArray$ = data;
-      });
-  }
+  // private ngUnsubscribe$: Subject<any> = new Subject();
 
-  ngOnInit(): void {}
+  // eventVPNOnlineArray$: VPNModel;
 
-  public ngOnDestroy(): void {
-    this.ngUnsubscribe$.next();
-    this.ngUnsubscribe$.complete();
+  // eventVPNSessionArray$: VPNModel;
+
+  constructor(private wsService: WebsocketService) {}
+
+  public ngOnInit(): void {
+    this.eventVPNOnlineArray$ = this.wsService.on<VPNModel>(Event.EV_VPN_ONLINE);
+    this.eventVPNSessionArray$ = this.wsService.on<VPNModel>(Event.EV_VPN_SESSION_PER_DAY);
   }
 }

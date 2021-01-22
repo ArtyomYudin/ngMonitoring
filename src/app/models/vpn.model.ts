@@ -6,4 +6,6 @@ export class VPNModel {
   public account: string;
 
   public ipAddress: string;
+
+  // public photo: string;
 }
