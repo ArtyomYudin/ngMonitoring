@@ -22,4 +22,6 @@ export enum Event {
   EV_SERVER_VALUE = 'event_server_value',
   EV_VPN_ONLINE = 'event_vpn_online',
   EV_VPN_SESSION_PER_DAY = 'event_vpn_session_per_day',
+  EV_VPN_ALL_USERS = 'event_vpn_all_users',
+  EV_VPN_USER_STATUS = 'event_vpn_user_status',
 }

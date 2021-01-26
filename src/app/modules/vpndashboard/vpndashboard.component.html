@@ -23,102 +23,25 @@
             <clr-dg-column>Фамилия <clr-dg-string-filter [clrDgStringFilter]="accountFilter"></clr-dg-string-filter></clr-dg-column>
             <clr-dg-column>Имя</clr-dg-column>
             <clr-dg-column>Отчество</clr-dg-column>
-          
+
             <clr-dg-placeholder>Мы не смогли найти пользователей!</clr-dg-placeholder>
-          
-            <clr-dg-row *clrDgItems="let user of (eventVPNOnlineArray$ | async) " [clrDgItem]="user">
-                <clr-dg-cell>{{user.loginDateTime}}</clr-dg-cell>
-                <clr-dg-cell>{{user.account}}</clr-dg-cell>
-                <clr-dg-cell>{{user.ipAddress}}</clr-dg-cell>
-                <clr-dg-cell>{{user.loginDuration}}</clr-dg-cell>
+
+            <clr-dg-row *clrDgItems="let user of eventVPNOnlineArray$ | async" [clrDgItem]="user">
+                <clr-dg-cell>{{ user.loginDateTime }}</clr-dg-cell>
+                <clr-dg-cell>{{ user.account }}</clr-dg-cell>
+                <clr-dg-cell>{{ user.ipAddress }}</clr-dg-cell>
+                <clr-dg-cell>{{ user.loginDuration }}</clr-dg-cell>
             </clr-dg-row>
-          
+
             <clr-dg-footer>
                 <clr-dg-pagination #paginationUser [clrDgPageSize]="20">
-                    <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
-                    {{paginationUser.firstItem + 1}} - {{paginationUser.lastItem + 1}}
-                    of {{paginationUser.totalItems}} users
+                    <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]">Users per page</clr-dg-page-size>
+                    {{ paginationUser.firstItem + 1 }} - {{ paginationUser.lastItem + 1 }} of {{ paginationUser.totalItems }} users
                 </clr-dg-pagination>
             </clr-dg-footer>
         </clr-datagrid>
-
     </div>
-
     <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
-        <!--
-        <table class="table table-compact">
-            <thead>
-                <tr>
-                    <th class="left" colspan="2">VPN сеансы за день</th>
-                    <th></th>
-                    <th class="right-th-icon"><clr-icon shape="disconnect"></clr-icon></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of eventVPNSessionArray$ | async">
-                    <td class="lastentry">{{ item.loginDateTime }}</td>
-                    <td class="lastentry">{{ item.account }}</td>
-                    <td class="lastentry">{{ item.ipAddress }}</td>
-                    <td class="lastentry">{{ item.loginDuration }}</td>
-                </tr>
-            </tbody>
-        </table>
-        -->
-        <clr-datagrid class="datagrid-compact">
-            <clr-dg-column>Начало сеанса</clr-dg-column>
-            <clr-dg-column>Аккаунт<clr-dg-string-filter [clrDgStringFilter]="accountFilter"></clr-dg-string-filter></clr-dg-column>
-            <clr-dg-column>IP адрес</clr-dg-column>
-            <clr-dg-column>Длительность сеанса (чч:мм)</clr-dg-column>
-          
-            <clr-dg-placeholder>Мы не смогли найти пользователей!</clr-dg-placeholder>
-          
-            <clr-dg-row *clrDgItems="let session of (eventVPNSessionArray$ | async) " [clrDgItem]="session">
-                <clr-dg-cell>{{session.loginDateTime}}</clr-dg-cell>
-                <clr-dg-cell>{{session.account}}</clr-dg-cell>
-                <clr-dg-cell>{{session.ipAddress}}</clr-dg-cell>
-                <clr-dg-cell>{{session.loginDuration}}</clr-dg-cell>
-            </clr-dg-row>
-          
-            <clr-dg-footer>
-                <clr-dg-pagination #paginationSession [clrDgPageSize]="20">
-                    <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
-                    {{paginationSession.firstItem + 1}} - {{paginationSession.lastItem + 1}}
-                    of {{paginationSession.totalItems}} users
-                </clr-dg-pagination>
-            </clr-dg-footer>
-        </clr-datagrid>
-
-
-        <clr-datagrid class="datagrid-compact">
-            <clr-dg-column>Начало сеанса</clr-dg-column>
-            <clr-dg-column>Аккаунт<clr-dg-string-filter [clrDgStringFilter]="accountFilter"></clr-dg-string-filter></clr-dg-column>
-            <clr-dg-column>IP адрес</clr-dg-column>
-            <clr-dg-column>Длительность сеанса (чч:мм)</clr-dg-column>
-          
-            <clr-dg-placeholder>Мы не смогли найти пользователей!</clr-dg-placeholder>
-          
-            <clr-dg-row *clrDgItems="let sessionTest of (eventVPNSessionArray$ | async) " [clrDgItem]="sessionTest">
-                <clr-dg-cell>{{sessionTest.loginDateTime}}</clr-dg-cell>
-                <clr-dg-cell>{{sessionTest.account}}</clr-dg-cell>
-                <clr-dg-cell>{{sessionTest.ipAddress}}</clr-dg-cell>
-                <clr-dg-cell>{{sessionTest.loginDuration}}</clr-dg-cell>
-            </clr-dg-row>
-          
-            <clr-dg-detail *clrIfDetail="let detail">
-                <clr-dg-detail-header>{{detail.account}}</clr-dg-detail-header>
-                <clr-dg-detail-body>
-                    test
-                </clr-dg-detail-body>
-            </clr-dg-detail>
-
-            <clr-dg-footer>
-                <clr-dg-pagination #paginationSessionTest [clrDgPageSize]="20">
-                    <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Users per page</clr-dg-page-size>
-                    {{paginationSession.firstItem + 1}} - {{paginationSession.lastItem + 1}}
-                    of {{paginationSession.totalItems}} users
-                </clr-dg-pagination>
-            </clr-dg-footer>
-        </clr-datagrid>
-
+        <app-vpn-users></app-vpn-users>
     </div>
 </div>

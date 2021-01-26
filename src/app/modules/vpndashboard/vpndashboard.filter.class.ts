@@ -1,8 +1,8 @@
 import { ClrDatagridStringFilterInterface } from '@clr/angular';
-import { VPNModel } from '@models/vpn.model';
+import { VPNUserModel } from '@app/models/vpn-user.model';
 
-export class AccountFilter implements ClrDatagridStringFilterInterface<VPNModel> {
-  accepts(user: VPNModel, search: string): boolean {
-    return user.account.toLowerCase().indexOf(search) >= 0;
+export class AccountFilter implements ClrDatagridStringFilterInterface<VPNUserModel> {
+  accepts(user: VPNUserModel, search: string): boolean {
+    return user.lastName.toLowerCase().indexOf(search) >= 0;
   }
 }

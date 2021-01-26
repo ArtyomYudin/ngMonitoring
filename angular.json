@@ -43,23 +43,14 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "localize": [
-              "ru"
-            ],
+            "localize": ["ru"],
             "outputPath": "dist/ngMonitoring",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "node_modules/@clr/icons/clr-icons.min.css",
-              "node_modules/@clr/ui/clr-ui-dark.min.css",
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["node_modules/@clr/icons/clr-icons.min.css", "node_modules/@clr/ui/clr-ui-dark.min.css", "src/styles.scss"],
             "scripts": [
               "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
               "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
@@ -125,7 +116,7 @@
           "options": {
             "browserTarget": "ng-monitoring:build"
           },
-          "configurations" : {
+          "configurations": {
             "ru": {
               "outputPath": "locale/",
               "outFile": "messages.ru.xlf",
@@ -141,26 +132,16 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
+            "assets": ["src/favicon.ico", "src/assets"]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -186,9 +167,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }

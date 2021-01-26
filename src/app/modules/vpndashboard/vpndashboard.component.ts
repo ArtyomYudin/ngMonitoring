@@ -6,7 +6,7 @@ import { ClrDatagridSortOrder } from '@clr/angular';
 
 import { WebsocketService } from '@app/services/websocket.service';
 
-import { VPNModel } from '@models/vpn.model';
+import { VPNSessionModel } from '@app/models/vpn-session.model';
 import { Event } from '@services/websocket.service.event';
 
 import { AccountFilter } from '@modules/vpndashboard/vpndashboard.filter.class';
@@ -19,9 +19,7 @@ import { AccountFilter } from '@modules/vpndashboard/vpndashboard.filter.class';
 export class VPNDashboardComponent implements OnInit {
   public descSort = ClrDatagridSortOrder.DESC;
 
-  public eventVPNOnlineArray$: Observable<VPNModel>;
-
-  public eventVPNSessionArray$: Observable<VPNModel>;
+  public eventVPNOnlineArray$: Observable<VPNSessionModel>;
 
   public accountFilter = new AccountFilter();
 
@@ -34,7 +32,6 @@ export class VPNDashboardComponent implements OnInit {
   constructor(private wsService: WebsocketService) {}
 
   public ngOnInit(): void {
-    this.eventVPNOnlineArray$ = this.wsService.on<VPNModel>(Event.EV_VPN_ONLINE);
-    this.eventVPNSessionArray$ = this.wsService.on<VPNModel>(Event.EV_VPN_SESSION_PER_DAY);
+    this.eventVPNOnlineArray$ = this.wsService.on<VPNSessionModel>(Event.EV_VPN_ONLINE);
   }
 }

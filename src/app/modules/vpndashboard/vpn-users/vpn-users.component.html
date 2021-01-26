@@ -1,0 +1,31 @@
+<clr-datagrid>
+    <clr-dg-column>Пользователь VPN<clr-dg-string-filter [clrDgStringFilter]="accountFilter"></clr-dg-string-filter></clr-dg-column>
+
+    <clr-dg-placeholder>Мы не смогли найти пользователей!</clr-dg-placeholder>
+
+    <clr-dg-row *clrDgItems="let user of eventVPNAllUsersArray$ | async" [clrDgItem]="user">
+        <clr-dg-cell>
+            {{ user.lastName + '&nbsp;' + user.firstName + '&nbsp;' + user.middleName }}
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <ng-template clrIfDetail let-detail (clrIfDetailChange)="onDetailOpen($event?.account)">
+        <clr-dg-detail>
+            <clr-dg-detail-header>{{ detail.lastName + '&nbsp;' + detail.firstName + '&nbsp;' + detail.middleName }}</clr-dg-detail-header>
+            <clr-dg-detail-body> </clr-dg-detail-body>
+        </clr-dg-detail>
+    </ng-template>
+    <!--
+      <clr-dg-detail *clrIfDetail="let detail">
+        <clr-dg-detail-header>{{ detail.lastName + '&nbsp;' + detail.firstName + '&nbsp;' + detail.middleName }}</clr-dg-detail-header>
+        <clr-dg-detail-body> test </clr-dg-detail-body>
+    </clr-dg-detail>
+    -->
+
+    <clr-dg-footer>
+        <clr-dg-pagination #pagination [clrDgPageSize]="20">
+            <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]">Пользователей на страницу</clr-dg-page-size>
+            {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of {{ pagination.totalItems }} Пользователей
+        </clr-dg-pagination>
+    </clr-dg-footer>
+</clr-datagrid>

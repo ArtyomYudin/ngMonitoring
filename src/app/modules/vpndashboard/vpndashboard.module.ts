@@ -7,6 +7,8 @@ import { GlobalPipeModule } from '@pipe/globalpipe.module';
 
 import { VPNDashboardComponent } from '@modules/vpndashboard/vpndashboard.component';
 import { WebsocketService } from '@services/websocket.service';
+import { VpnUsersComponent } from '@modules/vpndashboard/vpn-users/vpn-users.component';
+import { VpnConnectedComponent } from '@modules/vpndashboard/vpn-connected/vpn-connected.component';
 
 const routing = RouterModule.forChild([
   {
@@ -15,7 +17,7 @@ const routing = RouterModule.forChild([
   },
 ]);
 @NgModule({
-  declarations: [VPNDashboardComponent],
+  declarations: [VPNDashboardComponent, VpnUsersComponent, VpnConnectedComponent],
   imports: [CommonModule, ClarityModule, GlobalPipeModule, routing],
   providers: [WebsocketService],
 })
