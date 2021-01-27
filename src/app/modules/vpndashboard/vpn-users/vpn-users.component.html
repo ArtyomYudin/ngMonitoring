@@ -11,8 +11,11 @@
 
     <ng-template clrIfDetail let-detail (clrIfDetailChange)="onDetailOpen($event?.account)">
         <clr-dg-detail>
-            <clr-dg-detail-header>{{ detail.lastName + '&nbsp;' + detail.firstName + '&nbsp;' + detail.middleName }}</clr-dg-detail-header>
-            <clr-dg-detail-body> </clr-dg-detail-body>
+            <clr-dg-detail-header>
+                <div class="photo"><img class="personPhoto" [src]="detail.photo | blobToBase64" /></div>
+                {{ detail.lastName + '&nbsp;' + detail.firstName + '&nbsp;' + detail.middleName }}
+            </clr-dg-detail-header>
+            <clr-dg-detail-body> Статус подключения: {{ eventVPNUserStatusArray$[0] }} </clr-dg-detail-body>
         </clr-dg-detail>
     </ng-template>
     <!--

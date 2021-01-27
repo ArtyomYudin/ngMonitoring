@@ -1,4 +1,4 @@
-.personPhoto {
+.photo {
   width: 48px;
   height: 48px;
   margin: 0 auto;
@@ -6,4 +6,10 @@
   border-radius: 50%;
   text-align: center;
   background-color: white;
+}
+
+.personPhoto {
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
 }
