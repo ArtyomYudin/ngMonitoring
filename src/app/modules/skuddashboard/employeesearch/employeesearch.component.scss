@@ -28,7 +28,8 @@
   border-bottom-width: 0px;
 }
 
-.table td.left, .table th.left {
+.table td.left,
+.table th.left {
   padding-left: 0.5rem;
 }
 
@@ -46,7 +47,7 @@
   vertical-align: middle;
 }
 
-.table td.employee{
+.table td.employee {
   color: #ff9c00;
 }
 
@@ -54,7 +55,11 @@
   padding-top: 0;
 }
 
-.search-emp-input, .ng-dirty, .ng-valid, .ng-touched, .ng-untouched {
+.search-emp-input,
+.ng-dirty,
+.ng-valid,
+.ng-touched,
+.ng-untouched {
   border-bottom: none;
   width: 100%;
 }
@@ -65,7 +70,7 @@
 
 ::ng-deep .clr-input {
   border-bottom: none;
-  font-family: "Metropolis","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  font-family: 'Metropolis', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
   font-size: 12px;
 }
 
@@ -79,13 +84,13 @@ clr-icon {
 }
 
 .is-loading ::ng-deep .mat-option-text {
-  position:relative;
+  position: relative;
   display: flex;
   justify-content: center;
 }
 
-.hide-autocomplete { 
-  display: none; 
+.hide-autocomplete {
+  display: none;
 }
 
 ::ng-deep .mat-autocomplete-panel {
@@ -93,7 +98,7 @@ clr-icon {
 }
 
 ::ng-deep .mat-option {
-  font-family: "Metropolis","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  font-family: 'Metropolis', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
   font-size: 12px;
   color: #adbbc4;
 }
@@ -104,5 +109,5 @@ clr-icon {
 
 ::ng-deep .cdk-overlay-pane {
   /* Do you changes here */
-   min-width:250px;
+  min-width: 250px;
 }

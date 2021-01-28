@@ -1,47 +1,36 @@
 <div class="clr-row">
-    <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
-        <!--
+    <div class="clr-col-xl-8 clr-col-lg-8 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
         <table class="table table-compact">
             <thead>
                 <tr>
-                    <th class="left">VPN онлайн</th>
-                    <th></th>
+                    <th class="left">Пользователи VPN сервера</th>
+                    <th class="right-th-icon"><clr-icon shape="users"></clr-icon></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <app-vpn-users></app-vpn-users>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="clr-col-xl-4 clr-col-lg-4 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
+        <table class="table table-compact">
+            <thead>
+                <tr>
+                    <th class="left">Подключенные пользователи</th>
                     <th class="right-th-icon"><clr-icon shape="connect"></clr-icon></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of eventVPNOnlineArray$ | async">
-                    <td class="lastentry">{{ item.loginDateTime }}</td>
-                    <td class="lastentry">{{ item.account }}</td>
-                    <td class="lastentry">{{ item.ipAddress }}</td>
+                <tr>
+                    <td colspan="2">
+                        <app-vpn-connected></app-vpn-connected>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        -->
-        <clr-datagrid class="datagrid-compact">
-            <clr-dg-column>ID пользователя</clr-dg-column>
-            <clr-dg-column>Фамилия <clr-dg-string-filter [clrDgStringFilter]="accountFilter"></clr-dg-string-filter></clr-dg-column>
-            <clr-dg-column>Имя</clr-dg-column>
-            <clr-dg-column>Отчество</clr-dg-column>
-
-            <clr-dg-placeholder>Мы не смогли найти пользователей!</clr-dg-placeholder>
-
-            <clr-dg-row *clrDgItems="let user of eventVPNOnlineArray$ | async" [clrDgItem]="user">
-                <clr-dg-cell>{{ user.loginDateTime }}</clr-dg-cell>
-                <clr-dg-cell>{{ user.account }}</clr-dg-cell>
-                <clr-dg-cell>{{ user.ipAddress }}</clr-dg-cell>
-                <clr-dg-cell>{{ user.loginDuration }}</clr-dg-cell>
-            </clr-dg-row>
-
-            <clr-dg-footer>
-                <clr-dg-pagination #paginationUser [clrDgPageSize]="20">
-                    <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]">Users per page</clr-dg-page-size>
-                    {{ paginationUser.firstItem + 1 }} - {{ paginationUser.lastItem + 1 }} of {{ paginationUser.totalItems }} users
-                </clr-dg-pagination>
-            </clr-dg-footer>
-        </clr-datagrid>
-    </div>
-    <div class="clr-col-xl-6 clr-col-lg-6 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
-        <app-vpn-users></app-vpn-users>
     </div>
 </div>
