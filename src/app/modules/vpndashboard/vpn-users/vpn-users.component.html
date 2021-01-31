@@ -19,7 +19,7 @@
                 <table class="table table-compact">
                     <tbody>
                         <tr>
-                            <td>Аккаунт</td>
+                            <td>Аккаунт: {{ detail.account }}</td>
                         </tr>
 
                         <tr>
@@ -29,7 +29,22 @@
                             </td>
                         </tr>
                         <tr>
-                            <clr-datagrid class="datagrid-compact" [clrDgLoading]="loading">
+                            <td>
+                                <form clrForm>
+                                    <clr-date-container>
+                                        <label>My name</label>
+                                        <input
+                                            clrDate
+                                            placeholder="Pick a date"
+                                            name="date"
+                                            (clrDateChange)="setVPNSessionDate($event, detail.account)"
+                                        />
+                                    </clr-date-container>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <clr-datagrid class="datagrid-compact" [clrDgLoading]="(eventVPNUserSessionsArray$ | async) ? false : true">
                                 <clr-dg-column>Время подключения</clr-dg-column>
                                 <clr-dg-column>IP адрес</clr-dg-column>
                                 <clr-dg-column>Продолжительность подключения</clr-dg-column>
@@ -43,9 +58,9 @@
                                 </clr-dg-row>
 
                                 <clr-dg-footer>
-                                    <clr-dg-pagination #paginationUser [clrDgPageSize]="20">
-                                        <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]">Сеансов на страницу</clr-dg-page-size>
-                                        {{ paginationUser.firstItem + 1 }} - {{ paginationUser.lastItem + 1 }} of
+                                    <clr-dg-pagination #paginationUser [clrDgPageSize]="15">
+                                        <!--<clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]">Сеансов на страницу</clr-dg-page-size>-->
+                                        {{ paginationUser.firstItem + 1 }} - {{ paginationUser.lastItem + 1 }} из
                                         {{ paginationUser.totalItems }} Сеансов
                                     </clr-dg-pagination>
                                 </clr-dg-footer>
@@ -59,8 +74,8 @@
 
     <clr-dg-footer>
         <clr-dg-pagination #pagination [clrDgPageSize]="20">
-            <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]">Пользователей на страницу</clr-dg-page-size>
-            {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of {{ pagination.totalItems }} Пользователей
+            <clr-dg-page-size [clrPageSizeOptions]="[20, 50, 100]">Пользователей на страницу</clr-dg-page-size>
+            {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} из {{ pagination.totalItems }} Пользователей
         </clr-dg-pagination>
     </clr-dg-footer>
 </clr-datagrid>

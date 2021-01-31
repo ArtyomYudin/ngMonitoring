@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ClrDatagridStateInterface } from '@clr/angular';
-
 import { WebsocketService } from '@app/services/websocket.service';
 
 import { VPNUserModel } from '@models/vpn-user.model';
@@ -37,5 +35,7 @@ export class VpnUsersComponent implements OnInit {
     if (account !== null) this.wsService.send('get-vpn-user-info', account);
   }
 
-  loading = true;
+  public setVPNSessionDate(event: Date, account: string): void {
+    // this.wsService.send('get-vpn-user-info', event);
+  }
 }

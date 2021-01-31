@@ -12,8 +12,8 @@
 
     <clr-dg-footer>
         <clr-dg-pagination #paginationUser [clrDgPageSize]="20">
-            <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]">Пользователей на страницу</clr-dg-page-size>
-            {{ paginationUser.firstItem + 1 }} - {{ paginationUser.lastItem + 1 }} of {{ paginationUser.totalItems }} Пользователей
+            <clr-dg-page-size [clrPageSizeOptions]="[20, 50, 100]">Пользователей на страницу</clr-dg-page-size>
+            {{ paginationUser.firstItem + 1 }} - {{ paginationUser.lastItem + 1 }} из {{ paginationUser.totalItems }} Пользователей
         </clr-dg-pagination>
     </clr-dg-footer>
 </clr-datagrid>
