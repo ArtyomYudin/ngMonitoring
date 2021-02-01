@@ -6,12 +6,21 @@
   border-radius: 50%;
   text-align: center;
   background-color: white;
+  float: left;
 }
 
 .personPhoto {
   width: auto;
   height: 100%;
   margin: 0 auto;
+  vertical-align: middle;
+}
+
+.personPhoto {
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+  //vertical-align: middle;
 }
 
 :host ::ng-deep .datagrid-compact .datagrid-cell cds-icon {
@@ -28,6 +37,19 @@
   border: 0;
 }
 
+.table td {
+  text-align: left;
+  // font-weight: 600;
+  letter-spacing: 0.03em;
+  // color: #eaedf0;
+  letter-spacing: 0.03em;
+}
 .clr-form-control {
   margin-top: 0;
+}
+
+.datePickLabel {
+  font-size: 0.65rem;
+  line-height: 0.7rem;
+  font-weight: 0;
 }

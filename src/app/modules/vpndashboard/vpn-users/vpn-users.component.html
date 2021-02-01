@@ -12,14 +12,22 @@
     <ng-template clrIfDetail let-detail (clrIfDetailChange)="onDetailOpen($event?.account)">
         <clr-dg-detail>
             <clr-dg-detail-header>
-                <div class="photo"><img class="personPhoto" [src]="detail.photo | blobToBase64" /></div>
-                {{ detail.lastName + '&nbsp;' + detail.firstName + '&nbsp;' + detail.middleName }}
+                <div class="photo">
+                    <img class="personPhoto" [src]="detail.photo | blobToBase64" />
+                </div>
+                <div class="personName">
+                    {{ detail.lastName + '&nbsp;' + detail.firstName + '&nbsp;' + detail.middleName }}
+                </div>
             </clr-dg-detail-header>
             <clr-dg-detail-body>
                 <table class="table table-compact">
                     <tbody>
                         <tr>
-                            <td>Аккаунт: {{ detail.account }}</td>
+                            <td>
+                                {{ eventVPNUserStatusArray$ | async }}
+                                Аккаунт: {{ detail.account }}
+                                {{ (eventVPNUserStatusArray$ | async) ? 'Подключен к сети VPN' : 'Не подключен к сети VPN' }}
+                            </td>
                         </tr>
 
                         <tr>
@@ -30,13 +38,14 @@
                         </tr>
                         <tr>
                             <td>
-                                <form clrForm>
+                                <form [formGroup]="sessionDatePick" clrForm>
                                     <clr-date-container>
-                                        <label>My name</label>
+                                        <label class="datePickLabel">Все завершенные сеансы за: </label>
                                         <input
                                             clrDate
                                             placeholder="Pick a date"
-                                            name="date"
+                                            id="date"
+                                            formControlName="defaultDate"
                                             (clrDateChange)="setVPNSessionDate($event, detail.account)"
                                         />
                                     </clr-date-container>
@@ -47,7 +56,7 @@
                             <clr-datagrid class="datagrid-compact" [clrDgLoading]="(eventVPNUserSessionsArray$ | async) ? false : true">
                                 <clr-dg-column>Время подключения</clr-dg-column>
                                 <clr-dg-column>IP адрес</clr-dg-column>
-                                <clr-dg-column>Продолжительность подключения</clr-dg-column>
+                                <clr-dg-column>Продолжительность подключения (чч:мм)</clr-dg-column>
 
                                 <clr-dg-placeholder>Мы не смогли найти предыдущие сеансы!</clr-dg-placeholder>
 
