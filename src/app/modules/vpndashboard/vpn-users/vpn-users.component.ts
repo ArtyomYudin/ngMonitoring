@@ -26,6 +26,8 @@ export class VpnUsersComponent implements OnInit {
 
   public accountFilter = new AccountFilter();
 
+  public ipAddress: string;
+
   sessionDatePick: FormGroup;
 
   constructor(private datePipe: DatePipe, private wsService: WebsocketService) {}
@@ -38,11 +40,15 @@ export class VpnUsersComponent implements OnInit {
   }
 
   public onDetailOpen(account: string): void {
+    this.ipAddress = null;
     this.sessionDatePick = new FormGroup({
       defaultDate: new FormControl(new Date().toLocaleDateString()),
     });
     if (account !== null) {
       this.wsService.send('get-vpn-user-info', { sessionDate: this.datePipe.transform(new Date(), 'yyyy-MM-dd'), vpnAccount: account });
+      this.eventVPNUserStatusArray$.subscribe(data => {
+        this.ipAddress = data;
+      });
     }
   }
 
