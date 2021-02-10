@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CustomReuseStrategy implements RouteReuseStrategy {
-  private routesToCache: string[] = ['cached_skud', 'cached_monitoring', 'cached_vpn'];
+  private routesToCache: string[] = ['cached_skud', 'cached_monitoring', 'cached_vpn', 'cached_dhcp'];
 
   private storedRouteHandles = new Map<string, DetachedRouteHandle>();
 
