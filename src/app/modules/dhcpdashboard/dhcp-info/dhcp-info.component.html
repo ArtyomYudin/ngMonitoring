@@ -1,0 +1,29 @@
+<clr-spinner [clrMedium]="true" *ngIf="(eventDHCPInfoArray$ | async) ? false : true">Loading photos</clr-spinner>
+<div *ngFor="let dhcpInfo of eventDHCPInfoArray$ | async">
+    <table class="table table-compact dhcp-info">
+        <thead>
+            <tr>
+                <th class="left">Область адресов</th>
+                <th class="left">{{ dhcpInfo.scopeId }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="left">Адресов свободно:</td>
+                <td class="left">{{ dhcpInfo.addressesFree }}</td>
+            </tr>
+            <tr>
+                <td class="left">Адресов использовано:</td>
+                <td class="left">{{ dhcpInfo.addressesInUse }}</td>
+            </tr>
+            <tr>
+                <td class="left">Адресов зарезервированно:</td>
+                <td class="left">{{ dhcpInfo.reservedAddress }}</td>
+            </tr>
+            <tr>
+                <td class="left">DHCP сервер:</td>
+                <td class="left">{{ dhcpInfo.psComputerName }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

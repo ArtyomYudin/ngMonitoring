@@ -1,4 +1,4 @@
-<clr-datagrid class="datagrid-compact">
+<clr-datagrid class="datagrid-compact" [clrDgLoading]="(eventVPNOnlineArray$ | async) ? false : true">
     <clr-dg-column>Время подключения</clr-dg-column>
     <clr-dg-column>Пользователь <clr-dg-string-filter [clrDgStringFilter]="accountFilter"></clr-dg-string-filter></clr-dg-column>
 

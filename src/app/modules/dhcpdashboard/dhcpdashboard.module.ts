@@ -5,8 +5,11 @@ import { ClarityModule } from '@clr/angular';
 
 import { DhcpDashboardComponent } from '@modules/dhcpdashboard/dhcpdashboard.component';
 
+import { GlobalPipeModule } from '@pipe/globalpipe.module';
+
 import { WebsocketService } from '@services/websocket.service';
-import { DhcpLeasesComponent } from './dhcp-leases/dhcp-leases.component';
+import { DhcpLeasesComponent } from '@modules/dhcpdashboard/dhcp-leases/dhcp-leases.component';
+import { DhcpInfoComponent } from '@modules/dhcpdashboard/dhcp-info/dhcp-info.component';
 
 const routing = RouterModule.forChild([
   {
@@ -16,8 +19,8 @@ const routing = RouterModule.forChild([
 ]);
 
 @NgModule({
-  declarations: [DhcpDashboardComponent, DhcpLeasesComponent],
-  imports: [CommonModule, ClarityModule, routing],
+  declarations: [DhcpDashboardComponent, DhcpLeasesComponent, DhcpInfoComponent],
+  imports: [CommonModule, ClarityModule, GlobalPipeModule, routing],
   providers: [WebsocketService],
 })
 export class DhcpDashboardModule {}

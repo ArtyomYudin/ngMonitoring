@@ -1,4 +1,4 @@
-<clr-datagrid class="datagrid-compact">
+<clr-datagrid class="datagrid-compact" [clrDgLoading]="(eventVPNAllUsersArray$ | async) ? false : true">
     <clr-dg-column>ФИО<clr-dg-string-filter [clrDgStringFilter]="accountFilter"></clr-dg-string-filter></clr-dg-column>
 
     <clr-dg-placeholder>Мы не смогли найти пользователей!</clr-dg-placeholder>

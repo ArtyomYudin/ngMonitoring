@@ -1,10 +1,10 @@
 <div class="clr-row">
-    <div class="clr-col-xl-8 clr-col-lg-8 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
+    <div class="clr-col-xl-9 clr-col-lg-9 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
         <table class="table table-compact">
             <thead>
                 <tr>
-                    <th class="left">Сети</th>
-                    <th class="right-th-icon"><clr-icon shape="users"></clr-icon></th>
+                    <th class="left">Используемые адреса</th>
+                    <th class="right-th-icon"><clr-icon shape="computer"></clr-icon></th>
                 </tr>
             </thead>
             <tbody>
@@ -16,17 +16,19 @@
             </tbody>
         </table>
     </div>
-    <div class="clr-col-xl-4 clr-col-lg-4 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
+    <div class="clr-col-xl-3 clr-col-lg-3 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
         <table class="table table-compact">
             <thead>
                 <tr>
-                    <th class="left">Статистика DHCP сервера</th>
-                    <th class="right-th-icon"><clr-icon shape="connect"></clr-icon></th>
+                    <th class="left">Статистика</th>
+                    <th class="right-th-icon"><clr-icon shape="info-standard"></clr-icon></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="2"></td>
+                    <td colspan="2">
+                        <app-dhcp-info></app-dhcp-info>
+                    </td>
                 </tr>
             </tbody>
         </table>

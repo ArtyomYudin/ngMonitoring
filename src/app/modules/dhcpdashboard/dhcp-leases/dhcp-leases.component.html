@@ -1,5 +1,5 @@
-<clr-datagrid class="datagrid-compact">
-    <clr-dg-column>IP адрес</clr-dg-column>
+<clr-datagrid class="datagrid-compact" [clrDgLoading]="(eventDHCPLeasesArray$ | async) ? false : true">
+    <clr-dg-column>IP адрес <clr-dg-string-filter [clrDgStringFilter]="ipFilter"></clr-dg-string-filter></clr-dg-column>
     <clr-dg-column>MAC адрес</clr-dg-column>
     <clr-dg-column>Имя компьютера</clr-dg-column>
     <clr-dg-column>Статус адреса</clr-dg-column>
@@ -11,7 +11,7 @@
         <clr-dg-cell>{{ lease.ipAddress }}</clr-dg-cell>
         <clr-dg-cell>{{ lease.macAddress }}</clr-dg-cell>
         <clr-dg-cell>{{ lease.hostName }}</clr-dg-cell>
-        <clr-dg-cell>{{ lease.addressState }}</clr-dg-cell>
+        <clr-dg-cell>{{ lease.addressState | dhcpAddressState }}</clr-dg-cell>
         <clr-dg-cell>{{ lease.leaseExpiryTime }}</clr-dg-cell>
         <!--<clr-dg-cell>{{ user.lastName + '&nbsp;' + user.firstName + '&nbsp;' + user.middleName }}</clr-dg-cell>-->
     </clr-dg-row>
