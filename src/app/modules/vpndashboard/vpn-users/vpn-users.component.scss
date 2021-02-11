@@ -66,3 +66,12 @@
   max-width: 65%;
   margin-top: -0.05rem;
 }
+clr-tooltip clr-icon {
+  margin-top: -0.2rem;
+  color: #eaedf0;
+}
+/*
+:host ::ng-deep .datagrid-table {
+  position: inherit;
+}
+*/

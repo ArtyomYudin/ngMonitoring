@@ -25,4 +25,5 @@ export enum Event {
   EV_VPN_USER_SESSION_FOR_DATE = 'event_vpn_user_session_for_date',
   EV_VPN_ALL_USERS = 'event_vpn_all_users',
   EV_VPN_USER_STATUS = 'event_vpn_user_status',
+  EV_DHCP_LEASES = 'event_vpn_leases',
 }

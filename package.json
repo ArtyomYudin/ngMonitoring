@@ -15,13 +15,21 @@
   },
   "dependencies": {
     "@angular/animations": "^11.1.2",
+<<<<<<< HEAD
     "@angular/cdk": "^11.1.2",
+=======
+    "@angular/cdk": "^11.1.1",
+>>>>>>> 842239584352e43b27253e4091a65738116f3449
     "@angular/common": "^11.1.2",
     "@angular/compiler": "~11.1.2",
     "@angular/core": "^11.1.2",
     "@angular/forms": "^11.1.2",
     "@angular/localize": "^11.1.2",
+<<<<<<< HEAD
     "@angular/material": "^11.1.2",
+=======
+    "@angular/material": "^11.1.1",
+>>>>>>> 842239584352e43b27253e4091a65738116f3449
     "@angular/platform-browser": "~11.1.2",
     "@angular/platform-browser-dynamic": "~11.1.2",
     "@angular/router": "^11.1.2",
@@ -40,8 +48,13 @@
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@angular-devkit/build-angular": "^0.1101.4",
     "@angular/cli": "^11.1.4",
+=======
+    "@angular-devkit/build-angular": "^0.1101.2",
+    "@angular/cli": "^11.1.2",
+>>>>>>> 842239584352e43b27253e4091a65738116f3449
     "@angular/compiler-cli": "^11.1.2",
     "@angular/language-service": "^11.1.2",
     "@types/jasmine": "~3.6.0",

@@ -37,6 +37,18 @@
                                         ? 'Подключен к сети VPN с IP адреса ' + this.ipAddress
                                         : 'Не подключен к сети VPN'
                                 }}
+                                <ng-template [ngIf]="this.ipAddress">
+                                    <clr-tooltip>
+                                        <clr-icon shape="info" clrTooltipTrigger></clr-icon>
+                                        <clr-tooltip-content clrPosition="right" clrSize="md" *clrIfOpen>
+                                            Страна: {{ this.ipInfo?.country }}<br />
+                                            Регион: {{ this.ipInfo?.regionName }}<br />
+                                            Город: {{ this.ipInfo?.city }}<br />
+                                            Провайдер: {{ this.ipInfo?.isp }}<br />
+                                            Организация: {{ this.ipInfo?.org }}<br />
+                                        </clr-tooltip-content>
+                                    </clr-tooltip>
+                                </ng-template>
                             </td>
                         </tr>
                         <tr>
@@ -69,8 +81,19 @@
                                         [clrDgItem]="selectedUser"
                                     >
                                         <clr-dg-cell>{{ selectedUser.loginDateTime }}</clr-dg-cell>
-                                        <clr-dg-cell>{{ selectedUser.ipAddress }}</clr-dg-cell>
+                                        <clr-dg-cell>
+                                            {{ selectedUser.ipAddress }}
+                                        </clr-dg-cell>
                                         <clr-dg-cell>{{ selectedUser.loginDuration }}</clr-dg-cell>
+                                        <clr-dg-row-detail clrIfExpanded (clrIfExpandedChange)="getIpInfo(selectedUser.ipAddress)">
+                                            <div>
+                                                Страна: {{ this.gridIpInfo?.country }}<br />
+                                                Регион: {{ this.gridIpInfo?.regionName }}<br />
+                                                Город: {{ this.gridIpInfo?.city }}<br />
+                                                Провайдер: {{ this.gridIpInfo?.isp }}<br />
+                                                Организация: {{ this.gridIpInfo?.org }}<br />
+                                            </div>
+                                        </clr-dg-row-detail>
                                     </clr-dg-row>
 
                                     <clr-dg-footer>
