@@ -44,6 +44,9 @@
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/', 'dhcp']" *ngIf="isAdmin()">Статистика DHCP</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/', 'avaya']" *ngIf="isAdmin()">Статистика Avaya</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/', 'config']" *ngIf="isAdmin()">Настройки системы</a>
         </li>
     </ul>

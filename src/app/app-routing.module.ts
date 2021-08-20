@@ -29,6 +29,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { key: 'cached_dhcp' },
   },
+  {
+    path: 'avaya',
+    loadChildren: () => import('./modules/avayadashboard/avayadashboard.module').then(m => m.AvayaDashboardModule),
+    canActivate: [AuthGuard],
+    data: { key: 'cached_avaya' },
+  },
   { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
   {
     path: 'config',

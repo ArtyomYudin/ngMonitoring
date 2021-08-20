@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import Chart from 'chart.js/auto';
+import { Chart, registerables } from 'chart.js';
 import { WebsocketService } from '@services/websocket.service';
 import { Event } from '@services/websocket.service.event';
 import { ChartsService } from '@services/charts.service';
+
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-visitorschart',

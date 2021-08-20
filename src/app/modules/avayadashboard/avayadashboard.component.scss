@@ -1,0 +1,22 @@
+.right-th-icon {
+  text-align: right;
+}
+.table th {
+  // font-size: .5rem;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.table th.left {
+  padding-left: 0.5rem;
+}
+
+.table td.left {
+  padding-right: 0.25rem;
+  text-align: left;
+}
+
+clr-icon {
+  height: 22px;
+  width: 22px;
+}
