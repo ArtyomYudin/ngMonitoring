@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { takeUntil, first, switchMap, finalize, distinctUntilChanged, debounceTime} from 'rxjs/operators';
-
+import { takeUntil, first, switchMap, finalize, distinctUntilChanged, debounceTime } from 'rxjs/operators';
 
 import { EmployeeService } from '@services/employee.service';
 import { Employee } from '@models/employee.model';
@@ -31,10 +30,8 @@ export class EmployeeSearchComponent implements OnDestroy, OnInit {
   // private ngUnsubscribeEmp$: Subject<any> = new Subject();
   private searchSubscribe$: SubscriptionLike;
 
-  constructor(private formBuilder: FormBuilder,
-              private employeeService: EmployeeService,
-              private wsService: WebsocketService) {
-   // this.employeeService.findEmp.subscribe(x => this.currentEmp = x);
+  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService, private wsService: WebsocketService) {
+    // this.employeeService.findEmp.subscribe(x => this.currentEmp = x);
   }
 
   public ngOnInit() {
@@ -44,30 +41,29 @@ export class EmployeeSearchComponent implements OnDestroy, OnInit {
 
     this.searchEmp
       .get('emp')
-      .valueChanges
-      .pipe(
+      .valueChanges.pipe(
         debounceTime(500),
         distinctUntilChanged(),
-       // tap(() => this.showAutocomplete = false),
-        switchMap(value => value.length >= 3 ? this.employeeService.getAllEmp({ name: value }, 1)
-        .pipe(
-          finalize(() => this.showAutocomplete = true),
-          ) : [],
+        // tap(() => this.showAutocomplete = false),
+        switchMap(value =>
+          value.length >= 3 ? this.employeeService.getAllEmp({ name: value }, 1).pipe(finalize(() => (this.showAutocomplete = true))) : [],
         ),
-        takeUntil(this.ngUnsubscribe$)
+        takeUntil(this.ngUnsubscribe$),
       )
-      .subscribe(users => this.filteredEmployee = users.results);
+      .subscribe(users => (this.filteredEmployee = users.results));
   }
 
   public ngOnDestroy() {
-    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.next(null);
     this.ngUnsubscribe$.complete();
     // this.ngUnsubscribeEmp$.next();
     // this.ngUnsubscribeEmp$.complete();
     if (this.searchSubscribe$) this.searchSubscribe$.unsubscribe();
   }
 
-  get f() { return this.searchEmp.controls; }
+  get f() {
+    return this.searchEmp.controls;
+  }
 
   public onSubmit(id: number) {
     if (this.searchEmp.invalid) {
@@ -75,49 +71,54 @@ export class EmployeeSearchComponent implements OnDestroy, OnInit {
     }
     if (this.searchSubscribe$) this.searchSubscribe$.unsubscribe();
 
-    this.employeeService.getFindEmp(id)
-              .pipe(
-                first(),
-                takeUntil(this.ngUnsubscribe$))
-              .subscribe(x => {
-                    this.currentEmp = x;
-                    this.error = null;
-                    this.showAutocomplete = false;
-                    /**
-                     *  сделать подписку на конкретного пользователя для одновления  результата поиска
-                     */
-                    this.searchSubscribe$ = this.wsService.on<Employee>(Event.EV_EMPLOYEE)
-                      .pipe(
-                        filter(data => data.id === id),
-                        // takeUntil(this.ngUnsubscribeEmp$),
-                        // takeWhile(() => this.searchFlag)
-                        )
-                      .subscribe(data => this.currentEmp = data);
-                  }, error => {
-                    this.error = error;
-                    this.currentEmp = null;
-                    this.showAutocomplete = false;
-                  });
+    this.employeeService
+      .getFindEmp(id)
+      .pipe(first(), takeUntil(this.ngUnsubscribe$))
+      .subscribe(
+        x => {
+          this.currentEmp = x;
+          this.error = null;
+          this.showAutocomplete = false;
+          /**
+           *  сделать подписку на конкретного пользователя для одновления  результата поиска
+           */
+          this.searchSubscribe$ = this.wsService
+            .on<Employee>(Event.EV_EMPLOYEE)
+            .pipe(
+              filter(data => data.id === id),
+              // takeUntil(this.ngUnsubscribeEmp$),
+              // takeWhile(() => this.searchFlag)
+            )
+            .subscribe(data => (this.currentEmp = data));
+        },
+        error => {
+          this.error = error;
+          this.currentEmp = null;
+          this.showAutocomplete = false;
+        },
+      );
   }
 
   public onChanges() {
-    this.searchEmp.get('emp').valueChanges
-    .pipe(
-      takeUntil(this.ngUnsubscribe$))
-    .subscribe(value => {
-      // this.empValue = value;
-      if (!value) {
-        this.currentEmp = null;
-        this.error = null;
-        this.showAutocomplete = false;
-        // this.ngUnsubscribeEmp$.next();
-        // this.ngUnsubscribeEmp$.complete();
-        if (this.searchSubscribe$) this.searchSubscribe$.unsubscribe();
-      }
-    });
+    this.searchEmp
+      .get('emp')
+      .valueChanges.pipe(takeUntil(this.ngUnsubscribe$))
+      .subscribe(value => {
+        // this.empValue = value;
+        if (!value) {
+          this.currentEmp = null;
+          this.error = null;
+          this.showAutocomplete = false;
+          // this.ngUnsubscribeEmp$.next();
+          // this.ngUnsubscribeEmp$.complete();
+          if (this.searchSubscribe$) this.searchSubscribe$.unsubscribe();
+        }
+      });
   }
 
   public displayFn(user: Employee) {
-    if (user) { return `${user.lastName} ${user.firstName} ${user.middleName}`; }
+    if (user) {
+      return `${user.lastName} ${user.firstName} ${user.middleName}`;
+    }
   }
 }

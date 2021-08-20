@@ -138,7 +138,7 @@ export class ZabbixDashboardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {}
 
   public ngOnDestroy(): void {
-    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.next(null);
     this.ngUnsubscribe$.complete();
   }
 }

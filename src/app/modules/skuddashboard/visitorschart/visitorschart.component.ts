@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Chart } from 'chart.js';
+import Chart from 'chart.js/auto';
 import { WebsocketService } from '@services/websocket.service';
 import { Event } from '@services/websocket.service.event';
 import { ChartsService } from '@services/charts.service';
@@ -11,7 +11,6 @@ import { ChartsService } from '@services/charts.service';
   templateUrl: './visitorschart.component.html',
   styleUrls: ['./visitorschart.component.scss'],
 })
-
 export class VisitorsChartComponent implements OnDestroy, OnInit {
   @ViewChild('chart', { static: true }) public refChart: ElementRef;
   public chartData: any;
@@ -26,11 +25,10 @@ export class VisitorsChartComponent implements OnDestroy, OnInit {
   private employeeCount: any = [];
   private guestChart: any;
 
-  constructor(private wsService: WebsocketService,
-              private chartsService: ChartsService) {
-    Chart.defaults.global.defaultFontFamily = '\'Metropolis\',\'Avenir Next\',\'Helvetica Neue\',Arial,sans-serif';
-    Chart.defaults.global.defaultFontColor = '#adbbc4';
-    Chart.defaults.global.defaultFontSize = 8;
+  constructor(private wsService: WebsocketService, private chartsService: ChartsService) {
+    Chart.defaults.font.family = "'Metropolis','Avenir Next','Helvetica Neue',Arial,sans-serif";
+    Chart.defaults.color = '#adbbc4';
+    Chart.defaults.font.size = 8;
     this.chartData = {};
 
     /*
@@ -41,7 +39,8 @@ export class VisitorsChartComponent implements OnDestroy, OnInit {
     });
     */
 
-    this.wsService.on(Event.EV_GUEST_PER_DAY)
+    this.wsService
+      .on(Event.EV_GUEST_PER_DAY)
       .pipe(takeUntil(this.ngUnsubscribe$))
       .subscribe(() => {
         this.changeChartData(this.guestChart);
@@ -53,40 +52,42 @@ export class VisitorsChartComponent implements OnDestroy, OnInit {
   }
 
   public ngOnDestroy() {
-    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.next(null);
     this.ngUnsubscribe$.complete();
   }
 
   private initChart(): void {
     this.chartData = {
       labels: this.employeeDay,
-      datasets: [{
-        label: 'Сотрудники',
-        data: this.employeeCount,
-        borderColor: ['#49AFD9'],
-        // backgroundColor: ['#49AFD9'],
-        pointHoverBackgroundColor: '#49AFD9',
-        fill: false,
-        borderWidth: 1,
-      },
-      {
-        label: 'Гости',
-        data: this.guestCount,
-        borderColor: ['#AADB1E'],
-        // backgroundColor: ['#AADB1E'],
-        pointHoverBackgroundColor: '#AADB1E',
-        fill: false,
-        borderWidth: 1,
-      },
-      {
-        label: 'Автомобили',
-        data: this.carCount,
-        borderColor: ['#BE90D6'],
-        // backgroundColor: ['#AADB1E'],
-        pointHoverBackgroundColor: '#BE90D6',
-        fill: false,
-        borderWidth: 1,
-      }],
+      datasets: [
+        {
+          label: 'Сотрудники',
+          data: this.employeeCount,
+          borderColor: ['#49AFD9'],
+          // backgroundColor: ['#49AFD9'],
+          pointHoverBackgroundColor: '#49AFD9',
+          fill: false,
+          borderWidth: 1,
+        },
+        {
+          label: 'Гости',
+          data: this.guestCount,
+          borderColor: ['#AADB1E'],
+          // backgroundColor: ['#AADB1E'],
+          pointHoverBackgroundColor: '#AADB1E',
+          fill: false,
+          borderWidth: 1,
+        },
+        {
+          label: 'Автомобили',
+          data: this.carCount,
+          borderColor: ['#BE90D6'],
+          // backgroundColor: ['#AADB1E'],
+          pointHoverBackgroundColor: '#BE90D6',
+          fill: false,
+          borderWidth: 1,
+        },
+      ],
     };
     const chart = this.refChart.nativeElement;
     const ctx = chart.getContext('2d');
@@ -95,12 +96,14 @@ export class VisitorsChartComponent implements OnDestroy, OnInit {
       data: this.chartData,
       options: {
         responsive: true,
-        tooltips: {
-         mode: 'index',
-          intersect: true,
-        },
-        legend: {
-          display: false,
+        plugins: {
+          tooltip: {
+            mode: 'index',
+            intersect: true,
+          },
+          legend: {
+            display: false,
+          },
         },
         elements: {
           line: {
@@ -108,13 +111,13 @@ export class VisitorsChartComponent implements OnDestroy, OnInit {
           },
         },
         scales: {
-          xAxes: [{
+          x: {
             display: true,
-          }],
-          yAxes: [{
+          },
+          y: {
             display: true,
             stacked: false,
-          }],
+          },
         },
       },
     });
@@ -133,7 +136,8 @@ export class VisitorsChartComponent implements OnDestroy, OnInit {
   }
 
   private getCartValues(): void {
-    this.chartsService.getChartData('empAndGuest')
+    this.chartsService
+      .getChartData('empAndGuest')
       .pipe(takeUntil(this.ngUnsubscribe$))
       .subscribe(x => {
         const resultArray = Object.keys(x).map(i => (x as any)[i]);
@@ -157,7 +161,6 @@ export class VisitorsChartComponent implements OnDestroy, OnInit {
     const fullDate = new Date(dateString);
     const date = fullDate.getDate();
     const month = fullDate.getMonth();
-    return `${(date < 10) ? '0' + date : date}.${(month + 1 < 10) ? '0' + (month + 1) : (month + 1)}`;
+    return `${date < 10 ? '0' + date : date}.${month + 1 < 10 ? '0' + (month + 1) : month + 1}`;
   }
-
 }

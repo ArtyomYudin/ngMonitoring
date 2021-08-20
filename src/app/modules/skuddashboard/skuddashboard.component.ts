@@ -26,7 +26,7 @@ export class SkudDashboardComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.next(null);
     this.ngUnsubscribe$.complete();
   }
 }

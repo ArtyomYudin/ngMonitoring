@@ -1,4 +1,3 @@
-
 import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { map, takeUntil } from 'rxjs/operators';
@@ -13,22 +12,18 @@ import { AuthUser } from '@models/authuser.model';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-
 export class HeaderComponent implements OnDestroy, OnInit {
   public currentUser: AuthUser;
-  public clock = interval(1000).pipe(
-    map(() =>  new Date()));
+  public clock = interval(1000).pipe(map(() => new Date()));
 
   private ngUnsubscribe$: Subject<any> = new Subject();
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-    // private sessionCheckService: SessionCheckService,
-    ) {
-    this.authenticationService.currentUser$
-        .pipe(takeUntil(this.ngUnsubscribe$))
-        .subscribe(x => this.currentUser = x);
+  ) // private sessionCheckService: SessionCheckService,
+  {
+    this.authenticationService.currentUser$.pipe(takeUntil(this.ngUnsubscribe$)).subscribe(x => (this.currentUser = x));
     // this.sessionCheckService.isActivateStatus
     //     .pipe(takeUntil(this.ngUnsubscribe))
     //     .subscribe(
@@ -38,11 +33,10 @@ export class HeaderComponent implements OnDestroy, OnInit {
     //       });
   }
 
-  public ngOnInit() {
-  }
+  public ngOnInit() {}
 
   public ngOnDestroy() {
-    this.ngUnsubscribe$.next();
+    this.ngUnsubscribe$.next(null);
     this.ngUnsubscribe$.complete();
   }
 
