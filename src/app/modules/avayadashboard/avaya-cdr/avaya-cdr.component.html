@@ -1,28 +1,28 @@
 <clr-datagrid class="datagrid-compact" [clrDgLoading]="(eventAvayaCDRArray$ | async) ? false : true">
-    <clr-dg-column>Время начала</clr-dg-column>
+    <clr-dg-column [style.width.px]="160">Время начала</clr-dg-column>
     <clr-dg-column>Продолжительность</clr-dg-column>
     <clr-dg-column>Вызывающий абонент</clr-dg-column>
-    <clr-dg-column>Номер</clr-dg-column>
+    <clr-dg-column>ФИО</clr-dg-column>
     <clr-dg-column>Вызываемый абонент</clr-dg-column>
-    <clr-dg-column>Номер</clr-dg-column>
+    <clr-dg-column>ФИО</clr-dg-column>
     <clr-dg-column>Направление</clr-dg-column>
 
     <clr-dg-placeholder>Мы не смогли найти пользователей!</clr-dg-placeholder>
 
-    <clr-dg-row *clrDgItems="let lease of eventAvayaCDRArray$ | async" [clrDgItem]="lease">
-        <clr-dg-cell>{{ lease.ipAddress }}</clr-dg-cell>
-        <clr-dg-cell>{{ lease.macAddress }}</clr-dg-cell>
-        <clr-dg-cell>{{ lease.hostName }}</clr-dg-cell>
-        <clr-dg-cell>{{ lease.hostName }}</clr-dg-cell>
-        <clr-dg-cell>{{ lease.leaseExpiryTime }}</clr-dg-cell>
-        <clr-dg-cell>{{ lease.leaseExpiryTime }}</clr-dg-cell>
-        <clr-dg-cell>{{ lease.leaseExpiryTime }}</clr-dg-cell>
+    <clr-dg-row *clrDgItems="let cdr of eventAvayaCDRArray$ | async" [clrDgItem]="cdr">
+        <clr-dg-cell>{{ cdr.callDateTime }}</clr-dg-cell>
+        <clr-dg-cell>{{ cdr.callDuration | avayaDurationConvert }}</clr-dg-cell>
+        <clr-dg-cell>{{ cdr.callingNumber }}</clr-dg-cell>
+        <clr-dg-cell>{{ cdr.callingName }}</clr-dg-cell>
+        <clr-dg-cell>{{ cdr.calledNumber }}</clr-dg-cell>
+        <clr-dg-cell>{{ cdr.calledName }}</clr-dg-cell>
+        <clr-dg-cell>{{ cdr.callCode }}</clr-dg-cell>
     </clr-dg-row>
 
     <clr-dg-footer>
         <clr-dg-pagination #paginationUser [clrDgPageSize]="20">
-            <clr-dg-page-size [clrPageSizeOptions]="[20, 50, 100]">Пользователей на страницу</clr-dg-page-size>
-            {{ paginationUser.firstItem + 1 }} - {{ paginationUser.lastItem + 1 }} из {{ paginationUser.totalItems }} Пользователей
+            <clr-dg-page-size [clrPageSizeOptions]="[20, 50, 100]">Вызовов на страницу</clr-dg-page-size>
+            {{ paginationUser.firstItem + 1 }} - {{ paginationUser.lastItem + 1 }} из {{ paginationUser.totalItems }} Вызовов
         </clr-dg-pagination>
     </clr-dg-footer>
 </clr-datagrid>

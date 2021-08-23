@@ -1,11 +1,9 @@
 export class AvayaCDRModel {
-  public ipAddress: string;
-
-  public macAddress: string;
-
-  public hostName: string;
-
-  public addressState: string;
-
-  public leaseExpiryTime: string;
+  public callDateTime: string;
+  public callDuration: number;
+  public callingNumber: string;
+  public callingName: string;
+  public calledNumber: string;
+  public calledName: string;
+  public callCode: string;
 }
