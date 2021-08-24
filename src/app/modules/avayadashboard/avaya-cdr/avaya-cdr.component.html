@@ -1,9 +1,9 @@
 <clr-datagrid class="datagrid-compact" [clrDgLoading]="(eventAvayaCDRArray$ | async) ? false : true">
     <clr-dg-column [style.width.px]="160">Время начала</clr-dg-column>
-    <clr-dg-column>Продолжительность</clr-dg-column>
-    <clr-dg-column>Вызывающий абонент</clr-dg-column>
+    <clr-dg-column [style.width.px]="140">Продолжительность</clr-dg-column>
+    <clr-dg-column [style.width.px]="160">Вызывающий абонент</clr-dg-column>
     <clr-dg-column>ФИО</clr-dg-column>
-    <clr-dg-column>Вызываемый абонент</clr-dg-column>
+    <clr-dg-column [style.width.px]="160">Вызываемый абонент</clr-dg-column>
     <clr-dg-column>ФИО</clr-dg-column>
     <clr-dg-column>Направление</clr-dg-column>
 
@@ -14,7 +14,7 @@
         <clr-dg-cell>{{ cdr.callDuration | avayaDurationConvert }}</clr-dg-cell>
         <clr-dg-cell>{{ cdr.callingNumber }}</clr-dg-cell>
         <clr-dg-cell>{{ cdr.callingName }}</clr-dg-cell>
-        <clr-dg-cell>{{ cdr.calledNumber }}</clr-dg-cell>
+        <clr-dg-cell><clr-icon shape="arrow right"></clr-icon>{{ cdr.calledNumber }}</clr-dg-cell>
         <clr-dg-cell>{{ cdr.calledName }}</clr-dg-cell>
         <clr-dg-cell>{{ cdr.callCode }}</clr-dg-cell>
     </clr-dg-row>
