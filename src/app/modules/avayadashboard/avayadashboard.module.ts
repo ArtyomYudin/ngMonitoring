@@ -5,6 +5,7 @@ import { ClarityModule } from '@clr/angular';
 import { GlobalPipeModule } from '@pipe/globalpipe.module';
 import { AvayaCDRComponent } from '@app/modules/avayadashboard/avaya-cdr/avaya-cdr.component';
 import { AvayaDashboardComponent } from '@modules/avayadashboard/avayadashboard.component';
+import { AvayaCDRFilterComponent } from './avaya-cdr-filter/avaya-cdr-filter.component';
 
 const routing = RouterModule.forChild([
   {
@@ -14,7 +15,7 @@ const routing = RouterModule.forChild([
 ]);
 
 @NgModule({
-  declarations: [AvayaDashboardComponent, AvayaCDRComponent],
+  declarations: [AvayaDashboardComponent, AvayaCDRComponent, AvayaCDRFilterComponent],
   imports: [CommonModule, ClarityModule, GlobalPipeModule, routing],
 })
 export class AvayaDashboardModule {}
