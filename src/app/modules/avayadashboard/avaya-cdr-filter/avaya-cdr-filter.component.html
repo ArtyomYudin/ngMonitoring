@@ -1,4 +1,4 @@
-<form clrForm clrLayout="compact">
+<form clrForm clrLayout="compact" clrLabelSize="3">
     <clr-date-container>
         <label class="datePickLabel">Вызовы с:</label>
         <input clrDate type="date" formControlName="defaultDate" />
@@ -8,13 +8,22 @@
         <input clrDate type="date" formControlName="defaultDate" />
     </clr-date-container>
     <clr-input-container>
-        <label class="datePickLabel">Абонент:</label>
+        <label class="datePickLabel">Номер:</label>
         <input type="text" placeholder="Наименование" formControlName="purchaseInitiator" clrInput />
     </clr-input-container>
     <clr-input-container>
+        <label class="datePickLabel">Фамилия:</label>
         <input type="text" placeholder="Наименование" formControlName="purchaseInitiator" clrInput />
     </clr-input-container>
-    <clr-input-container>
-        <input type="text" placeholder="Наименование" formControlName="purchaseInitiator" clrInput />
-    </clr-input-container>
+    <clr-checkbox-container clrInline>
+        <label>Направление:</label>
+        <clr-checkbox-wrapper>
+            <input type="checkbox" clrCheckbox name="options-1" value="option1" />
+            <label>входящие звонки</label>
+        </clr-checkbox-wrapper>
+        <clr-checkbox-wrapper>
+            <input type="checkbox" clrCheckbox name="options-2" value="option2" />
+            <label>исходящие звонки</label>
+        </clr-checkbox-wrapper>
+    </clr-checkbox-container>
 </form>

@@ -68,8 +68,9 @@
   margin-top: 0rem;
 }
 
-::ng-deep .clr-input {
-  border-bottom: none;
+//::ng-deep .clr-input {
+.search-emp-input {
+  // border-bottom: none;
   font-family: 'Metropolis', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
   font-size: 12px;
 }
