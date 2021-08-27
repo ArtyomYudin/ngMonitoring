@@ -1,29 +1,32 @@
-<form clrForm clrLayout="compact" clrLabelSize="3">
+<form [formGroup]="avayaCDRFilters" clrForm [clrLayout]="'compact'" clrLabelSize="3">
     <clr-date-container>
         <label class="datePickLabel">Вызовы с:</label>
-        <input clrDate type="date" formControlName="defaultDate" />
+        <input clrDate type="date" formControlName="callingDateStart" />
     </clr-date-container>
     <clr-date-container>
         <label class="datePickLabel">Вызовы по:</label>
-        <input clrDate type="date" formControlName="defaultDate" />
+        <input clrDate type="date" formControlName="callingDateEnd" />
     </clr-date-container>
     <clr-input-container>
         <label class="datePickLabel">Номер:</label>
-        <input type="text" placeholder="Наименование" formControlName="purchaseInitiator" clrInput />
+        <input type="text" placeholder="Наименование" formControlName="callNumber" clrInput />
     </clr-input-container>
     <clr-input-container>
         <label class="datePickLabel">Фамилия:</label>
-        <input type="text" placeholder="Наименование" formControlName="purchaseInitiator" clrInput />
+        <input type="text" placeholder="Наименование" formControlName="callName" clrInput />
     </clr-input-container>
     <clr-checkbox-container clrInline>
         <label>Направление:</label>
         <clr-checkbox-wrapper>
-            <input type="checkbox" clrCheckbox name="options-1" value="option1" />
+            <input type="checkbox" clrCheckbox name="options-1" formControlName="callDirectionIn" />
             <label>входящие звонки</label>
         </clr-checkbox-wrapper>
         <clr-checkbox-wrapper>
-            <input type="checkbox" clrCheckbox name="options-2" value="option2" />
+            <input type="checkbox" clrCheckbox name="options-2" formControlName="callDirectionOut" />
             <label>исходящие звонки</label>
         </clr-checkbox-wrapper>
     </clr-checkbox-container>
+    <button class="btn btn-link btn-sm">Фильтровать</button>
+    <button class="btn btn-link btn-sm" (click)="onCancel()">Сбросить</button>
+    <button class="btn btn-link btn-sm">В Excel</button>
 </form>

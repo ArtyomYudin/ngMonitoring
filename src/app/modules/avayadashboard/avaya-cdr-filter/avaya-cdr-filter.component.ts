@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-avaya-cdr-filter',
@@ -7,8 +7,28 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./avaya-cdr-filter.component.scss'],
 })
 export class AvayaCDRFilterComponent implements OnInit {
-  sessionDatePick: FormGroup;
-  constructor() {}
+  public avayaCDRFilters!: FormGroup;
 
-  ngOnInit(): void {}
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.avayaCDRFilters = this.formBuilder.group({
+      callingDateStart: [''],
+      callingDateEnd: [''],
+      callNumber: [''],
+      callName: [''],
+      callDirectionIn: [''],
+      callDirectionOut: [''],
+    });
+  }
+
+  get f() {
+    return this.avayaCDRFilters.controls;
+  }
+
+  public onSubmit() {}
+
+  public onCancel(): void {
+    this.avayaCDRFilters.reset();
+  }
 }
