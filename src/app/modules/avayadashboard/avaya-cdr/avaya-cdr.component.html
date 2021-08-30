@@ -1,15 +1,18 @@
-<clr-datagrid class="datagrid-compact" [clrDgLoading]="(eventAvayaCDRArray$ | async) ? false : true">
+<clr-datagrid
+    class="datagrid-compact"
+    [clrDgLoading]="((this.addFilter ? eventAvayaCDRFilteredArray$ : eventAvayaCDRArray$) | async) ? false : true"
+>
     <clr-dg-column [style.width.px]="155">Время начала</clr-dg-column>
     <clr-dg-column [style.width.px]="140">Продолжительность</clr-dg-column>
     <clr-dg-column [style.width.px]="155">Вызывающий абонент</clr-dg-column>
     <clr-dg-column>ФИО</clr-dg-column>
     <clr-dg-column [style.width.px]="155">Вызываемый абонент</clr-dg-column>
     <clr-dg-column>ФИО</clr-dg-column>
-    <clr-dg-column>Тип вызова</clr-dg-column>
+    <clr-dg-column>Тип вызова {{ this.addFilter ? 'true' : 'false' }}</clr-dg-column>
 
     <clr-dg-placeholder>Мы не смогли найти пользователей!</clr-dg-placeholder>
 
-    <clr-dg-row *clrDgItems="let cdr of eventAvayaCDRArray$ | async" [clrDgItem]="cdr">
+    <clr-dg-row *clrDgItems="let cdr of (this.addFilter ? eventAvayaCDRFilteredArray$ : eventAvayaCDRArray$) | async" [clrDgItem]="cdr">
         <clr-dg-cell>{{ cdr.callDateTime }}</clr-dg-cell>
         <clr-dg-cell>{{ cdr.callDuration | avayaDurationConvert }}</clr-dg-cell>
         <clr-dg-cell>{{ cdr.callingNumber }}</clr-dg-cell>

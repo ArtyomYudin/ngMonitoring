@@ -3,14 +3,14 @@
         <table class="table table-compact">
             <thead>
                 <tr>
-                    <th class="left">Статистика вызовов</th>
+                    <th class="left">{{ filtered ? 'Результаты поиска' : 'Статистика вызовов за день' }}</th>
                     <th class="right-th-icon"><clr-icon shape="phone-handset"></clr-icon></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td colspan="2">
-                        <app-avaya-cdr></app-avaya-cdr>
+                        <app-avaya-cdr [addFilter]="filtered"></app-avaya-cdr>
                     </td>
                 </tr>
             </tbody>
@@ -27,7 +27,7 @@
             <tbody>
                 <tr>
                     <td class="left" colspan="2">
-                        <app-avaya-cdr-filter></app-avaya-cdr-filter>
+                        <app-avaya-cdr-filter (addFilter)="getFilteredEvent($event)"></app-avaya-cdr-filter>
                     </td>
                 </tr>
             </tbody>

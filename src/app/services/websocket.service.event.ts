@@ -28,4 +28,5 @@ export enum Event {
   EV_DHCP_LEASES = 'event_dhcp_leases',
   EV_DHCP_INFO = 'event_dhcp_info',
   EV_AVAYA_CDR_CURRENT_DAY = 'event_avaya_cdr_current_day',
+  EV_AVAYA_CDR_FILTERED = 'event_avaya_cdr_filtered',
 }
