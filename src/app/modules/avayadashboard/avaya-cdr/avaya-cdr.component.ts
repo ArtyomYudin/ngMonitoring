@@ -25,5 +25,6 @@ export class AvayaCDRComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes.addFilter.currentValue);
     console.log(this.eventAvayaCDRArray$);
+    !changes.addFilter.currentValue ? this.wsService.send('avaya-cdr-reset-filter', true) : null;
   }
 }
