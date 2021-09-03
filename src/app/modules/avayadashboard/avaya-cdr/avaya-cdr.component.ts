@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { WebsocketService } from '@app/services/websocket.service';
-import { Observable } from 'rxjs';
+import { Observable, takeWhile } from 'rxjs';
 
 import { AvayaCDRModel } from '@models/avaya-cdr.model';
 import { Event } from '@services/websocket.service.event';
@@ -15,16 +15,18 @@ export class AvayaCDRComponent implements OnInit, OnChanges {
   @Input() addFilter: boolean;
   public eventAvayaCDRArray$: Observable<AvayaCDRModel>;
   public eventAvayaCDRFilteredArray$: Observable<AvayaCDRModel>;
+  public cdrGridData$: Observable<AvayaCDRModel>;
+  public loading: boolean;
 
   constructor(private wsService: WebsocketService) {}
 
   ngOnInit(): void {
     this.eventAvayaCDRArray$ = this.wsService.on<AvayaCDRModel>(Event.EV_AVAYA_CDR_CURRENT_DAY);
     this.eventAvayaCDRFilteredArray$ = this.wsService.on<AvayaCDRModel>(Event.EV_AVAYA_CDR_FILTERED);
+    this.cdrGridData$ = this.eventAvayaCDRArray$;
   }
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes.addFilter.currentValue);
-    console.log(this.eventAvayaCDRArray$);
+    this.cdrGridData$ = changes.addFilter.currentValue ? this.eventAvayaCDRFilteredArray$ : this.eventAvayaCDRArray$;
     !changes.addFilter.currentValue ? this.wsService.send('avaya-cdr-reset-filter', true) : null;
   }
 }

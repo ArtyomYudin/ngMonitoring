@@ -4,7 +4,8 @@
     "enableIvy": true,
     "fullTemplateTypeCheck": false,
     "preserveWhitespaces": true,
-  } ,
+    "strictTemplates": true
+  },
   "compilerOptions": {
     "rootDir": ".",
     "baseUrl": ".",
@@ -28,7 +29,7 @@
       "@models/*": ["src/app/models/*"],
       "@modules/*": ["src/app/modules/*"],
       "@pipe/*": ["src/app/pipe/*"],
-      "@services/*": ["src/app/services/*"],
+      "@services/*": ["src/app/services/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

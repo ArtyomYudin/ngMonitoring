@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ClarityModule } from '@clr/angular';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +18,5 @@ const routing = RouterModule.forChild([
 @NgModule({
   declarations: [AvayaDashboardComponent, AvayaCDRComponent, AvayaCDRFilterComponent],
   imports: [CommonModule, ClarityModule, ReactiveFormsModule, GlobalPipeModule, routing],
-  providers: [DatePipe],
 })
 export class AvayaDashboardModule {}

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { WebsocketService } from '../../../services/websocket.service';
 
@@ -14,7 +15,8 @@ export class AvayaCDRFilterComponent implements OnInit {
   // @Input() filtered: boolean;
   @Output() addFilter = new EventEmitter<boolean>();
   public avayaCDRFilters!: FormGroup;
-  constructor(private datePipe: DatePipe, private formBuilder: FormBuilder, private wsService: WebsocketService) {}
+  private ngUnsubscribe$: Subject<any> = new Subject();
+  constructor(private formBuilder: FormBuilder, private wsService: WebsocketService) {}
 
   ngOnInit(): void {
     this.avayaCDRFilters = this.formBuilder.group({
@@ -25,6 +27,19 @@ export class AvayaCDRFilterComponent implements OnInit {
       callDirectionIn: [''],
       callDirectionOut: [''],
     });
+    this.f.callDirectionIn.disable();
+    this.f.callDirectionOut.disable();
+    this.f.callNumber.valueChanges
+      .pipe(distinctUntilChanged(), debounceTime(500), takeUntil(this.ngUnsubscribe$))
+      .subscribe((value: any) => {
+        value ? this.f.callDirectionIn.enable() : this.f.callDirectionIn.disable();
+        value ? this.f.callDirectionOut.enable() : this.f.callDirectionOut.disable();
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.ngUnsubscribe$.next(null);
+    this.ngUnsubscribe$.complete();
   }
 
   get f() {
@@ -32,10 +47,9 @@ export class AvayaCDRFilterComponent implements OnInit {
   }
 
   public onSubmit() {
-    console.log(this.f.callingDateStart);
     const filter = {
-      dateStart: this.datePipe.transform(this.f.callingDateStart.value, 'yyyy-MM-dd'),
-      dateEnd: this.datePipe.transform(this.f.callingDateEnd.value, 'yyyy-MM-dd'),
+      dateStart: this.f.callingDateStart.value ? this.f.callingDateStart.value.split('.').reverse().join('-') : null,
+      dateEnd: this.f.callingDateEnd.value ? this.f.callingDateEnd.value.split('.').reverse().join('-') : null,
       callNumber: this.f.callNumber.value,
       callName: this.f.callName.value,
       callDirectionIn: this.f.callDirectionIn.value,
