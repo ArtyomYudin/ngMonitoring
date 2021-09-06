@@ -8,7 +8,7 @@ import { EventModel } from '@models/event.model';
   styleUrls: ['./../zabbixdashboard.component.scss', './switch-events.component.scss'],
 })
 export class SwitchEventsComponent implements OnInit {
-  @Input() eventSwitchArray$: EventModel;
+  @Input() eventSwitchArray$: any | EventModel;
 
   constructor(public storage: LocalStorageService) {}
 

@@ -12,7 +12,7 @@ import { Event } from '@services/websocket.service.event';
   styleUrls: ['./dhcp-info.component.scss'],
 })
 export class DhcpInfoComponent implements OnInit {
-  public eventDHCPInfoArray$: Observable<DHCPInfoModel>;
+  public eventDHCPInfoArray$: any | Observable<DHCPInfoModel>;
 
   constructor(private wsService: WebsocketService) {}
 

@@ -8,7 +8,7 @@ import { EventModel } from '@models/event.model';
   styleUrls: ['./../zabbixdashboard.component.scss', './vmware-events.component.scss'],
 })
 export class VmwareEventsComponent implements OnInit {
-  @Input() eventVMWareArray$: EventModel;
+  @Input() eventVMWareArray$: any | EventModel;
 
   constructor(public storage: LocalStorageService) {}
 

@@ -10,7 +10,7 @@ import { EventModel } from '@models/event.model';
   styleUrls: ['./../zabbixdashboard.component.scss', './router-events.component.scss'],
 })
 export class RouterEventsComponent implements OnInit {
-  @Input() eventRouterArray$: EventModel;
+  @Input() eventRouterArray$: any | EventModel;
 
   constructor(public storage: LocalStorageService) {}
 

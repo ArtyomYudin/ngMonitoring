@@ -17,3 +17,35 @@ clr-icon {
   height: 22px;
   width: 22px;
 }
+
+.filterButton .btn:focus {
+  outline: none;
+  // box-shadow: none;
+}
+
+::ng-deep .clr-input-group .clr-input-group-icon-action:focus {
+  outline: none;
+}
+
+.btn.left {
+  padding-left: 0rem;
+}
+
+.filterForm .clr-input,
+.clr-textarea .clr-input-wrapper {
+  width: 100%;
+}
+::ng-deep .filterForm .clr-control-container {
+  display: block;
+}
+
+::ng-deep .directionGroup .clr-control-container {
+  display: flex;
+}
+
+::ng-deep .filterForm .clr-date-container .clr-input-wrapper {
+  max-width: 87%;
+}
+::ng-deep .filterForm .clr-date-container .clr-input-wrapper .clr-input-group {
+  display: inline;
+}

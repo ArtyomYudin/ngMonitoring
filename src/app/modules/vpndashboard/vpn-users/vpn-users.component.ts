@@ -21,11 +21,11 @@ import { AccountFilter } from '@modules/vpndashboard/vpndashboard.filter.class';
   styleUrls: ['./vpn-users.component.scss'],
 })
 export class VpnUsersComponent implements OnInit {
-  public eventVPNAllUsersArray$: Observable<VPNUserModel>;
+  public eventVPNAllUsersArray$: any | Observable<VPNUserModel>;
 
-  public eventVPNUserStatusArray$: Observable<string>;
+  public eventVPNUserStatusArray$: any | Observable<string>;
 
-  public eventVPNUserSessionsArray$: Observable<VPNSessionModel>;
+  public eventVPNUserSessionsArray$: any | Observable<VPNSessionModel>;
 
   public accountFilter = new AccountFilter();
 

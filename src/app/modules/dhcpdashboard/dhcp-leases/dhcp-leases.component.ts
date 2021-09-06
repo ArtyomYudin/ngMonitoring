@@ -14,7 +14,7 @@ import { DhcpIpFilter } from '@modules/dhcpdashboard/dhcpdashboard.filter.class'
   styleUrls: ['./dhcp-leases.component.scss'],
 })
 export class DhcpLeasesComponent implements OnInit {
-  public eventDHCPLeasesArray$: Observable<DHCPLeaseModel>;
+  public eventDHCPLeasesArray$: any | Observable<DHCPLeaseModel>;
 
   public ipFilter = new DhcpIpFilter();
 

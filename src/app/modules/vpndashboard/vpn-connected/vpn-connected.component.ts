@@ -14,7 +14,7 @@ import { AccountFilter } from '@modules/vpndashboard/vpndashboard.filter.class';
   styleUrls: ['./vpn-connected.component.scss'],
 })
 export class VpnConnectedComponent implements OnInit {
-  public eventVPNOnlineArray$: Observable<VPNSessionModel>;
+  public eventVPNOnlineArray$: any | Observable<VPNSessionModel>;
 
   public accountFilter = new AccountFilter();
 

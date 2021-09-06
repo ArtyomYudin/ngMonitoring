@@ -15,7 +15,7 @@ export class AvayaCDRComponent implements OnInit, OnChanges {
   @Input() addFilter: boolean;
   public eventAvayaCDRArray$: Observable<AvayaCDRModel>;
   public eventAvayaCDRFilteredArray$: Observable<AvayaCDRModel>;
-  public cdrGridData$: Observable<AvayaCDRModel>;
+  public cdrGridData$: Observable<AvayaCDRModel> | any;
   public loading: boolean;
 
   constructor(private wsService: WebsocketService) {}

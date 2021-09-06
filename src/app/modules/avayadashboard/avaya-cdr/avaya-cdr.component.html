@@ -1,3 +1,21 @@
+<!--
+<form clrForm [clrLayout]="'compact'">
+    <div class="clr-control-container clr-control-inline">
+        <clr-date-container>
+            <input clrDate type="date" placeholder="Вызовы с даты" />
+        </clr-date-container>
+        <clr-date-container>
+            <input clrDate type="date" placeholder="Вызовы по дату" />
+        </clr-date-container>
+        <clr-input-container>
+            <input type="text" placeholder="Номер телефона" clrInput />
+        </clr-input-container>
+        <clr-input-container>
+            <input type="text" placeholder="Фамилия абонента" clrInput />
+        </clr-input-container>
+    </div>
+</form>
+-->
 <clr-datagrid class="datagrid-compact" [clrDgLoading]="loading">
     <clr-dg-column [style.width.px]="155">Время начала</clr-dg-column>
     <clr-dg-column [style.width.px]="140">Продолжительность</clr-dg-column>
@@ -5,7 +23,7 @@
     <clr-dg-column>ФИО</clr-dg-column>
     <clr-dg-column [style.width.px]="155">Вызываемый абонент</clr-dg-column>
     <clr-dg-column>ФИО</clr-dg-column>
-    <clr-dg-column>Тип вызова {{ this.addFilter ? 'true' : 'false' }}</clr-dg-column>
+    <clr-dg-column>Тип вызова</clr-dg-column>
 
     <clr-dg-placeholder>Мы не смогли найти пользователей!</clr-dg-placeholder>
 

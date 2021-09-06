@@ -17,12 +17,11 @@ export interface IEvent {
   templateUrl: './lastten.component.html',
   styleUrls: ['./lastten.component.scss'],
 })
-
 export class LasttenComponent implements OnDestroy, OnInit {
   // public lastEntryArray$: any = [];
   // public lastExitArray: any = [];
-  public lastEntryArray$: Observable<IEvent>;
-  public lastExitArray$: Observable<IEvent>;
+  public lastEntryArray$: any | Observable<IEvent>;
+  public lastExitArray$: any | Observable<IEvent>;
   // private ngUnsubscribe: Subject<any> = new Subject();
 
   constructor(private wsService: WebsocketService) {
@@ -30,7 +29,9 @@ export class LasttenComponent implements OnDestroy, OnInit {
       if (marr.length === 10) {
         marr.shift();
         marr.push(data);
-      } else { marr.push(data); }
+      } else {
+        marr.push(data);
+      }
       return marr;
     }
     // this._WebsocketService.onMessage(Event.EV_ENTRY)
@@ -51,5 +52,4 @@ export class LasttenComponent implements OnDestroy, OnInit {
     // this.ngUnsubscribe.next();
     // this.ngUnsubscribe.complete();
   }
-
 }

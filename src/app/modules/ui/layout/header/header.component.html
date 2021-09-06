@@ -18,7 +18,7 @@
             </button>
 
             <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-                <button (click)="aboutPage.open()" clrDropdownItem>О программе</button>
+                <button (click)="aboutPage.open('ok')" clrDropdownItem>О программе</button>
                 <a class="nav-link" [routerLink]="['/', 'skud']" clrDropdownItem>Настройки</a>
                 <button (click)="onLogout()" clrDropdownItem>Выход</button>
             </clr-dropdown-menu>

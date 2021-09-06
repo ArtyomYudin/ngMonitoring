@@ -16,13 +16,12 @@ export class HeaderComponent implements OnDestroy, OnInit {
   public currentUser: AuthUser;
   public clock = interval(1000).pipe(map(() => new Date()));
 
-  private ngUnsubscribe$: Subject<any> = new Subject();
+  private ngUnsubscribe$: any | Subject<any> = new Subject();
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService,
-  ) // private sessionCheckService: SessionCheckService,
-  {
+    private authenticationService: AuthenticationService, // private sessionCheckService: SessionCheckService,
+  ) {
     this.authenticationService.currentUser$.pipe(takeUntil(this.ngUnsubscribe$)).subscribe(x => (this.currentUser = x));
     // this.sessionCheckService.isActivateStatus
     //     .pipe(takeUntil(this.ngUnsubscribe))

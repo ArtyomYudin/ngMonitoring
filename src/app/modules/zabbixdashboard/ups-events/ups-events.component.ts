@@ -8,7 +8,7 @@ import { EventModel } from '@models/event.model';
   styleUrls: ['./../zabbixdashboard.component.scss', './ups-events.component.scss'],
 })
 export class UpsEventsComponent implements OnInit {
-  @Input() eventUPSArray$: EventModel;
+  @Input() eventUPSArray$: any | EventModel;
 
   constructor(public storage: LocalStorageService) {}
 

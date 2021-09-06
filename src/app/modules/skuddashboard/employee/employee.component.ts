@@ -21,7 +21,7 @@ export interface IEvent {
 export class EmployeeComponent implements OnDestroy, OnInit {
   // public employeeArray: any = [];
 
-  public employeeArray$: Observable<IEvent>;
+  public employeeArray$: any | Observable<IEvent>;
   // private ngUnsubscribe: Subject<any> = new Subject();
 
   constructor(private wsService: WebsocketService) {

@@ -2,7 +2,7 @@
   "compileOnSave": false,
   "angularCompilerOptions": {
     "enableIvy": true,
-    "fullTemplateTypeCheck": false,
+    "fullTemplateTypeCheck": true,
     "preserveWhitespaces": true,
     "strictTemplates": true
   },
