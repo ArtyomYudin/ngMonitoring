@@ -13,7 +13,7 @@ import { WebsocketService } from '../../../services/websocket.service';
 })
 export class AvayaCDRFilterComponent implements OnInit {
   // @Input() filtered: boolean;
-  @Output() addFilter = new EventEmitter<boolean>();
+  @Output() addFilter = new EventEmitter<object>();
   public avayaCDRFilters!: FormGroup;
   private ngUnsubscribe$: Subject<any> = new Subject();
   constructor(private formBuilder: FormBuilder, private wsService: WebsocketService) {}
@@ -56,11 +56,11 @@ export class AvayaCDRFilterComponent implements OnInit {
       callDirectionOut: this.f.callDirectionOut.value,
     };
     this.wsService.send('get-filtered-avaya-cdr', filter);
-    this.addFilter.emit(true);
+    this.addFilter.emit({ filter: true, loadGrid: true });
   }
 
   public onCancel(): void {
     this.avayaCDRFilters.reset();
-    this.addFilter.emit(false);
+    this.addFilter.emit({ filter: false, loadGrid: true });
   }
 }

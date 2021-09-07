@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { WebsocketService } from '@app/services/websocket.service';
-import { Observable, takeWhile } from 'rxjs';
+import { distinctUntilChanged, Observable, Subject, takeUntil, tap } from 'rxjs';
 
 import { AvayaCDRModel } from '@models/avaya-cdr.model';
 import { Event } from '@services/websocket.service.event';
@@ -11,22 +11,45 @@ import { Event } from '@services/websocket.service.event';
   styleUrls: ['./avaya-cdr.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AvayaCDRComponent implements OnInit, OnChanges {
-  @Input() addFilter: boolean;
-  public eventAvayaCDRArray$: Observable<AvayaCDRModel>;
-  public eventAvayaCDRFilteredArray$: Observable<AvayaCDRModel>;
-  public cdrGridData$: Observable<AvayaCDRModel> | any;
-  public loading: boolean;
+export class AvayaCDRComponent implements OnInit, OnChanges, OnDestroy {
+  @Input() addFilter: { filter: boolean; loadGrid: boolean };
+  // @Input() loadGrid: boolean;
+  private ngUnsubscribe$: Subject<any> = new Subject();
+  public eventAvayaCDRArray$: AvayaCDRModel | any;
+  public eventAvayaCDRFilteredArray$: AvayaCDRModel | any;
+  public cdrGridData$: AvayaCDRModel | any;
+  public loading: boolean = true;
 
-  constructor(private wsService: WebsocketService) {}
-
+  constructor(private wsService: WebsocketService) {
+    this.eventAvayaCDRArray$ = this.wsService.on<AvayaCDRModel>(Event.EV_AVAYA_CDR_CURRENT_DAY).pipe(
+      distinctUntilChanged(),
+      takeUntil(this.ngUnsubscribe$),
+      tap(() => {
+        this.loading = false;
+      }),
+    );
+    this.eventAvayaCDRFilteredArray$ = this.wsService.on<AvayaCDRModel>(Event.EV_AVAYA_CDR_FILTERED).pipe(
+      distinctUntilChanged(),
+      takeUntil(this.ngUnsubscribe$),
+      tap(() => {
+        this.loading = false;
+      }),
+    );
+  }
   ngOnInit(): void {
-    this.eventAvayaCDRArray$ = this.wsService.on<AvayaCDRModel>(Event.EV_AVAYA_CDR_CURRENT_DAY);
-    this.eventAvayaCDRFilteredArray$ = this.wsService.on<AvayaCDRModel>(Event.EV_AVAYA_CDR_FILTERED);
+    //this.loading = true;
+    //this.eventAvayaCDRArray$ = this.wsService.on<AvayaCDRModel>(Event.EV_AVAYA_CDR_CURRENT_DAY);
+    // this.eventAvayaCDRFilteredArray$ = this.wsService.on<AvayaCDRModel>(Event.EV_AVAYA_CDR_FILTERED);
     this.cdrGridData$ = this.eventAvayaCDRArray$;
   }
   ngOnChanges(changes: SimpleChanges) {
-    this.cdrGridData$ = changes.addFilter.currentValue ? this.eventAvayaCDRFilteredArray$ : this.eventAvayaCDRArray$;
-    !changes.addFilter.currentValue ? this.wsService.send('avaya-cdr-reset-filter', true) : null;
+    this.loading = changes.addFilter.currentValue.loadGrid;
+
+    this.cdrGridData$ = changes.addFilter.currentValue.filter ? this.eventAvayaCDRFilteredArray$ : this.eventAvayaCDRArray$;
+    !changes.addFilter.currentValue.filter ? this.wsService.send('avaya-cdr-reset-filter', true) : null;
+  }
+  ngOnDestroy(): void {
+    this.ngUnsubscribe$.next(null);
+    this.ngUnsubscribe$.complete();
   }
 }

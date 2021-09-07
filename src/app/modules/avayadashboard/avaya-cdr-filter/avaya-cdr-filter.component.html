@@ -1,4 +1,13 @@
-<form class="filterForm" [formGroup]="avayaCDRFilters" clrForm [clrLayout]="'compact'" clrLabelSize="3">
+<form
+    formName="filterForm"
+    class="filterForm"
+    [formGroup]="avayaCDRFilters"
+    clrForm
+    [clrLayout]="'compact'"
+    clrLabelSize="3"
+    minLength="1"
+    required="true"
+>
     <clr-date-container>
         <label class="datePickLabel">Вызовы с:</label>
         <input clrDate type="date" formControlName="callingDateStart" />
