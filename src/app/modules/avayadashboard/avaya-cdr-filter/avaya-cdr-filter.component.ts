@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
+import { loadCoreIconSet, loadTechnologyIconSet } from '@cds/core/icon';
+
 import { WebsocketService } from '../../../services/websocket.service';
 
 @Component({
@@ -16,7 +18,10 @@ export class AvayaCDRFilterComponent implements OnInit {
   @Output() addFilter = new EventEmitter<object>();
   public avayaCDRFilters!: FormGroup;
   private ngUnsubscribe$: Subject<any> = new Subject();
-  constructor(private formBuilder: FormBuilder, private wsService: WebsocketService) {}
+  constructor(private formBuilder: FormBuilder, private wsService: WebsocketService) {
+    loadCoreIconSet();
+    loadTechnologyIconSet();
+  }
 
   ngOnInit(): void {
     this.avayaCDRFilters = this.formBuilder.group({
@@ -29,12 +34,18 @@ export class AvayaCDRFilterComponent implements OnInit {
     });
     this.f.callDirectionIn.disable();
     this.f.callDirectionOut.disable();
-    this.f.callNumber.valueChanges
-      .pipe(distinctUntilChanged(), debounceTime(500), takeUntil(this.ngUnsubscribe$))
-      .subscribe((value: any) => {
-        value ? this.f.callDirectionIn.enable() : this.f.callDirectionIn.disable();
-        value ? this.f.callDirectionOut.enable() : this.f.callDirectionOut.disable();
-      });
+    this.f.callNumber.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.ngUnsubscribe$)).subscribe((value: any) => {
+      value ? this.f.callDirectionIn.enable() : this.f.callDirectionIn.disable();
+      value ? this.f.callDirectionOut.enable() : this.f.callDirectionOut.disable();
+      value ? this.f.callName.disable() : this.f.callName.enable();
+      //this.f.callName.updateValueAndValidity({ onlySelf: true });
+    });
+    this.f.callName.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.ngUnsubscribe$)).subscribe((value: any) => {
+      value ? this.f.callDirectionIn.enable() : this.f.callDirectionIn.disable();
+      value ? this.f.callDirectionOut.enable() : this.f.callDirectionOut.disable();
+      value ? this.f.callNumber.disable() : this.f.callNumber.enable();
+      //this.f.callNumber.updateValueAndValidity({ onlySelf: true });
+    });
   }
 
   ngOnDestroy(): void {

@@ -1,13 +1,5 @@
-<form
-    formName="filterForm"
-    class="filterForm"
-    [formGroup]="avayaCDRFilters"
-    clrForm
-    [clrLayout]="'compact'"
-    clrLabelSize="3"
-    minLength="1"
-    required="true"
->
+<!--
+    <form formName="filterForm" class="filterForm" [formGroup]="avayaCDRFilters" clrForm [clrLayout]="'compact'" clrLabelSize="3">
     <clr-date-container>
         <label class="datePickLabel">Вызовы с:</label>
         <input clrDate type="date" formControlName="callingDateStart" />
@@ -39,5 +31,66 @@
         <button class="btn left" (click)="onSubmit()">Фильтровать</button>
         <button class="btn" (click)="onCancel()">Сбросить</button>
         <button class="btn">В Excel</button>
+    </div>
+</form>
+-->
+<form
+    formName="filterForm"
+    class="filterForm"
+    [formGroup]="avayaCDRFilters"
+    clrForm
+    [clrLayout]="'compact'"
+    clrLabelSize="3"
+    autocomplete="off"
+>
+    <div class="clr-control-container clr-control-inline">
+        <clr-date-container>
+            <label class="datePickLabel">Вызовы с:</label>
+            <input clrDate type="date" formControlName="callingDateStart" />
+        </clr-date-container>
+        <clr-date-container>
+            <label class="datePickLabel">Вызовы по:</label>
+            <input clrDate type="date" formControlName="callingDateEnd" />
+        </clr-date-container>
+        <clr-input-container>
+            <label>Номер:</label>
+            <input type="text" placeholder="Номер телефона" formControlName="callNumber" clrInput />
+        </clr-input-container>
+        <clr-input-container>
+            <label>Фамилия:</label>
+            <input type="text" placeholder="Фамилия" formControlName="callName" clrInput />
+        </clr-input-container>
+        <!--
+        <clr-checkbox-wrapper>
+            <input type="checkbox" clrCheckbox formControlName="callDirectionIn" />
+            <label>входящие звонки</label>
+        </clr-checkbox-wrapper>
+        <clr-checkbox-wrapper>
+            <input type="checkbox" clrCheckbox formControlName="callDirectionOut" />
+            <label>исходящие звонки</label>
+        </clr-checkbox-wrapper>
+    -->
+        <clr-checkbox-container class="directionGroup" clrInline>
+            <clr-checkbox-wrapper>
+                <input type="checkbox" clrCheckbox formControlName="callDirectionIn" />
+                <label>входящие звонки</label>
+            </clr-checkbox-wrapper>
+            <clr-checkbox-wrapper>
+                <input type="checkbox" clrCheckbox formControlName="callDirectionOut" />
+                <label>исходящие звонки</label>
+            </clr-checkbox-wrapper>
+        </clr-checkbox-container>
+
+        <div class="filterButton btn-group btn-link btn-sm btn-icon">
+            <button class="btn" title="Фильтровать" (click)="onSubmit()">
+                <cds-icon shape="search"></cds-icon>
+            </button>
+            <button class="btn" (click)="onCancel()">
+                <cds-icon shape="times" title="Отменить поиск"></cds-icon>
+            </button>
+            <button class="btn">
+                <cds-icon shape="export" title="Экспортировать в Excel"></cds-icon>
+            </button>
+        </div>
     </div>
 </form>
