@@ -6,7 +6,7 @@
         </a>
     </div>
 
-    <div class="header-actions">
+    <div class="header-actions headerMenu">
         <div class="settings" style="align-items: center">
             <!--<clr-icon shape="calendar"></clr-icon>-->
             <span class="title">&nbsp;&nbsp;{{ clock | async | date: 'dd MMMM, HH:mm' }} </span>
@@ -14,12 +14,12 @@
         <clr-dropdown>
             <button class="nav-text" clrDropdownTrigger *ngIf="currentUser">
                 {{ currentUser.firstName }} {{ currentUser.lastName }}
-                <clr-icon shape="caret down"></clr-icon>
+                <clr-icon shape="angle" style="transform: rotate(180deg)"></clr-icon>
             </button>
 
             <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
                 <button (click)="aboutPage.open('ok')" clrDropdownItem>О программе</button>
-                <a class="nav-link" [routerLink]="['/', 'skud']" clrDropdownItem>Настройки</a>
+                <button clrDropdownItem>Настройки</button>
                 <button (click)="onLogout()" clrDropdownItem>Выход</button>
             </clr-dropdown-menu>
         </clr-dropdown>

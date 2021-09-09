@@ -57,7 +57,7 @@ export class AvayaCDRFilterComponent implements OnInit {
     return this.avayaCDRFilters.controls;
   }
 
-  public onSubmit() {
+  public onSubmit(flag?: string) {
     const filter = {
       dateStart: this.f.callingDateStart.value ? this.f.callingDateStart.value.split('.').reverse().join('-') : null,
       dateEnd: this.f.callingDateEnd.value ? this.f.callingDateEnd.value.split('.').reverse().join('-') : null,
@@ -67,7 +67,7 @@ export class AvayaCDRFilterComponent implements OnInit {
       callDirectionOut: this.f.callDirectionOut.value,
     };
     this.wsService.send('get-filtered-avaya-cdr', filter);
-    this.addFilter.emit({ filter: true, loadGrid: true });
+    flag === 'export' ? this.addFilter.emit({ export: true }) : this.addFilter.emit({ filter: true, loadGrid: true, export: false });
   }
 
   public onCancel(): void {
