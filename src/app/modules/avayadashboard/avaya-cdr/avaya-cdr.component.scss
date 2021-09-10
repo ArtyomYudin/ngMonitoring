@@ -7,6 +7,9 @@
   // box-shadow: none;
 }
 
+::ng-deep .datagrid-table .datagrid-column .datagrid-filter-toggle {
+  outline: none;
+}
 ::ng-deep button.datagrid-column-title {
   text-decoration: none !important;
 }

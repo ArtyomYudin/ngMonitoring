@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvayaDashboardComponent implements OnInit {
-  public filtered: { filter: boolean; loadGrid: boolean } = { filter: false, loadGrid: true };
+  public filtered: { filter: boolean; loadGrid: boolean; export: boolean } = { filter: false, loadGrid: true, export: false };
 
   constructor() {}
 

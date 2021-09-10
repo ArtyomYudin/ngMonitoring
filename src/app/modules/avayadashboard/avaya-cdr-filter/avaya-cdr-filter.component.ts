@@ -18,6 +18,9 @@ export class AvayaCDRFilterComponent implements OnInit {
   @Output() addFilter = new EventEmitter<object>();
   public avayaCDRFilters!: FormGroup;
   private ngUnsubscribe$: Subject<any> = new Subject();
+  private filterFlag: boolean = false;
+  private loadGridFlag: boolean = false;
+  private exportFlag: boolean = false;
   constructor(private formBuilder: FormBuilder, private wsService: WebsocketService) {
     loadCoreIconSet();
     loadTechnologyIconSet();
@@ -58,6 +61,7 @@ export class AvayaCDRFilterComponent implements OnInit {
   }
 
   public onSubmit(flag?: string) {
+    this.exportFlag = false;
     const filter = {
       dateStart: this.f.callingDateStart.value ? this.f.callingDateStart.value.split('.').reverse().join('-') : null,
       dateEnd: this.f.callingDateEnd.value ? this.f.callingDateEnd.value.split('.').reverse().join('-') : null,
@@ -66,12 +70,22 @@ export class AvayaCDRFilterComponent implements OnInit {
       callDirectionIn: this.f.callDirectionIn.value,
       callDirectionOut: this.f.callDirectionOut.value,
     };
+    if (flag === 'export') {
+      this.exportFlag = true;
+    } else {
+      this.filterFlag = true;
+      this.loadGridFlag = true;
+      // console.log('flag ');
+    }
     this.wsService.send('get-filtered-avaya-cdr', filter);
-    flag === 'export' ? this.addFilter.emit({ export: true }) : this.addFilter.emit({ filter: true, loadGrid: true, export: false });
+    this.addFilter.emit({ filter: this.filterFlag, loadGrid: this.loadGridFlag, export: this.exportFlag });
   }
 
   public onCancel(): void {
     this.avayaCDRFilters.reset();
-    this.addFilter.emit({ filter: false, loadGrid: true });
+    this.filterFlag = false;
+    this.loadGridFlag = true;
+    this.exportFlag = false;
+    this.addFilter.emit({ ilter: this.filterFlag, loadGrid: this.loadGridFlag, export: this.exportFlag });
   }
 }

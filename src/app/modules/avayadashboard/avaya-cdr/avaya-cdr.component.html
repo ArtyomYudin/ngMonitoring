@@ -16,9 +16,19 @@
     </div>
 </form>
 -->
+{{ createExcel$ | async }}
+<clr-alert
+    *ngIf="createExcel$ | async as createExcel"
+    clrAlertType="info"
+    [clrAlertClosable]="false"
+    [clrAlertAppLevel]="false"
+    [clrAlertSizeSmall]="true"
+>
+    <clr-alert-item>Формирование excel файла</clr-alert-item>
+</clr-alert>
 <clr-datagrid class="datagrid-compact" [clrDgLoading]="loading">
-    <clr-dg-column [clrDgField]="'callDateTime'" [style.width.px]="160">Время начала</clr-dg-column>
-    <clr-dg-column>Продолжительность</clr-dg-column>
+    <clr-dg-column [clrDgSortBy]="'callDateTime'" [style.width.px]="160">Время начала</clr-dg-column>
+    <clr-dg-column [clrDgSortBy]="'callDuration'" [style.width.px]="160">Продолжительность</clr-dg-column>
     <clr-dg-column [clrDgField]="'callingNumber'">Вызывающий абонент</clr-dg-column>
     <clr-dg-column>ФИО</clr-dg-column>
     <clr-dg-column>Вызываемый абонент</clr-dg-column>
