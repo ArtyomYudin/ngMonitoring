@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { loadCoreIconSet, loadTechnologyIconSet } from '@cds/core/icon';
 
@@ -13,7 +13,7 @@ import { WebsocketService } from '../../../services/websocket.service';
   styleUrls: ['./avaya-cdr-filter.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AvayaCDRFilterComponent implements OnInit {
+export class AvayaCDRFilterComponent implements OnInit, OnDestroy {
   // @Input() filtered: boolean;
   @Output() addFilter = new EventEmitter<object>();
   public avayaCDRFilters!: FormGroup;

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { WebsocketService } from '@app/services/websocket.service';
-import { BehaviorSubject, distinctUntilChanged, last, Observable, share, Subject, take, takeUntil, tap } from 'rxjs';
-import { ClrDatagridSortOrder } from '@clr/angular';
+import { BehaviorSubject, distinctUntilChanged, Observable, Subject, take, takeUntil, tap } from 'rxjs';
 import { AvayaCDRModel } from '@models/avaya-cdr.model';
 import { Event } from '@services/websocket.service.event';
+import { ExcelService } from '@services/exporttoexcel.service';
 
 @Component({
   selector: 'app-avaya-cdr',
@@ -22,7 +22,7 @@ export class AvayaCDRComponent implements OnInit, OnChanges, OnDestroy {
   public createExcelSubject$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   // public descSort = ClrDatagridSortOrder.DESC;
 
-  constructor(private wsService: WebsocketService) {
+  constructor(private wsService: WebsocketService, private excelService: ExcelService) {
     this.createExcel$ = this.createExcelSubject$.asObservable();
     this.eventAvayaCDRArray$ = this.wsService.on<AvayaCDRModel>(Event.EV_AVAYA_CDR_CURRENT_DAY).pipe(
       distinctUntilChanged(),
@@ -54,7 +54,7 @@ export class AvayaCDRComponent implements OnInit, OnChanges, OnDestroy {
     } else {
       this.createExcelSubject$.next(true);
       this.eventAvayaCDRFilteredArray$.pipe(distinctUntilChanged(), takeUntil(this.ngUnsubscribe$), take(1)).subscribe(data => {
-        this.exportToExcel();
+        this.exportToExcel(data);
       });
     }
   }
@@ -64,8 +64,8 @@ export class AvayaCDRComponent implements OnInit, OnChanges, OnDestroy {
     this.ngUnsubscribe$.complete();
   }
 
-  private exportToExcel(): void {
-    console.log('!!!!');
+  private exportToExcel(data): void {
+    this.excelService.exportAsExcelFile(data, 'avaya_call_log');
     this.createExcelSubject$.next(false);
   }
 }
