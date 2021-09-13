@@ -42,6 +42,7 @@
     [clrLayout]="'compact'"
     clrLabelSize="3"
     autocomplete="off"
+    validate
 >
     <div class="clr-control-container clr-control-inline">
         <clr-date-container>
@@ -71,11 +72,11 @@
         </clr-checkbox-wrapper>
     -->
         <clr-checkbox-container class="directionGroup" clrInline>
-            <clr-checkbox-wrapper>
+            <clr-checkbox-wrapper class="directionGroupCheck">
                 <input type="checkbox" clrCheckbox formControlName="callDirectionIn" />
                 <label>входящие звонки</label>
             </clr-checkbox-wrapper>
-            <clr-checkbox-wrapper>
+            <clr-checkbox-wrapper class="directionGroupCheck">
                 <input type="checkbox" clrCheckbox formControlName="callDirectionOut" />
                 <label>исходящие звонки</label>
             </clr-checkbox-wrapper>

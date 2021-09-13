@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
@@ -28,9 +28,9 @@ export class AvayaCDRFilterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.avayaCDRFilters = this.formBuilder.group({
-      callingDateStart: [''],
-      callingDateEnd: [''],
-      callNumber: [''],
+      callingDateStart: ['', [Validators.pattern('^[0-9]{2}[.][0-9]{2}[.][0-9]{4}$')]],
+      callingDateEnd: ['', [Validators.pattern('^[0-9]{2}[.][0-9]{2}[.][0-9]{4}$')]],
+      callNumber: ['', [Validators.pattern('^[0-9]*$')]],
       callName: [''],
       callDirectionIn: [''],
       callDirectionOut: [''],
@@ -41,13 +41,11 @@ export class AvayaCDRFilterComponent implements OnInit, OnDestroy {
       value ? this.f.callDirectionIn.enable() : this.f.callDirectionIn.disable();
       value ? this.f.callDirectionOut.enable() : this.f.callDirectionOut.disable();
       value ? this.f.callName.disable() : this.f.callName.enable();
-      //this.f.callName.updateValueAndValidity({ onlySelf: true });
     });
     this.f.callName.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.ngUnsubscribe$)).subscribe((value: any) => {
       value ? this.f.callDirectionIn.enable() : this.f.callDirectionIn.disable();
       value ? this.f.callDirectionOut.enable() : this.f.callDirectionOut.disable();
       value ? this.f.callNumber.disable() : this.f.callNumber.enable();
-      //this.f.callNumber.updateValueAndValidity({ onlySelf: true });
     });
   }
 
@@ -61,6 +59,7 @@ export class AvayaCDRFilterComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(flag?: string) {
+    if (!this.avayaCDRFilters.valid) return false;
     this.exportFlag = false;
     const filter = {
       dateStart: this.f.callingDateStart.value ? this.f.callingDateStart.value.split('.').reverse().join('-') : null,
@@ -75,7 +74,6 @@ export class AvayaCDRFilterComponent implements OnInit, OnDestroy {
     } else {
       this.filterFlag = true;
       this.loadGridFlag = true;
-      // console.log('flag ');
     }
     this.wsService.send('get-filtered-avaya-cdr', filter);
     this.addFilter.emit({ filter: this.filterFlag, loadGrid: this.loadGridFlag, export: this.exportFlag });

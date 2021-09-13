@@ -92,3 +92,31 @@ clr-icon {
 .directionGroup {
   padding-left: 0.6rem !important;
 }
+
+.directionGroupCheck input[type='checkbox']::before {
+  border-color: #acbac3;
+  background-color: transparent;
+  box-shadow: none;
+}
+.directionGroupCheck input[type='checkbox'] + label::before {
+  border-color: #acbac3;
+  background-color: transparent;
+  border: 1px solid #6a7a81;
+  box-shadow: none;
+}
+.directionGroupCheck input[type='checkbox'] + label::after {
+  border-color: #acbac3;
+  background-color: transparent;
+  box-shadow: none;
+}
+.directionGroupCheck input[type='checkbox']:checked + label::before {
+  border-color: #4aaed9;
+  background-color: transparent;
+  border: 1px solid #acbac3;
+  box-shadow: none;
+}
+.directionGroupCheck input[type='checkbox']:checked + label::after {
+  border-color: #4aaed9;
+  background-color: transparent;
+  box-shadow: none;
+}
