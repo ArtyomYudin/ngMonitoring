@@ -27,14 +27,17 @@ export class AvayaCDRFilterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.avayaCDRFilters = this.formBuilder.group({
-      callingDateStart: ['', [Validators.pattern('^[0-9]{2}[.][0-9]{2}[.][0-9]{4}$')]],
-      callingDateEnd: ['', [Validators.pattern('^[0-9]{2}[.][0-9]{2}[.][0-9]{4}$')]],
-      callNumber: ['', [Validators.pattern('^[0-9]*$')]],
-      callName: [''],
-      callDirectionIn: [''],
-      callDirectionOut: [''],
-    });
+    this.avayaCDRFilters = this.formBuilder.group(
+      {
+        callingDateStart: ['', [Validators.pattern('^[0-9]{2}[.][0-9]{2}[.][0-9]{4}$')]],
+        callingDateEnd: ['', [Validators.pattern('^[0-9]{2}[.][0-9]{2}[.][0-9]{4}$')]],
+        callNumber: ['', [Validators.pattern('^[0-9]*$')]],
+        callName: [''],
+        callDirectionIn: [''],
+        callDirectionOut: [''],
+      },
+      { validator: this.dateValidator },
+    );
     this.f.callDirectionIn.disable();
     this.f.callDirectionOut.disable();
     this.f.callNumber.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.ngUnsubscribe$)).subscribe((value: any) => {
@@ -85,5 +88,12 @@ export class AvayaCDRFilterComponent implements OnInit, OnDestroy {
     this.loadGridFlag = true;
     this.exportFlag = false;
     this.addFilter.emit({ ilter: this.filterFlag, loadGrid: this.loadGridFlag, export: this.exportFlag });
+  }
+
+  private dateValidator(group: FormGroup) {
+    const startDate =
+      group.controls.callingDateStart.value !== '' ? group.controls.callingDateStart.value : new Date().toLocaleDateString();
+    const endDate = group.controls.callingDateEnd.value !== '' ? group.controls.callingDateEnd.value : new Date().toLocaleDateString();
+    return startDate > endDate ? { invalidDate: true } : null;
   }
 }

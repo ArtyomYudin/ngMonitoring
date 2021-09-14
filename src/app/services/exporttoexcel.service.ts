@@ -14,21 +14,19 @@ export class ExcelService {
     let workbook = new Excel.Workbook();
     let worksheet = workbook.addWorksheet('Call log');
     worksheet.columns = [
-      { header: 'Время начала', key: 'callDateTime', width: '19' },
-      { header: 'Продолжительность', key: 'callDuration', width: '19' },
-      { header: 'Вызывающий абонент', key: 'callingNumber', width: '12' },
-      { header: 'ФИО', key: 'callingName', width: '30' },
-      { header: 'Вызываемый абонент', key: 'calledNumber', width: '12' },
-      { header: 'ФИО', key: 'calledName', width: '30' },
+      { header: 'Время начала', key: 'callDateTime', width: '20' },
+      { header: 'Продолжительность', key: 'callDuration', width: '20' },
+      { header: 'Вызывающий абонент', key: 'callingNumber', width: '15' },
+      { header: 'ФИО', key: 'callingName', width: '35' },
+      { header: 'Вызываемый абонент', key: 'calledNumber', width: '15' },
+      { header: 'ФИО', key: 'calledName', width: '35' },
       { header: 'Тип вызова', key: 'callCode' },
     ];
     //worksheet.columns.forEach(column => {
     //  column.width = column.header.length < 19 ? 19 : column.header.length;
     //});
-    worksheet.getRow(1).font = {
-      bold: true,
-    };
-    worksheet.getRow(1).alignment = { wrapText: true };
+    worksheet.getRow(1).font = { bold: true };
+    worksheet.getRow(1).alignment = { wrapText: true, vertical: 'middle', horizontal: 'center' };
     json.forEach((e, index) => {
       // row 1 is the header.
       const rowIndex = index + 2;

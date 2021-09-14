@@ -16,3 +16,9 @@
   width: 18px;
   position: unset;
 }
+
+.nav .nav-link.active,
+.nav .nav-link:hover {
+  box-shadow: none;
+  color: #4aaed9;
+}
