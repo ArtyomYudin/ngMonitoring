@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -38,7 +38,8 @@ export function jwtTokenGetter() {
     JwtModule,
     UiModule,
   ],
-  providers: [WebsocketService, { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }],
+  providers: [{ provide: LOCALE_ID, useValue: 'ru' }, WebsocketService, { provide: RouteReuseStrategy, useClass: CustomReuseStrategy }],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

@@ -29,9 +29,9 @@
     <clr-dg-column [clrDgSortBy]="'callDateTime'" [style.width.px]="160">Время начала</clr-dg-column>
     <clr-dg-column [clrDgSortBy]="'callDuration'" [style.width.px]="160">Продолжительность</clr-dg-column>
     <clr-dg-column [clrDgField]="'callingNumber'">Вызывающий абонент</clr-dg-column>
-    <clr-dg-column>ФИО</clr-dg-column>
+    <clr-dg-column [clrDgField]="'callingName'">ФИО</clr-dg-column>
     <clr-dg-column [clrDgField]="'calledNumber'">Вызываемый абонент</clr-dg-column>
-    <clr-dg-column>ФИО</clr-dg-column>
+    <clr-dg-column [clrDgField]="'calledName'">ФИО</clr-dg-column>
     <clr-dg-column>Тип вызова</clr-dg-column>
 
     <clr-dg-placeholder>Мы не смогли найти пользователей!</clr-dg-placeholder>
@@ -43,7 +43,7 @@
         <clr-dg-cell>{{ cdr.callingName }}</clr-dg-cell>
         <clr-dg-cell><clr-icon shape="arrow right"></clr-icon>{{ cdr.calledNumber }}</clr-dg-cell>
         <clr-dg-cell>{{ cdr.calledName }}</clr-dg-cell>
-        <clr-dg-cell>{{ cdr.callCode | avayaCallCodeConvert: cdr.calledNumber }}</clr-dg-cell>
+        <clr-dg-cell>{{ cdr.callCode | avayaCallCodeConvert: cdr.calledNumber:cdr.callingNumber }}</clr-dg-cell>
     </clr-dg-row>
 
     <clr-dg-footer>
