@@ -1,0 +1,31 @@
+<div>
+    <clr-stack-view>
+        <clr-stack-block>
+            <clr-stack-label>Label 2</clr-stack-label>
+            <clr-stack-content>Content 2</clr-stack-content>
+            <clr-stack-block>
+                <clr-stack-label>Sub-label 1</clr-stack-label>
+                <clr-stack-content>Sub-content 2</clr-stack-content>
+            </clr-stack-block>
+        </clr-stack-block>
+    </clr-stack-view>
+    <mat-expansion-panel class="guest-car-panel" #guestCarPanel>
+        <mat-expansion-panel-header
+            class="guest-car-header-panel"
+            [collapsedHeight]="'32px'"
+            [expandedHeight]="'32px'"
+            [style.border-bottom-width]="guestCarPanel.expanded ? '1px' : '0px'"
+        >
+            <mat-panel-title> Автомобили на территории </mat-panel-title>
+            <mat-panel-description>
+                <cds-icon shape="car"></cds-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div id="content">
+            <table class="table table-compact">
+                <tbody></tbody>
+            </table>
+        </div>
+    </mat-expansion-panel>
+</div>

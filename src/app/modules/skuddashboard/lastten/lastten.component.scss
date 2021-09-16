@@ -24,7 +24,8 @@
   vertical-align: middle;
 }
 
-.table td.left, .table th.left {
+.table td.left,
+.table th.left {
   padding-left: 0.5rem;
 }
 
@@ -36,12 +37,12 @@
   text-align: right;
 }
 
-.table td.lastentry{
-  color: #49AFD9;
+.table td.lastentry {
+  color: #49afd9;
 }
 
-.table td.lastexit{
-  color: #00D4B8;
+.table td.lastexit {
+  color: #00d4b8;
 }
 
 .table th {
@@ -50,7 +51,7 @@
   vertical-align: middle;
 }
 
-clr-icon {
+cds-icon {
   height: 22px;
   width: 22px;
 }

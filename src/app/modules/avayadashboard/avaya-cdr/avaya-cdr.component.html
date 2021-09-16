@@ -41,7 +41,7 @@
         <clr-dg-cell>{{ cdr.callDuration | avayaDurationConvert }}</clr-dg-cell>
         <clr-dg-cell>{{ cdr.callingNumber }}</clr-dg-cell>
         <clr-dg-cell>{{ cdr.callingName }}</clr-dg-cell>
-        <clr-dg-cell><clr-icon shape="arrow right"></clr-icon>{{ cdr.calledNumber }}</clr-dg-cell>
+        <clr-dg-cell><cds-icon shape="arrow right"></cds-icon>{{ cdr.calledNumber }}</clr-dg-cell>
         <clr-dg-cell>{{ cdr.calledName }}</clr-dg-cell>
         <clr-dg-cell>{{ cdr.callCode | avayaCallCodeConvert: cdr.calledNumber:cdr.callingNumber }}</clr-dg-cell>
     </clr-dg-row>

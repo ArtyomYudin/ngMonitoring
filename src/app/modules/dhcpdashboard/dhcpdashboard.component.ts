@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { loadCoreIconSet, loadTechnologyIconSet } from '@cds/core/icon';
 
 @Component({
   selector: 'app-dhcpdashboard',
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dhcpdashboard.component.scss'],
 })
 export class DhcpDashboardComponent implements OnInit {
-  constructor() {}
+  constructor() {
+    loadCoreIconSet();
+    loadTechnologyIconSet();
+  }
 
   ngOnInit(): void {}
 }

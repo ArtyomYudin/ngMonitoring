@@ -3,7 +3,7 @@
     <div class="alert-items">
         <div class="alert-item static">
             <div class="alert-icon-wrapper">
-                <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                <cds-icon class="alert-icon" shape="exclamation-circle"></cds-icon>
             </div>
             <span class="alert-text">
                 This alert is at the top of the page.
@@ -15,13 +15,11 @@
 <!--<script type="text/javascript" src="assets/js/jsmpeg.min.js"></script>-->
 <clr-alert [clrAlertType]="'danger'" [clrAlertClosable]="false" *ngIf="!isConnected">
     <clr-alert-item>
-        <span class="alert-text">
-            Отсутствует связь с сервером.
-        </span>
+        <span class="alert-text"> Отсутствует связь с сервером. </span>
     </clr-alert-item>
 </clr-alert>
 
-<div class="app-loading" *ngIf = "!initDashboard">
+<div class="app-loading" *ngIf="!initDashboard">
     <svg class="spinner spinner-md"></svg>
 </div>
 <!--
@@ -29,16 +27,16 @@
 <script type="text/javascript" src="./assets/js/videocanvas.js"></script>
 -->
 <div class="clr-row">
-  <div class="clr-col-xl-3 clr-col-lg-3 clr-col-md-5 clr-col-sm-12 clr-col-xs-12">
-      <app-camera></app-camera>
-      <app-visitors></app-visitors>
-      <app-visitorschart></app-visitorschart>
-  </div>
-  <div class="clr-col-xl-6 clr-col-lg-4 clr-col-md-7 clr-col-sm-12 clr-col-xs-12">
-      <app-lastten></app-lastten>
-  </div>
-  <div class="clr-col-xl-3 clr-col-lg-5 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
-          <app-employeesearch></app-employeesearch>
-          <app-employee></app-employee>
-  </div>
+    <div class="clr-col-xl-3 clr-col-lg-3 clr-col-md-5 clr-col-sm-12 clr-col-xs-12">
+        <app-camera></app-camera>
+        <app-visitors></app-visitors>
+        <app-visitorschart></app-visitorschart>
+    </div>
+    <div class="clr-col-xl-6 clr-col-lg-4 clr-col-md-7 clr-col-sm-12 clr-col-xs-12">
+        <app-lastten></app-lastten>
+    </div>
+    <div class="clr-col-xl-3 clr-col-lg-5 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
+        <app-employeesearch></app-employeesearch>
+        <app-employee></app-employee>
+    </div>
 </div>

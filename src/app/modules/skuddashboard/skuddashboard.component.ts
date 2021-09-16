@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { takeUntil, share, distinctUntilChanged } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { WebsocketService } from '@app/services/websocket.service';
+import { loadCoreIconSet, loadMediaIconSet, loadChartIconSet, loadTravelIconSet, loadEssentialIconSet } from '@cds/core/icon';
 
 @Component({
   selector: 'app-skuddashboard',
@@ -16,6 +17,11 @@ export class SkudDashboardComponent implements OnInit, OnDestroy {
   private ngUnsubscribe$: Subject<any> = new Subject();
 
   constructor(private wsService: WebsocketService) {
+    loadCoreIconSet();
+    loadMediaIconSet();
+    loadChartIconSet();
+    loadTravelIconSet();
+    loadEssentialIconSet();
     this.wsService.status.pipe(share(), distinctUntilChanged(), takeUntil(this.ngUnsubscribe$)).subscribe(isConnected => {
       this.isConnected = isConnected;
     });

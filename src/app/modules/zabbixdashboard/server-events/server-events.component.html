@@ -12,11 +12,9 @@
             [expandedHeight]="'32px'"
             [style.border-bottom-width]="serverEventPanel.expanded ? '1px' : '0px'"
         >
-            <mat-panel-title>
-                Серверы
-            </mat-panel-title>
+            <mat-panel-title> Серверы </mat-panel-title>
             <mat-panel-description>
-                <clr-icon shape="host" [ngClass]="{ 'has-alert': !isEmpty() }"></clr-icon>
+                <cds-icon shape="host" [ngClass]="{ 'has-alert': !isEmpty() }"></cds-icon>
             </mat-panel-description>
         </mat-expansion-panel-header>
 
@@ -28,7 +26,7 @@
                         <th class="header-event-date"></th>
                         <th class="header-hardware-description"></th>
                         <th class="right-th-icon">
-                            <clr-icon shape="host" [ngClass]="{ 'has-alert': !isEmpty() }"></clr-icon>
+                            <cds-icon shape="host" [ngClass]="{ 'has-alert': !isEmpty() }"></cds-icon>
                         </th>
                     </tr>
                 </thead>

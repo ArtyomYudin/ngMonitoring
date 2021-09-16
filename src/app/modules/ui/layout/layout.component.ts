@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { loadCoreIconSet, loadTechnologyIconSet } from '@cds/core/icon';
 
 @Component({
   selector: 'app-layout',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-
-  constructor() { }
-
-  public ngOnInit() {
+  constructor() {
+    loadCoreIconSet();
+    loadTechnologyIconSet();
   }
 
+  public ngOnInit() {}
 }

@@ -48,11 +48,10 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["node_modules/@clr/icons/clr-icons.min.css", "node_modules/@clr/ui/clr-ui-dark.min.css", "src/styles.scss"],
+            "styles": ["node_modules/@clr/ui/clr-ui-dark.min.css", "src/styles.scss"],
             "scripts": [
               "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
-              "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
-              "node_modules/@clr/icons/clr-icons.min.js"
+              "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"
             ],
             "allowedCommonJsDependencies": ["chart.js"]
           },
@@ -124,9 +123,7 @@
           "configurations": {
             "ru": {
               "outputPath": "locale/",
-              "outFile": "messages.ru.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "ru"
+              "outFile": "messages.ru.xlf"
             }
           }
         },

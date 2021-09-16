@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { loadCoreIconSet, loadTechnologyIconSet } from '@cds/core/icon';
 
 @Component({
   selector: 'app-avayadashboard',
@@ -9,7 +10,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class AvayaDashboardComponent implements OnInit {
   public filtered: { filter: boolean; loadGrid: boolean; export: boolean } = { filter: false, loadGrid: true, export: false };
 
-  constructor() {}
+  constructor() {
+    loadCoreIconSet();
+    loadTechnologyIconSet();
+  }
 
   ngOnInit(): void {}
 

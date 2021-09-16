@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, TemplateRef } from '@angular/c
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { takeUntil, share, distinctUntilChanged } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { loadCoreIconSet, loadTechnologyIconSet } from '@cds/core/icon';
 
 import { WebsocketService } from '@app/services/websocket.service';
 import { LocalStorageService } from '@services/localstorage.service.';
@@ -40,6 +41,8 @@ export class ZabbixDashboardComponent implements OnInit, OnDestroy {
   serverRoomEmployeeArray2$: ServerRoomAccessModel;
 
   constructor(public storage: LocalStorageService, private wsService: WebsocketService) {
+    loadCoreIconSet();
+    loadTechnologyIconSet();
     this.wsService
       .on<EventModel>(Event.EV_UPS_VALUE)
       .pipe(share(), distinctUntilChanged(), takeUntil(this.ngUnsubscribe$))

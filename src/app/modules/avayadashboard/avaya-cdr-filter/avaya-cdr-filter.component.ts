@@ -2,9 +2,6 @@ import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, OnInit, Ou
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
-
-import { loadCoreIconSet, loadTechnologyIconSet } from '@cds/core/icon';
-
 import { WebsocketService } from '../../../services/websocket.service';
 
 @Component({
@@ -21,10 +18,7 @@ export class AvayaCDRFilterComponent implements OnInit, OnDestroy {
   private filterFlag: boolean = false;
   private loadGridFlag: boolean = false;
   private exportFlag: boolean = false;
-  constructor(private formBuilder: FormBuilder, private wsService: WebsocketService) {
-    loadCoreIconSet();
-    loadTechnologyIconSet();
-  }
+  constructor(private formBuilder: FormBuilder, private wsService: WebsocketService) {}
 
   ngOnInit(): void {
     this.avayaCDRFilters = this.formBuilder.group(
