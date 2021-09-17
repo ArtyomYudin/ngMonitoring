@@ -15,6 +15,7 @@
 .table th {
   // font-size: .5rem;
   font-size: 12px;
+  vertical-align: middle;
 }
 
 .table td.left,
@@ -36,6 +37,7 @@
 .onTerritory {
   border-bottom: 0px;
 }
+
 cds-icon {
   height: 22px;
   width: 22px;
@@ -46,6 +48,10 @@ cds-icon {
 }
 .guest-car-accordion {
   margin-bottom: 0rem;
+}
+
+::ng-deep .guest-car-accordion .clr-accordion-inner-content {
+  padding: 0.3rem 0.3rem !important;
 }
 ::ng-deep .clr-accordion-panel .clr-accordion-header {
   background-color: #22343c;
@@ -85,4 +91,83 @@ cds-icon {
 ::ng-deep .clr-accordion-angle {
   height: 0.5rem !important;
   width: 0.5rem !important;
+}
+
+#per-day-ccontent {
+  margin: auto;
+  // width: 360px;
+  // max-height: 104px;
+  // background-color: #FFFFFF;
+  // padding: 0px;
+}
+
+.per-day-panel {
+  border: 1px solid #485764;
+  border-radius: 0.125rem;
+  background-color: #22343c;
+  color: #adbbc4;
+  margin: 0;
+  margin-top: 1rem;
+  max-width: 100%;
+  width: 100%;
+}
+
+.per-day-header-panel {
+  border-bottom: 1px solid #485764;
+  background-color: #1b2a32;
+  font-family: 'Metropolis', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding-left: 12px;
+}
+
+.per-day-table {
+  margin-top: 0rem;
+  border: 0px;
+}
+
+.mat-expansion-panel-header-title {
+  color: #e9ecef;
+}
+
+.mat-expansion-panel-header-description {
+  color: #e9ecef;
+  display: table !important;
+  text-align: right !important;
+  margin-right: 10px;
+  flex-grow: 0;
+}
+
+::ng-deep .mat-expansion-indicator::after {
+  color: #e9ecef !important;
+}
+
+::ng-deep .per-day-panel .mat-expansion-panel-body {
+  padding: 0px !important;
+  font-family: 'Metropolis', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  color: #e9ecef;
+}
+
+.per-day-panel .mat-expansion-panel-header:hover,
+.per-day-panel .mat-expansion-panel-header::after,
+.per-day-panel .mat-expansion-panel-header.mat-expanded {
+  background-color: #1b2a32;
+}
+
+.guest-car {
+  margin: 0.1rem 0 0;
+  font-size: 10px;
+}
+.guest-car td,
+.guest-car th {
+  font-size: 11px;
+  background-color: #22343c;
+  color: #acbac3;
+}
+
+.guest-car cds-icon {
+  height: 16px;
+  width: 16px;
 }

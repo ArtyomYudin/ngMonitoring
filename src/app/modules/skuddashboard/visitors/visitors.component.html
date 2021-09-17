@@ -18,11 +18,13 @@
                 <td class="staff">{{ (realOnTerritoryAS$ | async)?.empReal }}</td>
                 <td class="guest">{{ (realOnTerritoryAS$ | async)?.guestReal }}</td>
             </tr>
+            <!--
             <tr>
                 <td class="left">Автомобили</td>
                 <td></td>
                 <td class="car">{{ realCarOnTerritory$ | async }}</td>
             </tr>
+        -->
             <tr>
                 <td colspan="3" class="guest-car-td">
                     <clr-accordion class="guest-car-accordion">
@@ -34,11 +36,28 @@
                                     </div>
 
                                     <div class="clr-col-2">
-                                        <span class="guest-car-accordion-title-count">{{ realCarOnTerritory$ | async }}</span>
+                                        <span class="guest-car-accordion-title-count">{{ (realCarOnTerritory$ | async)?.total }}</span>
                                     </div>
                                 </div>
                             </clr-accordion-title>
-                            <clr-accordion-content class="guest-car-content" *clrIfExpanded> Content 1 </clr-accordion-content>
+                            <clr-accordion-content class="guest-car-content">
+                                <table class="table table-compact guest-car">
+                                    <thead>
+                                        <tr>
+                                            <th class="left">Пропуск</th>
+                                            <th class="left">Время выдачи</th>
+                                            <th class="left">Фото</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of (realCarOnTerritory$ | async)?.results">
+                                            <td class="left">{{ item.guestCarValueDot }}</td>
+                                            <td class="left">{{ item.guestCarTime }}</td>
+                                            <td class="left"><cds-icon shape="camera"></cds-icon></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </clr-accordion-content>
                         </clr-accordion-panel>
                     </clr-accordion>
                 </td>
@@ -47,6 +66,45 @@
     </table>
 </div>
 
+<div>
+    <mat-expansion-panel class="per-day-panel" #perDayPanel>
+        <mat-expansion-panel-header
+            class="per-day-header-panel"
+            [collapsedHeight]="'32px'"
+            [expandedHeight]="'32px'"
+            [style.border-bottom-width]="perDayPanel.expanded ? '1px' : '0px'"
+        >
+            <mat-panel-title> За день</mat-panel-title>
+            <mat-panel-description>
+                <cds-icon shape="history"> </cds-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div id="per-day-content">
+            <table class="per-day-table table">
+                <tbody>
+                    <tr>
+                        <td class="left">Сотрудники</td>
+                        <td></td>
+                        <td class="staff">{{ employeePerDay$ | async }}</td>
+                    </tr>
+                    <tr>
+                        <td class="left">Гости</td>
+                        <td></td>
+                        <td class="guest">{{ guestPerDay$ | async }}</td>
+                    </tr>
+                    <tr>
+                        <td class="left">Автомобили</td>
+                        <td></td>
+                        <td class="car">{{ carPerDay$ | async }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </mat-expansion-panel>
+</div>
+
+<!--
 <div>
     <table class="table">
         <thead>
@@ -77,3 +135,4 @@
         </tbody>
     </table>
 </div>
+-->
