@@ -41,6 +41,7 @@
                                 </div>
                             </clr-accordion-title>
                             <clr-accordion-content class="guest-car-content">
+                                <span *ngIf="!(realCarOnTerritory$ | async)?.total" class="guest-car-none"> Выданных пропусков нет</span>
                                 <table class="table table-compact guest-car">
                                     <thead>
                                         <tr>
@@ -79,7 +80,6 @@
                 <cds-icon shape="history"> </cds-icon>
             </mat-panel-description>
         </mat-expansion-panel-header>
-
         <div id="per-day-content">
             <table class="per-day-table table">
                 <tbody>

@@ -11,8 +11,7 @@
   border-radius: 0.125rem;
   background-color: #22343c;
   color: #adbbc4;
-  margin: 0;
-  margin-top: 1rem;
+  margin: 0.6rem 0 0;
   max-width: 100%;
   width: 100%;
 }
@@ -57,4 +56,10 @@
 cds-icon {
   height: 22px;
   width: 22px;
+}
+
+.chartPanel .mat-expansion-panel-header:hover,
+.chartPanel .mat-expansion-panel-header::after,
+.chartPanel .mat-expansion-panel-header.mat-expanded {
+  background-color: #1b2a32;
 }
