@@ -24,7 +24,6 @@ import { LasttenComponent } from '@modules/skuddashboard/lastten/lastten.compone
 import { VisitorsComponent } from '@modules/skuddashboard/visitors/visitors.component';
 import { VisitorsChartComponent } from '@modules/skuddashboard/visitorschart/visitorschart.component';
 import { WebsocketService } from '@app/services/websocket.service';
-import { GuestCarComponent } from './guestcar/guestcar.component';
 
 const routing = RouterModule.forChild([{ path: '', component: SkudDashboardComponent }]);
 
@@ -41,7 +40,6 @@ const routing = RouterModule.forChild([{ path: '', component: SkudDashboardCompo
     LasttenComponent,
     VisitorsComponent,
     VisitorsChartComponent,
-    GuestCarComponent,
   ],
   imports: [CommonModule, ClarityModule, ReactiveFormsModule, MatAutocompleteModule, MatExpansionModule, GlobalPipeModule, routing],
   providers: [WebsocketService],
