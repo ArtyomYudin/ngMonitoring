@@ -28,6 +28,9 @@ export class VisitorsComponent implements OnInit {
   public realOnTerritoryAC$: Observable<IRealOnTerritiry>;
   public realOnTerritoryAS$: Observable<IRealOnTerritiry>;
   public realCarOnTerritory$: Observable<IGuestCarModel>;
+  public today = new Date().toLocaleDateString();
+  public carPhotoOpen = false;
+  public carPhotoLink: string;
 
   constructor(private wsService: WebsocketService) {}
 
@@ -39,5 +42,9 @@ export class VisitorsComponent implements OnInit {
     this.realOnTerritoryAC$ = this.wsService.on<IRealOnTerritiry>(Event.EV_REAL_ON_TERRITORY_AC);
     this.realOnTerritoryAS$ = this.wsService.on<IRealOnTerritiry>(Event.EV_REAL_ON_TERRITORY_AS);
     this.realCarOnTerritory$ = this.wsService.on<IGuestCarModel>(Event.EV_REAL_CAR_ON_TERRITORY);
+  }
+  public onCarPhoto(link: string) {
+    this.carPhotoLink = link;
+    this.carPhotoOpen = true;
   }
 }

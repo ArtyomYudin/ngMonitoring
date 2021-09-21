@@ -173,3 +173,42 @@ cds-icon {
   height: 16px;
   width: 16px;
 }
+
+.guest-car tr.possible-fail td {
+  color: hsl(9, 88%, 61%);
+  // text-align: left;
+}
+
+.carPhotoButton {
+  margin: 0 !important;
+}
+.carPhotoButton:focus {
+  outline: none;
+  // box-shadow: none;
+}
+
+.guest-car td {
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+  vertical-align: middle;
+}
+
+::ng-deep .modal {
+  text-align: center;
+}
+::ng-deep .modal-dialog {
+  display: inline-block;
+  width: auto;
+}
+.carPhoto {
+  width: 576px;
+  height: 100%;
+}
+
+::ng-deep .carPhotoModal .modal-content {
+  padding: 0 0.7rem 0.7rem;
+}
+
+::ng-deep .carPhotoModal .modal-header--accessible {
+  padding: 0;
+}
