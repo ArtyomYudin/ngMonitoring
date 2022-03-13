@@ -29,7 +29,7 @@ export class AuthenticationService {
       }),
     };
 
-    return this.http.post<AuthUser>('http://172.20.4.195:3000/api/auth', { email, password }, httpOptions).pipe(
+    return this.http.post<AuthUser>('https://it.center-inform.ru:3000/api/auth', { email, password }, httpOptions).pipe(
       map(authUser => {
         if (authUser && authUser.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes

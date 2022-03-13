@@ -41,7 +41,6 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "localize": ["ru"],
             "outputPath": "dist/ngMonitoring",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -89,12 +88,6 @@
                   "maximumWarning": "6kb"
                 }
               ]
-            },
-            "ru": {
-              "localize": ["ru"]
-            },
-            "en": {
-              "localize": ["en"]
             }
           }
         },
@@ -119,12 +112,6 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "ng-monitoring:build"
-          },
-          "configurations": {
-            "ru": {
-              "outputPath": "locale/",
-              "outFile": "messages.ru.xlf"
-            }
           }
         },
         "test": {
