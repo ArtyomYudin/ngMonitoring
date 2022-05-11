@@ -28,27 +28,24 @@ export class EmployeeService {
       }),
     };
 
-    return this.http.post<Employee>('http://172.20.4.195:3000/api/employee', { empId }, httpOptions)
-      .pipe(
-        map(currentEmp => currentEmp),
-      );
+    return this.http
+      .post<Employee>('https://it.center-inform.ru:3000/api/employee', { empId }, httpOptions)
+      .pipe(map(currentEmp => currentEmp));
   }
 
-  public getAllEmp(filter: {name: string} = { name: '' }, page = 1): Observable<IEmployeeResponse> {
+  public getAllEmp(filter: { name: string } = { name: '' }, page = 1): Observable<IEmployeeResponse> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'text/plain',
       }),
     };
-    return this.http.get<IEmployeeResponse>('http://172.20.4.195:3000/api/employee', httpOptions)
-    .pipe(
+    return this.http.get<IEmployeeResponse>('https://it.center-inform.ru:3000/api/employee', httpOptions).pipe(
       tap((response: IEmployeeResponse) => {
         response.results = response.results
           .map(user => user)
           .filter(user => user.lastName.toLowerCase().startsWith(filter.name.toLowerCase()));
         return response;
       }),
-      );
+    );
   }
-
 }

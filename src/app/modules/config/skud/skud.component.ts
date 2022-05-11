@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 
-import {ClrDatagridSortOrder} from '@clr/angular';
+import { ClrDatagridSortOrder } from '@clr/angular';
 
 import { IEmployeeResponse } from '@models/employee.model';
 
@@ -11,13 +11,11 @@ import { IEmployeeResponse } from '@models/employee.model';
   templateUrl: './skud.component.html',
   styleUrls: ['./skud.component.scss'],
 })
-export class SkudComponent implements  OnInit {
-
+export class SkudComponent implements OnInit {
   public emp$: Observable<IEmployeeResponse>;
   public descSort = ClrDatagridSortOrder.DESC;
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   public ngOnInit() {
     this.emp$ = this.getAllEmp();
@@ -29,7 +27,6 @@ export class SkudComponent implements  OnInit {
         'Content-Type': 'text/plain',
       }),
     };
-    return this.http.get<IEmployeeResponse>('http://172.20.4.195:3000/api/employee', httpOptions);
+    return this.http.get<IEmployeeResponse>('https://it.center-inform.ru:3000/api/employee', httpOptions);
   }
-
 }

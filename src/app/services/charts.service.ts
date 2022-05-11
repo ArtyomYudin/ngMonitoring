@@ -8,8 +8,7 @@ import { ChartModel } from '@models/chart.model';
   providedIn: 'root',
 })
 export class ChartsService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public getChartData(chartId: string) {
     const httpOptions = {
@@ -18,10 +17,8 @@ export class ChartsService {
       }),
     };
 
-    return this.http.post<ChartModel>('http://172.20.4.195:3000/api/charts', { chartId }, httpOptions)
-      .pipe(
-        map(chartsData => chartsData),
-      );
+    return this.http
+      .post<ChartModel>('https://it.center-inform.ru:3000/api/charts', { chartId }, httpOptions)
+      .pipe(map(chartsData => chartsData));
   }
-
 }
